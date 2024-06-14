@@ -61,6 +61,7 @@ model Comment {
     userId    String
     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     createdAt DateTime @default(now())
+    content   String
     threadId  String
     thread    Thread   @relation(fields: [threadId], references: [id])
 }
