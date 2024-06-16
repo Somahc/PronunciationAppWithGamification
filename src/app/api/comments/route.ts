@@ -74,14 +74,21 @@ export async function GET(req: NextRequest) {
         const threadId = searchParams.get('threadId');
 
         if (!threadId) {
-            const comments = await prisma.comment.findMany();
+            const comments = await prisma.comment.findMany({
+                orderBy: {
+                    createdAt: 'desc', // 作成日時の降順でソート
+                },
+            });
             return NextResponse.json(comments);
         }
 
         const comments = await prisma.comment.findMany({
             where: {
                 threadId,
-            }
+            },
+            orderBy: {
+                createdAt: 'desc', // 作成日時の降順でソート
+            },
         });
         return NextResponse.json(comments);
     }
