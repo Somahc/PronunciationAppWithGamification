@@ -68,9 +68,21 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
     if (req.method === 'GET') {
-        const comments = await prisma.comment.findMany();
+        const { searchParams } = new URL(req.url, 'http://localhost');
+        const threadId = searchParams.get('threadId');
+
+        if (!threadId) {
+            const comments = await prisma.comment.findMany();
+            return NextResponse.json(comments);
+        }
+
+        const comments = await prisma.comment.findMany({
+            where: {
+                threadId,
+            }
+        });
         return NextResponse.json(comments);
     }
 }
