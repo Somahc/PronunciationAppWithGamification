@@ -67,3 +67,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
         return NextResponse.json({ message: 'Method not allowed', status: 405 });
     }
 }
+
+export async function GET(req: NextRequest, res: NextResponse) {
+    if (req.method === 'GET') {
+        const comments = await prisma.comment.findMany();
+        return NextResponse.json(comments);
+    }
+}
