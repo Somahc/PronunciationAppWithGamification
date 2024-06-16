@@ -75,6 +75,9 @@ export async function GET(req: NextRequest) {
 
         if (!threadId) {
             const comments = await prisma.comment.findMany({
+                include: {
+                    user: true,
+                },
                 orderBy: {
                     createdAt: 'desc', // 作成日時の降順でソート
                 },
@@ -83,6 +86,9 @@ export async function GET(req: NextRequest) {
         }
 
         const comments = await prisma.comment.findMany({
+            include: {
+                user: {select:{name:true}} // userテーブルのnameカラムのみ取得
+            },
             where: {
                 threadId,
             },

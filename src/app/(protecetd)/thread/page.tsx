@@ -9,6 +9,7 @@ interface Comment {
     createdAt: DateTime;
     threadId: string;
     content: string;
+    user: { name: string };
 }
 
 export default async function Page() {
@@ -24,7 +25,7 @@ export default async function Page() {
                     {comments.map((comment: Comment) => (
                         <div className="mt-5 border border-gray-300 p-4 rounded-md" key={comment.id}>
                             <div className="flex">
-                                <div className="mr-3 font-bold">{comment.userId}</div>
+                                <div className="mr-3 font-bold">{comment.user ? comment.user.name : 'Unknownさん'}</div>
                                 <div>{comment.createdAt}</div>
                             </div>
                             <p>{comment.content}</p>
