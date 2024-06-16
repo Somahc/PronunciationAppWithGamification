@@ -45,7 +45,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 data: {
                     content,
                     thread: {
-                        create: {
+                        connect: {
                             id: threadId,
                         }
                     },
