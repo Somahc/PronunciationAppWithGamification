@@ -18,7 +18,7 @@ const PostTestButton = () => {
         return data;
     }
     return (
-        <button className="bg-blue-600 py-2 px-6 rounded-md mb-2" onClick={() => postComment("hello", "1")}>Post Test</button>
+        <button className="bg-blue-600 py-2 px-6 rounded-md mb-2" onClick={() => postComment("www", "1")}>Post Test</button>
     )
 }
 
