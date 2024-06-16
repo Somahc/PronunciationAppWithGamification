@@ -1,8 +1,6 @@
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/lib/next-auth/options";
-import PostTestButton from "@/app/components/PostTestButton";
 import PostCommentForm from "@/app/components/PostComment";
-import { comment } from "postcss";
 import { DateTime } from "next-auth/providers/kakao";
 
 interface Comment {
