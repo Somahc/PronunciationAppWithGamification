@@ -70,7 +70,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 export async function GET(req: NextRequest) {
     if (req.method === 'GET') {
-        const { searchParams } = new URL(req.url, 'http://localhost');
+        const { searchParams } = new URL(req.url);
         const threadId = searchParams.get('threadId');
 
         if (!threadId) {
