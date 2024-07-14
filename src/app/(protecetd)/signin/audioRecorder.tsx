@@ -48,15 +48,44 @@ const AudioRecorder: React.FC = () => {
     // Base64エンコード
     const base64 = btoa(String.fromCharCode.apply(null,[...new Uint8Array(wavBuffer)]));
     console.log(base64.slice(0, 50) + '...');
+    console.log('ENDPOINT', process.env.NEXT_PUBLIC_SEEPHONY_ENDPOINT as string);
     
     // ここでAPIに送信する処理を実装
     sendToAPI(base64);
   };
 
-  const sendToAPI = (base64Audio: string): void => {
+  const sendToAPI = async (base64Audio: string) => {
     // APIに送信する処理を実装
     console.log('Sending audio to API:', base64Audio.slice(0, 50) + '...');
+    const response = await fetch('/api/seephony', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "audio": base64Audio,
+        "lexiconId" : "abandon",
+        "deviceType": "pc",
+        "nota1": 1.0,
+        "nota2": 1.0,
+        "userId": "soma_test",
+        "context": {
+            "nota1": 1.0,
+            "nota2": 1.0,
+            "diff1": 1.0,
+            "diff2": 1.0
+        }
+      })
+    })
 
+    if (!response.ok) {
+      console.error('API request failed with status:', response.status);
+      const errorData = await response.text();
+      console.error('Error details:', errorData);
+      throw new Error(`API request failed: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('でーただよ：', data);
   };
 
   return (
