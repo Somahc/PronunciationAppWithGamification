@@ -2,23 +2,54 @@
 
 import React, { useState, useRef } from 'react';
 
+type apiResponse = {
+  status: {
+    result: string;
+    desc: string;
+  }
+  recogStatus: string;
+  reason: string;
+  corrPhonSym: [];
+  fmtCorrPhonSym: [];
+  recogPhonSym: [];
+  recogErrata: [];
+  lexiconId: string;
+  deviceType: string;
+  userId: string;
+  context: {
+    nota1: number;
+    nota2: number;
+    diff1: number;
+    diff2: number;
+  }
+}
+
 const AudioRecorder: React.FC = () => {
   const [isRecording, setIsRecording] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [pronounceAnswer, setPronounceAnswer] = useState<string>(); // ここにAPIからのレスポンスを格納
+  const [recordedPronounce, setRecordedPronounce] = useState<string>(); // ここに録音した発音を格納
+  const [error, setError] = useState<string | null>(null);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
 
   const startRecording = async (): Promise<void> => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaRecorder.current = new MediaRecorder(stream);
-    audioChunks.current = [];
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder.current = new MediaRecorder(stream);
+      audioChunks.current = [];
 
-    mediaRecorder.current.ondataavailable = (event: BlobEvent) => {
-      audioChunks.current.push(event.data);
-    };
+      mediaRecorder.current.ondataavailable = (event: BlobEvent) => {
+        audioChunks.current.push(event.data);
+      };
 
-    mediaRecorder.current.onstop = processAudio;
-    mediaRecorder.current.start();
-    setIsRecording(true);
+      mediaRecorder.current.onstop = processAudio;
+      mediaRecorder.current.start();
+      setIsRecording(true);
+    } catch (err) {
+      console.error('録音の開始に失敗:', err);
+      setError('録音に失敗しました。ブラウザ上でマイクの使用が許可されているか確認してください。');
+    }
   };
 
   const stopRecording = (): void => {
@@ -29,33 +60,51 @@ const AudioRecorder: React.FC = () => {
   };
 
   const processAudio = async (): Promise<void> => {
-    const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
-    const arrayBuffer = await audioBlob.arrayBuffer();
-    const audioContext = new window.AudioContext();
-    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+    setIsProcessing(true);
+    try {
+      const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
+      const arrayBuffer = await audioBlob.arrayBuffer();
+      const audioContext = new window.AudioContext();
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 
-    // リサンプリング
-    const offlineContext = new OfflineAudioContext(1, audioBuffer.duration * 16000, 16000);
-    const source = offlineContext.createBufferSource();
-    source.buffer = audioBuffer;
-    source.connect(offlineContext.destination);
-    source.start();
-    const resampled = await offlineContext.startRendering();
+      // リサンプリング
+      const offlineContext = new OfflineAudioContext(1, audioBuffer.duration * 16000, 16000);
+      const source = offlineContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(offlineContext.destination);
+      source.start();
+      const resampled = await offlineContext.startRendering();
 
-    // WAV形式に変換
-    const wavBuffer = audioBufferToWav(resampled);
+      // WAV形式に変換
+      const wavBuffer = audioBufferToWav(resampled);
 
-    // Base64エンコード
-    const base64 = btoa(String.fromCharCode.apply(null,[...new Uint8Array(wavBuffer)]));
-    console.log(base64.slice(0, 50) + '...');
-    console.log('ENDPOINT', process.env.NEXT_PUBLIC_SEEPHONY_ENDPOINT as string);
+      // Base64エンコード
+      const base64 = btoa(String.fromCharCode.apply(null,[...new Uint8Array(wavBuffer)]));
+      console.log(base64.slice(0, 50) + '...');
+      
+      // ここでAPIに送信する処理を実装
+      const pronounceData = await sendToAPI(base64);
+      console.log('プロナンスデータ：', pronounceData.deviceType);
+
+      setPronounceAnswer(pronounceData.fmtCorrPhonSym.join(''));
+      setRecordedPronounce(pronounceData.recogPhonSym.join(''));
+
+
+
+    } catch (err) {
+      console.error('録音ファイルの処理に失敗:', err);
+      setError('録音ファイルの処理に失敗しました。もう一度やり直してください。');
+    } finally {
+      setIsProcessing(false);
+      audioChunks.current = []; // メモリクリア
+    }
     
-    // ここでAPIに送信する処理を実装
-    sendToAPI(base64);
   };
 
-  const sendToAPI = async (base64Audio: string) => {
-    // APIに送信する処理を実装
+  const sendToAPI = async (base64Audio: string): Promise<apiResponse> => {
+
+    try {
+      // APIに送信する処理を実装
     console.log('Sending audio to API:', base64Audio.slice(0, 50) + '...');
     const response = await fetch('/api/seephony', {
       method: 'POST',
@@ -79,19 +128,27 @@ const AudioRecorder: React.FC = () => {
     })
 
     if (!response.ok) {
-      console.error('API request failed with status:', response.status);
+      console.error('APIリクエストが失敗しました:', response.status);
       const errorData = await response.text();
-      console.error('Error details:', errorData);
-      throw new Error(`API request failed: ${response.status}`);
+      console.error('エラー詳細', errorData);
+      throw new Error(`APIリクエストが失敗しました: ${response.status}`);
     }
     const data = await response.json();
     console.log('でーただよ：', data);
+    return data;
+    } catch (error) {
+      console.error('APIリクエストが失敗しました', error);
+      throw error;
+    }
   };
 
   return (
     <div>
       <button onClick={isRecording ? stopRecording : startRecording}>
-        {isRecording ? 'Stop Recording' : 'Start Recording'}
+        {isRecording ? '録音停止' : '録音スタート'}<br />
+        {isProcessing && '...処理中'}<br />
+        {pronounceAnswer && `正解: ${pronounceAnswer}`}<br />
+        {recordedPronounce && `録音した発音: ${recordedPronounce}`}<br />
       </button>
     </div>
   );

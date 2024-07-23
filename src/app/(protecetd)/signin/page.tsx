@@ -1,7 +1,7 @@
 "use client"
 
 import { useSession, signIn, signOut } from "next-auth/react";
-import AudioRecorder from "./AudioRecorder";
+import AudioRecorder from "./audioRecorder";
 import Image from "next/image";
 
 export default function Home() {
