@@ -113,7 +113,7 @@ const AudioRecorder: React.FC = () => {
       },
       body: JSON.stringify({
         "audio": base64Audio,
-        "lexiconId" : "abandon",
+        "lexiconId" : "see",
         "deviceType": "pc",
         "nota1": 1.0,
         "nota2": 1.0,
