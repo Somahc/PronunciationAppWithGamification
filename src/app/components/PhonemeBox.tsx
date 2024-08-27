@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 interface PhonemeBoxProps {
     phoneme: string | null;
-    isCorrect?: boolean;
+    isCorrect: boolean;
 }
 
 const PhonemeBox: React.FC<PhonemeBoxProps> = ({ phoneme, isCorrect }) => {
@@ -15,8 +15,9 @@ const PhonemeBox: React.FC<PhonemeBoxProps> = ({ phoneme, isCorrect }) => {
             'text-lg', // フォントサイズ
             'mr-[5px] mb-[5px]', // マージン
             {
+                'bg-white': isCorrect === null || isCorrect === undefined,
+                'bg-green-500': isCorrect === true,
                 'bg-red-500': isCorrect === false,
-                'bg-white': isCorrect !== false
             }
         )}>
             {phoneme}
