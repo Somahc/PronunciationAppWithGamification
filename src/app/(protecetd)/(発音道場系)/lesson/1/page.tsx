@@ -3,6 +3,8 @@
 import { useSession } from "next-auth/react";
 import { useState, useRef } from "react";
 
+import { Worldbet } from "@/app/lib/cnvWorldbetToIPA";
+
 import style from "./page.module.scss";
 import Image from "next/image";
 import PronunciationDisplay from "@/app/components/PronunciationDisplay";
@@ -39,6 +41,10 @@ export default function Page() {
         const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
 
         console.log("フィードバック", feedback);
+
+        const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
+
+        setResponsePronunciation(IPAFeedback);
 
       }
       // setIsRecording(true);
@@ -118,7 +124,7 @@ export default function Page() {
             {page === 3 &&
               <div>
                 <div className={style.section_ttl}>
-                  Sheを発音してみよう！
+                  Shellを発音してみよう！
                 </div>
 
                 <button className={style.audio_btn} onClick={playShe}>
@@ -126,7 +132,7 @@ export default function Page() {
                 </button>
 
                 <PronunciationDisplay pronunciation={['s', 'a', 'i', 'k', 'o']}/>
-                <PronunciationDisplay pronunciation={['s', 'a', 'i', 'k', 'o']}/>
+                <PronunciationDisplay pronunciation={responsePronunciation}/>
 
                 <button onClick={startRecording}>startRecording</button>
                 <button onClick={stopRecording}>stopRecording</button>
