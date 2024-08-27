@@ -1,0 +1,20 @@
+.phoneme_box {
+  width: 30px;
+  height: 60px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.pronunciation_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 420px; /* (30px + 5px) * 12 */
+}
