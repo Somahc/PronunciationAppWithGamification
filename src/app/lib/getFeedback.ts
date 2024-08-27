@@ -1,4 +1,4 @@
-import { apiResponse } from "../api/seePhony2/route";
+import { apiResponse } from "@/app/lib/types/apiResponse";
 
 export const getFeedback = async (base64Audio: String, targetWord: string, userId: string): Promise<apiResponse> => {
     const res = await fetch('/api/seePhony2', {

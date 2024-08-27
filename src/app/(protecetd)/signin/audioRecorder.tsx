@@ -2,27 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 
-type apiResponse = {
-  status: {
-    result: string;
-    desc: string;
-  }
-  recogStatus: string;
-  reason: string;
-  corrPhonSym: [];
-  fmtCorrPhonSym: [];
-  recogPhonSym: [];
-  recogErrata: [];
-  lexiconId: string;
-  deviceType: string;
-  userId: string;
-  context: {
-    nota1: number;
-    nota2: number;
-    diff1: number;
-    diff2: number;
-  }
-}
+import { apiResponse } from '@/app/lib/types/apiResponse';
 
 const AudioRecorder: React.FC = () => {
   const [isRecording, setIsRecording] = useState<boolean>(false);
