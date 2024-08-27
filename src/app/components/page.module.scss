@@ -1,5 +1,5 @@
 .phoneme_box {
-  width: 30px;
+  width: 25px;
   height: 60px;
   border: 1px solid #000;
   display: flex;
@@ -16,5 +16,5 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  width: 420px; /* (30px + 5px) * 12 */
+  width: 360px; /* (25px + 5px) * 12 */
 }

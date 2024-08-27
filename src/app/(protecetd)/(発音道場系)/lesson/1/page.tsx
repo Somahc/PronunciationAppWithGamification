@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 
 import { Worldbet } from "@/app/lib/cnvWorldbetToIPA";
 
+import { PronunciationFeedback } from "@/app/lib/types/PronunciationFeedback";
+
 import style from "./page.module.scss";
 import Image from "next/image";
 import PronunciationDisplay from "@/app/components/PronunciationDisplay";
@@ -19,6 +21,7 @@ export default function Page() {
   const [responsePronunciation, setResponsePronunciation] = useState<string[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
+
   const sheAudio = new Audio("/assets/lesson_audio/she.mp3");
 
   const startRecording = async(): Promise<void> => {
@@ -131,7 +134,7 @@ export default function Page() {
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
 
-                <PronunciationDisplay pronunciation={['s', 'a', 'i', 'k', 'o']}/>
+                <PronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/>
                 <PronunciationDisplay pronunciation={responsePronunciation}/>
 
                 <button onClick={startRecording}>startRecording</button>
