@@ -1,25 +1,62 @@
 "use client"
 
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useState, useRef } from "react";
 
 import style from "./page.module.scss";
 import Image from "next/image";
 import PronunciationDisplay from "@/app/components/PronunciationDisplay";
 
+import { blobToBase } from "@/app/lib/blobToBase";
+import { getFeedback } from "@/app/lib/getFeedback";
+
 export default function Page() {
   const { data: session } = useSession();
   const [page, setPage] = useState(0);
-  const [targetWord, setTargetWord] = useState<string>("");
+  const [targetWord, setTargetWord] = useState<string>("shell");
   const [responsePronunciation, setResponsePronunciation] = useState<string[]>([]);
+  const mediaRecorder = useRef<MediaRecorder | null>(null);
+  const audioChunks = useRef<Blob[]>([]);
   const sheAudio = new Audio("/assets/lesson_audio/she.mp3");
 
-  const handleSubmit = async (targetWord: string) => {
-    const result = await fetch("")
+  const startRecording = async(): Promise<void> => {
+    if (!session) return;
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder.current = new MediaRecorder(stream);
+      audioChunks.current = [];
+
+      mediaRecorder.current.ondataavailable = (event: BlobEvent) => {
+        audioChunks.current.push(event.data);
+      };
+      mediaRecorder.current.start();
+      mediaRecorder.current.onstop = async() => {
+
+        const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
+
+        const base64Audio = await blobToBase(audioBlob);
+        const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
+
+        console.log("フィードバック", feedback);
+
+      }
+      // setIsRecording(true);
+    } catch (err) {
+      console.error('録音の開始に失敗:', err);
+      // setError('録音に失敗しました。ブラウザ上でマイクの使用が許可されているか確認してください。');
+    }
   }
 
+  const stopRecording = async(): Promise<void> => {
+    if (mediaRecorder.current) {
+      mediaRecorder.current.stop();
+    }
+    // setIsRecording(false);
+  };
+
   const playShe = () => {
-    sheAudio.play();
+    sheAudio.play(); 
   }
 
   if (session) {
@@ -90,6 +127,9 @@ export default function Page() {
 
                 <PronunciationDisplay pronunciation={['s', 'a', 'i', 'k', 'o']}/>
                 <PronunciationDisplay pronunciation={['s', 'a', 'i', 'k', 'o']}/>
+
+                <button onClick={startRecording}>startRecording</button>
+                <button onClick={stopRecording}>stopRecording</button>
 
                 <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                   <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
