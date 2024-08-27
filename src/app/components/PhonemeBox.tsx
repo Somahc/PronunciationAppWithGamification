@@ -1,14 +1,24 @@
 import React from 'react';
-
-import style from './page.module.scss';
+import classNames from 'classnames';
 
 interface PhonemeBoxProps {
     phoneme: string | null;
+    isCorrect?: boolean;
 }
 
-const PhonemeBox: React.FC<PhonemeBoxProps> = ( { phoneme } ) => {
+const PhonemeBox: React.FC<PhonemeBoxProps> = ({ phoneme, isCorrect }) => {
     return (
-        <div className={style.phoneme_box}>
+        <div className={classNames(
+            'w-[25px] h-[60px]', // 幅と高さ
+            'border border-black', // ボーダー
+            'flex justify-center items-center', // フレックスボックスと中央揃え
+            'text-lg', // フォントサイズ
+            'mr-[5px] mb-[5px]', // マージン
+            {
+                'bg-red-500': isCorrect === false,
+                'bg-white': isCorrect !== false
+            }
+        )}>
             {phoneme}
         </div>
     )

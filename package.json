@@ -12,6 +12,7 @@
     "@auth/prisma-adapter": "^2.2.0",
     "@prisma/client": "^5.15.0",
     "axios": "^1.7.2",
+    "classnames": "^2.5.1",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",

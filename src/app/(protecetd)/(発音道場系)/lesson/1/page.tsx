@@ -13,12 +13,13 @@ import PronunciationDisplay from "@/app/components/PronunciationDisplay";
 
 import { blobToBase } from "@/app/lib/blobToBase";
 import { getFeedback } from "@/app/lib/getFeedback";
+import { getPronunciationFeedback } from "@/app/lib/getPronunciationFeedback";
 
 export default function Page() {
   const { data: session } = useSession();
   const [page, setPage] = useState(0);
   const [targetWord, setTargetWord] = useState<string>("shell");
-  const [responsePronunciation, setResponsePronunciation] = useState<string[]>([]);
+  const [responsePronunciation, setResponsePronunciation] = useState<PronunciationFeedback[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
 
@@ -46,8 +47,10 @@ export default function Page() {
         console.log("フィードバック", feedback);
 
         const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
+        
+        const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
-        setResponsePronunciation(IPAFeedback);
+        setResponsePronunciation(PronunciationFeedback);
 
       }
       // setIsRecording(true);
@@ -134,7 +137,7 @@ export default function Page() {
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
 
-                <PronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/>
+                {/* <PronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/> */}
                 <PronunciationDisplay pronunciation={responsePronunciation}/>
 
                 <button onClick={startRecording}>startRecording</button>

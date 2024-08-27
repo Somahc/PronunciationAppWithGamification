@@ -3,9 +3,10 @@ import PhonemeBox from "./PhonemeBox";
 import React from 'react';
 
 import style from './page.module.scss';
+import { PronunciationFeedback } from "@/app/lib/types/PronunciationFeedback";
 
 interface PronunciationDisplayProps {
-    pronunciation: string[];
+    pronunciation: PronunciationFeedback[];
 }
 
 const PronunciationDisplay: React.FC<PronunciationDisplayProps> = ( { pronunciation } ) => {
@@ -14,7 +15,7 @@ const PronunciationDisplay: React.FC<PronunciationDisplayProps> = ( { pronunciat
     return (
         <div className={style.pronunciation_container}>
             {boxes.map((_, i) => (
-                <PhonemeBox phoneme={pronunciation[i] || ''} key={i} />
+                <PhonemeBox phoneme={pronunciation[i]?.phoneme || ''} isCorrect={pronunciation[i]?.isCorrect} key={i} />
             ))}
         </div>
     )
