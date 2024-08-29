@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 interface PhonemeBoxProps {
     phoneme: string | null;
-    isCorrect: boolean;
+    isCorrect?: boolean;
 }
 
 const PhonemeBox: React.FC<PhonemeBoxProps> = ({ phoneme, isCorrect }) => {

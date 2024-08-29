@@ -7,9 +7,11 @@ import { Worldbet } from "@/app/lib/cnvWorldbetToIPA";
 
 import { PronunciationFeedback } from "@/app/lib/types/PronunciationFeedback";
 
+
 import style from "./page.module.scss";
 import Image from "next/image";
 import PronunciationDisplay from "@/app/components/PronunciationDisplay";
+import CorrectPronunciationDisplay from "@/app/components/CorrectPronunciationDisplay";
 
 import { blobToBase } from "@/app/lib/blobToBase";
 import { getFeedback } from "@/app/lib/getFeedback";
@@ -28,12 +30,13 @@ export default function Page() {
 
   const sheAudio = new Audio("/assets/lesson_audio/she.mp3");
 
-  const startRecording = async(): Promise<void> => {
+  const startRecording = async(word: string): Promise<void> => {
     if (!session) return;
 
     setError(null);
 
     try {
+      setTargetWord(word);
       setIsRecording(true);
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -154,10 +157,12 @@ export default function Page() {
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
 
-                {/* <PronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/> */}
+                <div>お手本</div>
+                <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['&', 'b', '@', 'n', 'd', '&', 'n'])}/>
+                <div>あなたの発音</div>
                 <PronunciationDisplay pronunciation={responsePronunciation} />
 
-                <button onClick={isRecording ? stopRecording : startRecording}>
+                <button onClick={() => isRecording ? stopRecording() : startRecording("abandon")}>
                   {isRecording ? '録音停止' : '録音スタート'}<br />
                   {isProcessing && '...処理中'}<br />
                   {error && `エラー: ${error}`}
