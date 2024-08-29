@@ -22,13 +22,20 @@ export default function Page() {
   const [responsePronunciation, setResponsePronunciation] = useState<PronunciationFeedback[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const sheAudio = new Audio("/assets/lesson_audio/she.mp3");
 
   const startRecording = async(): Promise<void> => {
     if (!session) return;
 
+    setError(null);
+
     try {
+      setIsRecording(true);
+
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorder.current = new MediaRecorder(stream);
       audioChunks.current = [];
@@ -38,25 +45,35 @@ export default function Page() {
       };
       mediaRecorder.current.start();
       mediaRecorder.current.onstop = async() => {
+        try {
 
-        const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
-
-        const base64Audio = await blobToBase(audioBlob);
-        const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
-
-        console.log("フィードバック", feedback);
-
-        const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
-        
-        const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
-
-        setResponsePronunciation(PronunciationFeedback);
+          setIsProcessing(true);
+  
+          const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
+  
+          const base64Audio = await blobToBase(audioBlob);
+          const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
+  
+          console.log("フィードバック", feedback);
+  
+          const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
+          
+          const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
+  
+          setResponsePronunciation(PronunciationFeedback);
+  
+        } catch (err) {
+          console.error('録音の処理に失敗:', err);
+          setError('録音の処理に失敗しました。');
+        } finally {
+          setIsRecording(false);
+          setIsProcessing(false);
+        }
 
       }
-      // setIsRecording(true);
     } catch (err) {
       console.error('録音の開始に失敗:', err);
-      // setError('録音に失敗しました。ブラウザ上でマイクの使用が許可されているか確認してください。');
+      setError('録音に失敗しました。ブラウザ上でマイクの使用が許可されているか確認してください。');
     }
   }
 
@@ -64,7 +81,7 @@ export default function Page() {
     if (mediaRecorder.current) {
       mediaRecorder.current.stop();
     }
-    // setIsRecording(false);
+    setIsRecording(false);
   };
 
   const playShe = () => {
@@ -138,10 +155,13 @@ export default function Page() {
                 </button>
 
                 {/* <PronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/> */}
-                <PronunciationDisplay pronunciation={responsePronunciation}/>
+                <PronunciationDisplay pronunciation={responsePronunciation} />
 
-                <button onClick={startRecording}>startRecording</button>
-                <button onClick={stopRecording}>stopRecording</button>
+                <button onClick={isRecording ? stopRecording : startRecording}>
+                  {isRecording ? '録音停止' : '録音スタート'}<br />
+                  {isProcessing && '...処理中'}<br />
+                  {error && `エラー: ${error}`}
+                </button>
 
                 <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                   <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
