@@ -21,7 +21,8 @@ export default function Page() {
   const { data: session } = useSession();
   const [page, setPage] = useState(0);
   const [targetWord, setTargetWord] = useState<string>("shell");
-  const [responsePronunciation, setResponsePronunciation] = useState<PronunciationFeedback[]>([]);
+  const [abandonRes, setAbandonRes] = useState<PronunciationFeedback[]>([]);
+  const [shellRes, setShellResponse] = useState<PronunciationFeedback[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
   const [isRecording, setIsRecording] = useState(false);
@@ -62,8 +63,14 @@ export default function Page() {
           const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
+
+          if(word === "abandon") {
+            setAbandonRes(PronunciationFeedback);
+          } else if (word === "shell") {
+            setShellResponse(PronunciationFeedback);
+          }
   
-          setResponsePronunciation(PronunciationFeedback);
+          // setResponsePronunciation(PronunciationFeedback);
   
         } catch (err) {
           console.error('録音の処理に失敗:', err);
@@ -149,7 +156,7 @@ export default function Page() {
           {page === 3 &&
             <div>
               <div className={style.section_ttl}>
-                Shellを発音してみよう！
+                abandonを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playShe}>
@@ -159,7 +166,7 @@ export default function Page() {
               <div>お手本</div>
               <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['&', 'b', '@', 'n', 'd', '&', 'n'])}/>
               <div>あなたの発音</div>
-              <PronunciationDisplay pronunciation={responsePronunciation} />
+              <PronunciationDisplay pronunciation={abandonRes} />
 
               <button onClick={() => isRecording ? stopRecording() : startRecording("abandon")}>
                 {isRecording ? '録音停止' : '録音スタート'}<br />
@@ -179,8 +186,41 @@ export default function Page() {
           {page === 4 &&
             <div>
               <div className={style.section_ttl}>
+                Shellを発音してみよう！
+              </div>
+
+              <button className={style.audio_btn} onClick={playShe}>
+                <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
+              </button>
+
+              <div>お手本</div>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/>
+              <div>あなたの発音</div>
+              <PronunciationDisplay pronunciation={shellRes} />
+
+              <button onClick={() => isRecording ? stopRecording() : startRecording("shell")}>
+                {isRecording ? '録音停止' : '録音スタート'}<br />
+                {isProcessing && '...処理中'}<br />
+                {error && `エラー: ${error}`}
+              </button>
+
+              <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
+                <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
+              </button>
+              <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
+                <Image src="/assets/lesson_img/back_btn.png" width={50} height={50} alt="Back"/>
+              </button>
+            </div>
+          }
+
+          {page === 5 &&
+            <div>
+              <div className={style.section_ttl}>
                 レッスン/ʃ/と/s/　完了！
               </div>
+              <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
+                <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
+              </button>
               <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
                 <Image src="/assets/lesson_img/back_btn.png" width={50} height={50} alt="Back"/>
               </button>
