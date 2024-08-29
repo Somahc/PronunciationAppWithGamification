@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import SessionWrapper from "../components/SessionWrapper";
 
+import Container from "@/app/components/Container"
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,7 +20,11 @@ export default function RootLayout({
   return (
     <SessionWrapper>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Container>
+            {children}
+          </Container>
+        </body>
       </html>
     </SessionWrapper>
   );
