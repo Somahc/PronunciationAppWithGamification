@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { Comment } from "@/app/lib/types/Comment";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import PostCommentModal from "@/app/components/PostCommentModal";
 
 export default async function Page({ params }: { params: { lessonId: string } }) {
     const { lessonId } = params;
@@ -16,8 +16,6 @@ export default async function Page({ params }: { params: { lessonId: string } })
 
     const comments: Comment[] = await res.json();
 
-    console.log(comments);
-
     return (
         <div className="relative w-full min-h-screen flex flex-col items-center">
             <div>コメント一覧</div>
@@ -30,10 +28,7 @@ export default async function Page({ params }: { params: { lessonId: string } })
                     <p>{comment.content}</p>
                 </div>
             ))}
-
-            <button className="fixed right-9 bottom-5">
-                <Image src="/assets/comment_img/comment_btn.png" width={50} height={50} alt="コメント追加" />
-            </button>
+            <PostCommentModal lessonId={lessonId} />
         </div>
     )
 }
