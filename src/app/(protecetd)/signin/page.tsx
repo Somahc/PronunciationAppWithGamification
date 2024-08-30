@@ -22,7 +22,7 @@ export default function Home() {
         <p className="font-bold mb-4">{session.user?.email}</p>
         <AudioRecorder />
         <button className="bg-red-600 py-2 px-6 rounded-md" onClick={() => signOut()}>Sign out</button>
-        <a href="/lessonHome" className="bg-red-600 py-2 px-6 rounded-md">to lessonHome</a>
+        <a href="/lesson" className="bg-red-600 py-2 px-6 rounded-md">to lessonHome</a>
       </div>
     )
   }

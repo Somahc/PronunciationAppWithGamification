@@ -10,7 +10,7 @@ type Lesson = {
 
 export default async function Page() {
 
-    const res = await fetch("http://localhost:3000/api/lessonHome");
+    const res = await fetch("http://localhost:3000/api/lessons");
     const lessons = await res.json();
     const session = await getServerSession(nextAuthOptions);
 
@@ -21,7 +21,8 @@ export default async function Page() {
                     <div key={lesson.lessonId}>
                         {lesson.title}
                         {lesson.lessonId}
-                        <a href={`/lesson/${lesson.lessonId}`} className="bg-red-600 py-2 px-6 rounded-md">to lesson</a>
+                        <a href={`/lesson/${lesson.lessonId}`} className="bg-green-600 py-2 px-6 rounded-md">to lesson</a>
+                        <a href={`/comments/${lesson.lessonId}`} className="bg-blue-600 py-2 px-6 rounded-md">to comment</a>
                     </div>
                 ))}
             </>
