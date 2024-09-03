@@ -97,13 +97,15 @@ model Badge {
 }
 
 model UserBadge {
-    userId     String   @id @map("user_id")
+    userId     String   @map("user_id")
     badgeId    Int      @map("badge_id")
     obtainedAt DateTime @map("obtained_at")
 
     user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
     badge Badge @relation(fields: [badgeId], references: [badgeId], onDelete: Cascade)
 
+    @@id([userId, badgeId])
+    @@unique([userId, badgeId], name: "user_badge_identifier")
     @@map("user_badges")
 }
 
