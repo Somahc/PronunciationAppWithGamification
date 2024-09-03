@@ -65,3 +65,46 @@ export const POST = async ( req: NextRequest ) => {
 
     }
 }
+
+export const GET = async ( req: NextRequest ) => {
+    
+    const { searchParams } = new URL(req.url);
+
+    const userId = searchParams.get('userId');
+
+    if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+
+    try {
+
+        const badges = await prisma.badge.findMany({
+            include: {
+                UserBadge: {
+                    where: {
+                        userId: userId
+                    },
+                    select: {
+                        obtainedAt: true
+                    }
+                }
+            }
+        });
+
+        // バッジ上場にユーザーが取得しているかどうかを追加
+        const formattedBadges = badges.map(badge => ({
+            ...badge,
+            isObtained: badge.UserBadge.length > 0,
+            obtainedAt: badge.UserBadge[0]?.obtainedAt || null
+        }))
+
+        return NextResponse.json(formattedBadges, { status: 200 });
+
+    } catch (err) {
+            
+            console.error('Error:', err);
+            return NextResponse.json(
+                { message: err instanceof Error ? err.message : 'An unknown error occurred' },
+                { status: 500 }
+            );
+
+    }
+}
