@@ -15,6 +15,21 @@ export default async function Page() {
     const session = await getServerSession(nextAuthOptions);
 
     if(session) {
+
+        const res = await fetch("http://localhost:3000/api/badges", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: session.user.id
+            })
+        })
+
+        const badge = await res.json();
+
+        console.log('バッジ:', badge);
+
         return (
             <>
                 {lessons.map((lesson: Lesson) => (
