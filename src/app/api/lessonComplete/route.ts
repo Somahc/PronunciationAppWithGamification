@@ -1,14 +1,20 @@
 import prisma from "@/app/lib/prisma";
 import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 // 認証しているユーザとレッスンIDを渡すと、その値をlesson_progressesテーブルに保存
 // ユーザのbasicPointも+10する
-export const POST = async (req: NextRequest) => {
-    
+/* req body example
+{
+    "userId": "clyfm3ajx000011nf48cmk5t5",
+    "lessonId": 1
+}
+*/
+export const POST = async ( req: NextRequest ) => {
     const body = await req.json();
 
     const { userId, lessonId } = await body;
-
+    
     if (!userId || !lessonId) return { status: 400, json: { message: 'User ID and Lesson ID are required' } };
 
     // 該当レッスンをすでにクリアしているかどうか
@@ -21,16 +27,6 @@ export const POST = async (req: NextRequest) => {
     })
 
     try {
-
-        // lesson_progressesに記録
-        await prisma.lessonProgress.create({
-            data: {
-                userId,
-                lessonId,
-                completed: true
-            }
-        })
-
 
         const currentPoint = await prisma.point.findFirst({
             where: {
@@ -65,6 +61,15 @@ export const POST = async (req: NextRequest) => {
                 }
             })
         } else {
+            // 未クリアだったらlesson_progressesに記録
+            await prisma.lessonProgress.create({
+                data: {
+                    userId,
+                    lessonId,
+                    completed: true
+                }
+            })
+
             // 未クリアだったらbasicPointを+10
             await prisma.point.update({
                 where: {
@@ -79,9 +84,10 @@ export const POST = async (req: NextRequest) => {
         }
 
 
-        return { status: 201, json: { message: 'Lesson completed' } };
+        return NextResponse.json({ message: 'Lesson completed' }, { status: 201 });
 
     } catch (err) {
-        return { status: 500, json: { message: 'Internal Server Error' } };
+        console.log('えらー:', err);
+        return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
     }
 }
