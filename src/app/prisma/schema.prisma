@@ -74,13 +74,14 @@ model Lesson {
 }
 
 model LessonProgress {
-    lessonId  Int     @id @map("lesson_id")
+    lessonId  Int     @map("lesson_id")
     userId    String  @map("user_id")
     completed Boolean
 
     user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
     lesson Lesson @relation(fields: [lessonId], references: [lessonId], onDelete: Cascade)
 
+    @@id([lessonId, userId])
     @@unique([lessonId, userId], name: "lesson_progress_identifier")
     @@map("lesson_progresses")
 }
@@ -133,13 +134,14 @@ model ChallengeLesson {
 }
 
 model ChallengeProgress {
-    challengeId Int     @id @map("challenge_id")
+    challengeId Int     @map("challenge_id")
     userId      String  @map("user_id")
     completed   Boolean
 
     user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
     challenge ChallengeLesson @relation(fields: [challengeId], references: [challengeId], onDelete: Cascade)
 
+    @@id([challengeId, userId])
     @@unique([challengeId, userId], name: "challenge_progress_identifier")
     @@map("challenge_progresses")
 }
