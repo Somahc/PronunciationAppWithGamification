@@ -55,8 +55,8 @@ model User {
 
 model Point {
     userId        String @id @map("user_id")
-    basicPoint    Int    @map("basic_point")
-    activityPoint Int    @map("activity_point")
+    basicPoint    Int    @default(0) @map("basic_point")
+    activityPoint Int    @default(0) @map("activity_point")
 
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
