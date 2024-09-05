@@ -6,17 +6,23 @@ import Image from "next/image";
 type Lesson = {
     lessonId: number;
     title: string;
+    LessonProgress: {
+        completed: boolean;
+    };
+    isCompleted: boolean;
 }
 
 export default async function Page() {
 
-    const res = await fetch("http://localhost:3000/api/lessons");
-    const lessons = await res.json();
     const session = await getServerSession(nextAuthOptions);
-
+    
     if(session) {
+        // レッスン情報を取得
+        const lessonsRes = await fetch(`http://localhost:3000/api/lessons?userId=${session.user.id}`);
+        const lessons = await lessonsRes.json();
 
-        const res = await fetch("http://localhost:3000/api/badges", {
+        // バッジの取得を確認
+        const badgeRes = await fetch("http://localhost:3000/api/badges", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +32,7 @@ export default async function Page() {
             })
         })
 
-        const badge = await res.json();
+        const badge = await badgeRes.json();
 
         console.log('バッジ:', badge);
 
@@ -36,6 +42,7 @@ export default async function Page() {
                     <div key={lesson.lessonId}>
                         {lesson.title}
                         {lesson.lessonId}
+                        {lesson.isCompleted ? '完了' : '未完了'}
                         <a href={`/lesson/${lesson.lessonId}`} className="bg-green-600 py-2 px-6 rounded-md">to lesson</a>
                         <a href={`/comments/${lesson.lessonId}`} className="bg-blue-600 py-2 px-6 rounded-md">to comment</a>
                     </div>

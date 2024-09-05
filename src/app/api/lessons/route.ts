@@ -1,20 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
 import prisma from '../../lib/prisma';
 
-export async function GET(req: NextRequest) {
-    if (req.method === 'GET') {
-        try {
-            const lessons = await prisma.lesson.findMany({
-                orderBy: {
-                    lessonId: 'asc',
-                }
-            })
+export async function GET(req: NextRequest ) {
 
-            return NextResponse.json(lessons);
-            
-        } catch (error) {
-            console.error('えらー:', error);
-        }
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId');
+
+    if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+
+    try {
+
+        const lessons = await prisma.lesson.findMany({
+            include: {
+                LessonProgress: {
+                    where: {
+                        userId: userId
+                    },
+                    select: {
+                        completed: true
+                    }
+                }
+            }
+        });
+
+        // ユーザがレッスンをクリアしているかどうかの情報を追加
+        const formattedLessons = lessons.map(lesson => ({
+            ...lesson,
+            isCompleted: lesson.LessonProgress.length > 0 && lesson.LessonProgress[0].completed
+        }))
+
+        return NextResponse.json(formattedLessons, { status: 200 });
+
+    } catch (err) {
+    
+        return NextResponse.json(
+            { message: err instanceof Error ? err.message : 'An unknown error occurred' },
+            { status: 500 }
+        );
+
     }
 }

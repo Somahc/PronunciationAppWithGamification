@@ -4,12 +4,14 @@ import { NextResponse } from "next/server";
 
 // 認証しているユーザとレッスンIDを渡すと、その値をlesson_progressesテーブルに保存
 // ユーザのbasicPointも+10する
+
 /* req body example
 {
     "userId": "clyfm3ajx000011nf48cmk5t5",
     "lessonId": 1
 }
 */
+
 export const POST = async ( req: NextRequest ) => {
     const body = await req.json();
 
@@ -87,7 +89,8 @@ export const POST = async ( req: NextRequest ) => {
         return NextResponse.json({ message: 'Lesson completed' }, { status: 201 });
 
     } catch (err) {
-        console.log('えらー:', err);
+
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+
     }
 }
