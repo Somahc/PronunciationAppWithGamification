@@ -1,5 +1,6 @@
 
 
+import { getCompletedLessons } from "@/app/lib/getCompletedLessons";
 import { getCompletedLessonsCount } from "@/app/lib/getCompletedLessonsCount";
 import prisma from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
@@ -15,6 +16,9 @@ export const POST = async ( req: NextRequest ) => {
     try {
 
         const completedLessonsCount = await getCompletedLessonsCount(userId);
+
+        const completedLessons = await getCompletedLessons(userId);
+
         const badges = await prisma.badge.findMany();
         const awardedBadges = [];
 
@@ -23,8 +27,9 @@ export const POST = async ( req: NextRequest ) => {
 
             // const criteria = JSON.parse(badge.criteria as string);
 
-            const criteria = badge.criteria;
+            const criteria = badge.criteria as BadgeCriteria;
 
+            // レッスンの完了数がバッジの条件を満たしているかどうかを確認
             if (criteria.type === "completedLessons" && completedLessonsCount >= criteria.value) {
 
                 const userBadge = await prisma.userBadge.findFirst({
@@ -48,6 +53,38 @@ export const POST = async ( req: NextRequest ) => {
                     console.log('バッジを付与しました:', badge.name);
                     awardedBadges.push(newUserBadge);
 
+                }
+            }
+
+            // 発音記号バッジ取得条件を満たしているかどうかを確認
+            if(criteria.type === "phoneme") {
+                const phoneme = criteria.value;
+
+                const phonemeLessons = completedLessons.filter(lesson => lesson.lessonId === phoneme);
+
+                if (phonemeLessons.length > 0) {
+                    const userBadge = await prisma.userBadge.findFirst({
+                        where: {
+                            userId: userId,
+                            badgeId: badge.badgeId,
+                        }
+                    })
+
+                    if (!userBadge) {
+                        console.log("ないやんバッジ", badge.name)
+                        
+                        const newUserBadge = await prisma.userBadge.create({
+                            data: {
+                                userId,
+                                badgeId: badge.badgeId,
+                                obtainedAt: new Date(),
+                            }
+                        })
+
+                        console.log('バッジを付与しました:', badge.name);
+                        awardedBadges.push(newUserBadge);
+
+                    }
                 }
             }
         }
