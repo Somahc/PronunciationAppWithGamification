@@ -47,6 +47,7 @@ export default async function Page() {
                         <a href={`/comments/${lesson.lessonId}`} className="bg-blue-600 py-2 px-6 rounded-md">to comment</a>
                     </div>
                 ))}
+                <a href="/ranking" className="bg-red-300 py-2 px-3 rounded-md">to ranking</a>
             </>
         )
     }
