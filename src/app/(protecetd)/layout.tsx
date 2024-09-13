@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter , Noto_Sans_JP } from "next/font/google";
 import "../globals.css";
 import SessionWrapper from "../components/SessionWrapper";
 import Header from "../components/Header";
@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Container from "@/app/components/Container"
 
 const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <SessionWrapper>
-      <html lang="en">
-        <body className={inter.className}>
+      <html lang="ja">
+        <body className={noto.className}>
           <Container>
             <Header />
             {children}
