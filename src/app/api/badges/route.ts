@@ -123,6 +123,9 @@ export const GET = async ( req: NextRequest ) => {
                         obtainedAt: true
                     }
                 }
+            },
+            orderBy: {
+                badgeId: 'asc'
             }
         });
 

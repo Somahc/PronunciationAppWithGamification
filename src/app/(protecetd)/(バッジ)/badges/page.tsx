@@ -1,5 +1,7 @@
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/lib/next-auth/options";
+import classNames from "classnames";
+import ToTopBtn from "@/app/components/ToTopBtn";
 
 export type BadgeResponse = {
     id: string;
@@ -32,14 +34,26 @@ export default async function Page() {
 
     return (
         <>
-            {badges.map((badge) => (
-                <div key={badge.id}>
-                    <div>{badge.name}</div>
-                    <div>{badge.isObtained ? '取得済み' : '未取得'}</div>
-                    <div>{badge.description}</div>
-                    <div>{badge.image}</div>
-                </div>
-            ))}
+            <h1 className="text-xl text-center my-2">バッジ一覧</h1>
+
+            <div className="w-[95%] mx-auto grid grid-cols-2 gap-2 my-2">
+                {badges.map((badge) => (
+                    <div className={classNames('grid-item rounded-md', {
+                        'bg-green-300': badge.isObtained,
+                        'bg-slate-300': !badge.isObtained
+                    })} key={badge.id}>
+                        <div className="my-2 flex flex-col gap-2 items-center text-center">
+                            <p className="flex bg-white h-[4rem] p-1 rounded-md w-[90%] items-center justify-center text-sm">{badge.name}</p>
+                            <p>{badge.isObtained ? '取得済み' : '未取得'}</p>
+                            <p className="text-sm">{badge.description}</p>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+
+            <ToTopBtn />
+
         </>
     )
 }

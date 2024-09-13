@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import "../globals.css";
 
 import Container from "@/app/components/Container"
+import Header from "../components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400"] });
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="ja">
         <body className={noto.className}>
           <Container>
+            <Header />
             {children}
           </Container>
         </body>

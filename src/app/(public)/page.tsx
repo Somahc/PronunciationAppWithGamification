@@ -1,8 +1,22 @@
-export default function Page() {
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "@/app/lib/next-auth/options";
+import Title from "@/app/components/Title";
+
+export default async function Page() {
+
+  const session = await getServerSession(nextAuthOptions);
+
+  if (!session) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="text-sm">右上の「ログイン」ボタンからログインしてください</div>
+      </div>
+    )
+  }
+
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl">Home Page</h1>
-      <p className="text-xl mt-5"><a href="/signin" className="text-sky-500 hover:text-sky-600">/signinページ</a>でログイン</p>
-    </div>
+    <>
+      <Title />
+    </>
   )
 }
