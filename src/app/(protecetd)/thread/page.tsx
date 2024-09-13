@@ -13,7 +13,7 @@ interface Comment {
 }
 
 export default async function Page() {
-    const res = await fetch("http://localhost:3000/api/comments");
+    const res = await fetch(`${process.env.BASE_URL}/api/comments`);
     const comments = await res.json();
     const session = await getServerSession(nextAuthOptions);
     if(session) {

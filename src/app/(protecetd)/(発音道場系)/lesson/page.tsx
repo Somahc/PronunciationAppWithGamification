@@ -18,11 +18,11 @@ export default async function Page() {
     
     if(session) {
         // レッスン情報を取得
-        const lessonsRes = await fetch(`http://localhost:3000/api/lessons?userId=${session.user.id}`);
+        const lessonsRes = await fetch(`${process.env.BASE_URL}/api/lessons?userId=${session.user.id}`);
         const lessons = await lessonsRes.json();
 
         // バッジの取得を確認
-        const badgeRes = await fetch("http://localhost:3000/api/badges", {
+        const badgeRes = await fetch(`${process.env.BASE_URL}/api/badges`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

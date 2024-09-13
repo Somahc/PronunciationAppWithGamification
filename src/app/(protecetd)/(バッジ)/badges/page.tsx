@@ -24,7 +24,7 @@ export default async function Page() {
         )
     }
 
-    const res = await fetch(`http://localhost:3000/api/badges?userId=${session.user.id}`);
+    const res = await fetch(`${process.env.BASE_URL}/api/badges?userId=${session.user.id}`);
 
     const badges: BadgeResponse[] = await res.json();
 

@@ -6,7 +6,7 @@ import PostCommentModal from "@/app/components/PostCommentModal";
 export default async function Page({ params }: { params: { lessonId: string } }) {
     const { lessonId } = params;
 
-    const res = await fetch(`http://localhost:3000/api/comments/${lessonId}`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/comments/${lessonId}`, {
         cache: 'no-store',
     });
 
