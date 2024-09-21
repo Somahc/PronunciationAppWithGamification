@@ -16,14 +16,18 @@ import CorrectPronunciationDisplay from "@/app/components/CorrectPronunciationDi
 import { blobToBase } from "@/app/lib/blobToBase";
 import { getFeedback } from "@/app/lib/getFeedback";
 import { getPronunciationFeedback } from "@/app/lib/getPronunciationFeedback";
+
+
+import Link from "next/link";
 import { sound } from "@/app/lib/sound";
+import { OndokusanCooyright } from "@/app/components/OndokusanCooyright";
 
 export default function Page() {
   const { data: session } = useSession();
   const [page, setPage] = useState(0);
   const [targetWord, setTargetWord] = useState<string>("shell");
-  const [abandonRes, setAbandonRes] = useState<PronunciationFeedback[]>([]);
-  const [shellRes, setShellResponse] = useState<PronunciationFeedback[]>([]);
+  const [wordARes, setWordARes] = useState<PronunciationFeedback[]>([]);
+  const [wordBRes, setWordBRes] = useState<PronunciationFeedback[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
   const [isRecording, setIsRecording] = useState(false);
@@ -63,10 +67,10 @@ export default function Page() {
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
-          if(word === "abandon") {
-            setAbandonRes(PronunciationFeedback);
-          } else if (word === "shell") {
-            setShellResponse(PronunciationFeedback);
+          if(word === "bat") {
+            setWordARes(PronunciationFeedback);
+          } else if (word === "camp") {
+            setWordBRes(PronunciationFeedback);
           }
   
         } catch (err) {
@@ -91,32 +95,39 @@ export default function Page() {
     setIsRecording(false);
   };
 
-  const playShe = () => {
-    sound.sheAudio.play();
+  const playExList = () => {
+    sound.catBatHatFat.play();
+  }
+
+  const playWordA = () => {
+    sound.bat.play();
+  }
+
+  const playWordB = () => {
+    sound.camp.play();
   }
 
   if (session) {
+
     return (
       <div className={style.center}>
-        <div className={style.lesson_title}>lesson 1 /ʃ/と/s/</div>
+        <div className={style.lesson_title}>lesson 6 /æ/</div>
 
         <section>
+
           {page === 0 && 
             <div>
               {/* <h2>Page 0</h2> */}
-              <div>SheとSeeの発音の違いを説明できますか？</div>
-              <div>今回は/ʃ/と/s/の発音を練習してみましょう！</div>
+              <div>今回は/æ/の発音について学びます！</div>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
             </div>
           }
+
           {page === 1 && 
             <div>
-              <div className={style.section_ttl}>動画で概要を確認してみましょう！</div>
-              <div className={style.youtube_video}>
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CYXyJ5QC_rY?si=s7RaN07EuUayc7bY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-              </div>
+              <p>実は英語の「ア」は１つではなく、いくつか種類があります。今回はそのうち、「アとエの中間のようなア」を扱います！</p>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -125,21 +136,30 @@ export default function Page() {
               </button>
             </div>
           }
+
           {page === 2 && 
             <div>
               <div className={style.section_ttl}>
-                /ʃ/の発音
+                /æ/の発音
               </div>
 
               <div>
-                /ʃ/は”sh”の音。小声で「しーっ！静かに！」と注意する時の音に似ています。
+                <p>使われている単語：cat, bat, hat, fatなど</p>
+
+                <button className={style.audio_btn} onClick={playExList}>
+                  <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
+                </button>
+                <OndokusanCooyright />
+
+                <p>/ɑ/（前回のレッスン）の時と同じくらい口を開けつつ、舌を前に出すのがコツです。舌先は下の歯の付け根に当たっている状態にしてみましょう</p>
                 <br />
-                舌の前半分を口の天井に近づけて強く息を出して発音します。下顎を少し前に出すのがコツ。
+                <p>また、口を縦だけでなく横にも開くこともポイントです。「エ」のような音を混ぜることが大切です。</p>
               </div>
 
-              <figure className={style.sh_img}>
-                <Image src="/assets/lesson_img/sh.png" width={150} height={193} alt="sh"/>
-              </figure>
+              　<iframe width="100%" src="https://www.youtube.com/embed/MPU5ZJ_5ZRU?si=NSbMwINawsN-ama0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              {/* <figure className={style.sh_img}>
+                <Image src="/assets/lesson_img/bodyA.jpg" width={150} height={193} alt="a"/>
+              </figure> */}
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
@@ -153,19 +173,21 @@ export default function Page() {
           {page === 3 &&
             <div>
               <div className={style.section_ttl}>
-                abandonを発音してみよう！
+                batを発音してみよう！
               </div>
 
-              <button className={style.audio_btn} onClick={playShe}>
+              <button className={style.audio_btn} onClick={playWordA}>
                 <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
               </button>
+              <OndokusanCooyright />
+              
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['&', 'b', '@', 'n', 'd', '&', 'n'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['b', '@', 't'])}/>
               <div>あなたの発音</div>
-              <PronunciationDisplay pronunciation={abandonRes} />
+              <PronunciationDisplay pronunciation={wordARes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("abandon")}>
+              <button onClick={() => isRecording ? stopRecording() : startRecording("bat")}>
                 {isRecording ? '録音停止' : '録音スタート'}<br />
                 {isProcessing && '...処理中'}<br />
                 {error && `エラー: ${error}`}
@@ -183,46 +205,34 @@ export default function Page() {
           {page === 4 &&
             <div>
               <div className={style.section_ttl}>
-                Shellを発音してみよう！
+                campを発音してみよう！
               </div>
 
-              <button className={style.audio_btn} onClick={playShe}>
+              <button className={style.audio_btn} onClick={playWordB}>
                 <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
               </button>
+              <OndokusanCooyright />
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'E', 'l'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['k', '@', 'm', 'p'])}/>
               <div>あなたの発音</div>
-              <PronunciationDisplay pronunciation={shellRes} />
+              <PronunciationDisplay pronunciation={wordBRes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("shell")}>
+              <button onClick={() => isRecording ? stopRecording() : startRecording("camp")}>
                 {isRecording ? '録音停止' : '録音スタート'}<br />
                 {isProcessing && '...処理中'}<br />
                 {error && `エラー: ${error}`}
               </button>
 
-              <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
+              <Link href="/lesson/7/completed_fkg" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
-              </button>
+              </Link>
               <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
                 <Image src="/assets/lesson_img/back_btn.png" width={50} height={50} alt="Back"/>
               </button>
             </div>
           }
 
-          {page === 5 &&
-            <div>
-              <div className={style.section_ttl}>
-                レッスン/ʃ/と/s/　完了！
-              </div>
-              <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
-                <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
-              </button>
-              <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
-                <Image src="/assets/lesson_img/back_btn.png" width={50} height={50} alt="Back"/>
-              </button>
-            </div>
-          }
         </section>
 
       </div>

@@ -63,7 +63,7 @@ export default function Page() {
   
           console.log("フィードバック", feedback);
   
-          const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.fmtCorrPhonSym);
+          const IPAFeedback = Worldbet.cnvWorldbetToIPA(feedback.recogPhonSym);
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
