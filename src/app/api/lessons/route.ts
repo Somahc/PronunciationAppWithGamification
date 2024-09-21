@@ -20,6 +20,9 @@ export async function GET(req: NextRequest ) {
                         completed: true
                     }
                 }
+            },
+            orderBy: {
+                lessonId: 'asc'
             }
         });
 
