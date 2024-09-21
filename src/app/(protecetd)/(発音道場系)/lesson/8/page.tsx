@@ -67,9 +67,9 @@ export default function Page() {
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
-          if(word === "bat") {
+          if(word === "cut") {
             setWordARes(PronunciationFeedback);
-          } else if (word === "camp") {
+          } else if (word === "luck") {
             setWordBRes(PronunciationFeedback);
           }
   
@@ -96,29 +96,29 @@ export default function Page() {
   };
 
   const playExList = () => {
-    sound.catBatHatFat.play();
+    sound.cutCupHutLuckAudio.play();
   }
 
   const playWordA = () => {
-    sound.bat.play();
+    sound.cutAudio.play();
   }
 
   const playWordB = () => {
-    sound.camp.play();
+    sound.luckAudio.play();
   }
 
   if (session) {
 
     return (
       <div className={style.center}>
-        <div className={style.lesson_title}>lesson 6 /æ/</div>
+        <div className={style.lesson_title}>lesson 6 /ʌ/</div>
 
         <section>
 
           {page === 0 && 
             <div>
               {/* <h2>Page 0</h2> */}
-              <div>今回は/æ/の発音について学びます！</div>
+              <div>今回は/ʌ/の発音について学びます！</div>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -127,7 +127,10 @@ export default function Page() {
 
           {page === 1 && 
             <div>
-              <p>実は英語の「ア」は１つではなく、いくつか種類があります。今回はそのうち、「アとエの中間のようなア」を扱います！</p>
+              <p>実は英語の「ア」は１つではなく、いくつか種類があります。今回はそのうち、「暗いア」を扱います！</p>
+
+              <iframe width="100%" src="https://www.youtube.com/embed/2Hlk3CPYiHA?si=mnW0XNNAKpZmSlly" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -140,26 +143,25 @@ export default function Page() {
           {page === 2 && 
             <div>
               <div className={style.section_ttl}>
-                /æ/の発音
+                /ʌ/の発音
               </div>
 
               <div>
-                <p>使われている単語：cat, bat, hat, fatなど</p>
+                <p>使われている単語：cut, cup, hut, luckなど</p>
 
                 <button className={style.audio_btn} onClick={playExList}>
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
                 <OndokusanCooyright />
 
-                <p>/ɑ/（前回のレッスン）の時と同じくらい口を開けつつ、舌を前に出すのがコツです。舌先は下の歯の付け根に当たっている状態にしてみましょう。</p>
+                <p>日本語の「ア」よりややあごを閉じ、喉の奥の方で音を出して発音する音です。</p>
                 <br />
-                <p>また、口を縦だけでなく横にも開くこともポイントです。「エ」のような音を混ぜることが大切です。</p>
+                <p>短めにキレ良く発音するのがコツです。</p>
               </div>
 
-              <iframe width="100%" src="https://www.youtube.com/embed/MPU5ZJ_5ZRU?si=NSbMwINawsN-ama0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-              {/* <figure className={style.sh_img}>
-                <Image src="/assets/lesson_img/bodyA.jpg" width={150} height={193} alt="a"/>
-              </figure> */}
+              <figure className={style.sh_img}>
+                <Image src="/assets/lesson_img/kuraiA.jpg" width={1200} height={628} alt="a"/>
+              </figure>
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
@@ -173,7 +175,7 @@ export default function Page() {
           {page === 3 &&
             <div>
               <div className={style.section_ttl}>
-                batを発音してみよう！
+                cutを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordA}>
@@ -183,11 +185,11 @@ export default function Page() {
               
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['b', '@', 't'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['k', '^', 't'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordARes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("bat")}>
+              <button onClick={() => isRecording ? stopRecording() : startRecording("cut")}>
                 {isRecording ? '録音停止' : '録音スタート'}<br />
                 {isProcessing && '...処理中'}<br />
                 {error && `エラー: ${error}`}
@@ -205,7 +207,7 @@ export default function Page() {
           {page === 4 &&
             <div>
               <div className={style.section_ttl}>
-                campを発音してみよう！
+                luckを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordB}>
@@ -214,17 +216,17 @@ export default function Page() {
               <OndokusanCooyright />
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['k', '@', 'm', 'p'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['l', '^', 'k'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordBRes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("camp")}>
+              <button onClick={() => isRecording ? stopRecording() : startRecording("luck")}>
                 {isRecording ? '録音停止' : '録音スタート'}<br />
                 {isProcessing && '...処理中'}<br />
                 {error && `エラー: ${error}`}
               </button>
 
-              <Link href="/lesson/7/completed_fkg" className={style.next_btn}>
+              <Link href="/lesson/8/completed_dbc" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </Link>
               <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>

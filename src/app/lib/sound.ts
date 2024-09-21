@@ -9,9 +9,15 @@ export class Sound {
     public bat: Howl;
     public camp: Howl;
 
+    // lesson 7
     public bodyBoxGodHotAudio: Howl;
     public hotAudio: Howl;
     public bodyAudio: Howl;
+
+    // lesson 8
+    public cutCupHutLuckAudio: Howl;
+    public cutAudio: Howl;
+    public luckAudio: Howl;
 
     constructor() {
         
@@ -49,6 +55,22 @@ export class Sound {
 
         this.bodyAudio = new Howl({
             src: ['/assets/lesson_audio/body.mp3'],
+            loop: false,
+        })
+
+        // lesson 8
+        this.cutCupHutLuckAudio = new Howl({
+            src: ['/assets/lesson_audio/cutCupHutLuck.mp3'],
+            loop: false,
+        })
+
+        this.cutAudio = new Howl({
+            src: ['/assets/lesson_audio/cut.mp3'],
+            loop: false,
+        })
+
+        this.luckAudio = new Howl({
+            src: ['/assets/lesson_audio/luck.mp3'],
             loop: false,
         })
 
