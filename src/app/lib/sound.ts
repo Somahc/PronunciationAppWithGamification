@@ -19,6 +19,11 @@ export class Sound {
     public thin: Howl;
     public thigh: Howl;
 
+    // lesson 4
+    public fanFiftyHalfPuff: Howl;
+    public fan: Howl;
+    public fifty: Howl;
+
     // lesson 5
     public lowLookLikeHelp: Howl;
     public like: Howl;
@@ -101,6 +106,22 @@ export class Sound {
 
         this.thigh = new Howl({
             src: ['/assets/lesson_audio/thigh.mp3'],
+            loop: false,
+        })
+
+        // lesson 4
+        this.fanFiftyHalfPuff = new Howl({
+            src: ['/assets/lesson_audio/fanFiftyHalfPuff.mp3'],
+            loop: false,
+        })
+
+        this.fan = new Howl({
+            src: ['/assets/lesson_audio/fan.mp3'],
+            loop: false,
+        })
+
+        this.fifty = new Howl({
+            src: ['/assets/lesson_audio/fifty.mp3'],
             loop: false,
         })
 
