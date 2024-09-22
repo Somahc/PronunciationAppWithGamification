@@ -111,7 +111,7 @@ export default function Page() {
 
     return (
       <div className={style.center}>
-        <div className={style.lesson_title}>lesson 6 /ʌ/</div>
+        <div className={style.lesson_title}>lesson 8 /ʌ/</div>
 
         <section>
 
