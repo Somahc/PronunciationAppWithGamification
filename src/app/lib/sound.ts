@@ -9,6 +9,11 @@ export class Sound {
     public see: Howl;
     public cease: Howl;
 
+    // lesson 2
+    public sheShowCashPush: Howl;
+    public show: Howl;
+    public cash: Howl;
+
     // lesson 5
     public lowLookLikeHelp: Howl;
     public like: Howl;
@@ -61,6 +66,23 @@ export class Sound {
             src: ['/assets/lesson_audio/cease.mp3'],
             loop: false,
         })
+
+        // lesson 2
+        this.sheShowCashPush = new Howl({
+            src: ['/assets/lesson_audio/sheShowCashPush.mp3'],
+            loop: false,
+        })
+
+        this.show = new Howl({
+            src: ['/assets/lesson_audio/show.mp3'],
+            loop: false,
+        })
+
+        this.cash = new Howl({
+            src: ['/assets/lesson_audio/cash.mp3'],
+            loop: false,
+        })
+
 
         // lesson 5
         this.lowLookLikeHelp = new Howl({
