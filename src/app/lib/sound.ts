@@ -14,6 +14,11 @@ export class Sound {
     public show: Howl;
     public cash: Howl;
 
+    // lesson 3
+    public thinThighThingThanks: Howl;
+    public thin: Howl;
+    public thigh: Howl;
+
     // lesson 5
     public lowLookLikeHelp: Howl;
     public like: Howl;
@@ -80,6 +85,22 @@ export class Sound {
 
         this.cash = new Howl({
             src: ['/assets/lesson_audio/cash.mp3'],
+            loop: false,
+        })
+
+        // lesson 3
+        this.thinThighThingThanks = new Howl({
+            src: ['/assets/lesson_audio/thinThighThingThanks.mp3'],
+            loop: false,
+        })
+
+        this.thin = new Howl({
+            src: ['/assets/lesson_audio/thin.mp3'],
+            loop: false,
+        })
+
+        this.thigh = new Howl({
+            src: ['/assets/lesson_audio/thigh.mp3'],
             loop: false,
         })
 

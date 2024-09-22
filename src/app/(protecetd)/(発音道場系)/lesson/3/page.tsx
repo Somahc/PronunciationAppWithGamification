@@ -16,6 +16,8 @@ import CorrectPronunciationDisplay from "@/app/components/CorrectPronunciationDi
 import { blobToBase } from "@/app/lib/blobToBase";
 import { getFeedback } from "@/app/lib/getFeedback";
 import { getPronunciationFeedback } from "@/app/lib/getPronunciationFeedback";
+
+
 import Link from "next/link";
 import { sound } from "@/app/lib/sound";
 import { OndokusanCooyright } from "@/app/components/OndokusanCooyright";
@@ -65,9 +67,9 @@ export default function Page() {
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
-          if(word === "show") {
+          if(word === "thin") {
             setWordARes(PronunciationFeedback);
-          } else if (word === "cash") {
+          } else if (word === "thigh") {
             setWordBRes(PronunciationFeedback);
           }
   
@@ -94,29 +96,29 @@ export default function Page() {
   };
 
   const playExList = () => {
-    sound.sheShowCashPush.play();
+    sound.thinThighThingThanks.play();
   }
 
   const playWordA = () => {
-    sound.show.play();
+    sound.thin.play();
   }
 
   const playWordB = () => {
-    sound.cash.play();
+    sound.thigh.play();
   }
 
   if (session) {
 
     return (
       <div className={style.center}>
-        <div className={style.lesson_title}>lesson 2 /ʃ/</div>
+        <div className={style.lesson_title}>lesson 3 /θ/</div>
 
         <section>
 
           {page === 0 && 
             <div>
               {/* <h2>Page 0</h2> */}
-              <div>今回は/ʃ/の発音について学びます！</div>
+              <div>今回は/θ/の発音について学びます！</div>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -125,12 +127,11 @@ export default function Page() {
 
           {page === 1 && 
             <div>
-              <p>日本語ではSheもshowもどちらも「シー」と発音しますが、英語ではこの２つの単語は全く発音が違う単語として扱われています。</p>
+              <p>/θ/は多くの単語で使われる発音ですが、かなりの人がlesson 1で扱った/s/やlesson 2で扱った/ʃ/のような発音に置き換えて発音してしまっています。</p>
 
               <br />
 
-              <p>/ʃ/はSheで使われる発音です。日本語の「シー」と比較的近い音ですが、若干の違いがあるので練習してみましょう！
-              </p>
+              <p>今回はそんな/θ/の発音を練習してみましょう！</p>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -143,25 +144,24 @@ export default function Page() {
           {page === 2 && 
             <div>
               <div className={style.section_ttl}>
-                /ʃ/の発音
+                /θ/の発音
               </div>
 
               <div>
-                <p>使われている単語：she, show, cash, pushなど</p>
+                <p>使われている単語：thin, thigh, thing, thanksなど</p>
 
                 <button className={style.audio_btn} onClick={playExList}>
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
                 <OndokusanCooyright />
 
-                <p>/ʃ/は犬や猫を追い払う時の「シッシッ」という音に近い発音です。舌の前半分を口の天井に近づけて、息を強く出して発音します。
-                </p>
+                <p>上の前歯の先に舌先を当て、舌を歯から話しながら息を吐いて発音します。</p>
                 <br />
-                <p>また、下顎を少し前に出してしゃくれさせるのもコツです！</p>
+                <p>強く息を摩擦させて、下で歯をこすりながら次の母音などの舌の位置に向けて話していくイメージです。少し慣れがいるので、初めからできなくても大丈夫です！</p>
               </div>
 
               <figure className="mt-[20px] inline-block w-[60%]">
-                <Image src="/assets/lesson_img/s.png" className="" width={458} height={460} alt="s"/>
+                <Image src="/assets/lesson_img/l.png" className="" width={458} height={460} alt="l"/>
               </figure>
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
@@ -176,7 +176,7 @@ export default function Page() {
           {page === 3 &&
             <div>
               <div className={style.section_ttl}>
-                showを発音してみよう！
+                thinを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordA}>
@@ -185,11 +185,11 @@ export default function Page() {
               <OndokusanCooyright />
               
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['S', 'oU'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['T', 'I', 'n'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordARes} />
 
-              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("show")}>
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("thin")}>
             <p>{isRecording ? '録音停止' : '録音スタート'}</p>
             </button>
 
@@ -210,7 +210,7 @@ export default function Page() {
           {page === 4 &&
             <div>
               <div className={style.section_ttl}>
-                cashを発音してみよう！
+                thighを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordB}>
@@ -219,11 +219,11 @@ export default function Page() {
               <OndokusanCooyright />
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['k', '@', 'S'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['T', 'aI'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordBRes} />
 
-            <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("cash")}>
+            <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("thigh")}>
             <p>{isRecording ? '録音停止' : '録音スタート'}</p>
             </button>
 
@@ -232,7 +232,7 @@ export default function Page() {
                 <p>{error && `エラー: ${error}`}</p>
             </section>
 
-              <Link href="/lesson/2/completed_nfo" className={style.next_btn}>
+              <Link href="/lesson/3/completed_krc" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </Link>
               <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
