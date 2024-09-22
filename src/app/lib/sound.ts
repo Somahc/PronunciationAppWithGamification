@@ -24,6 +24,11 @@ export class Sound {
     public law: Howl;
     public walk: Howl;
 
+    // lesson 10
+    public herBirdEarlyFirst: Howl;
+    public bird: Howl;
+    public first: Howl;
+
     constructor() {
         
         this.sheAudio = new Howl({
@@ -95,6 +100,21 @@ export class Sound {
             loop: false,
         })
 
+        // lesson 10
+        this.herBirdEarlyFirst = new Howl({
+            src: ['/assets/lesson_audio/herBirdEarlyFirst.mp3'],
+            loop: false,
+        })
+
+        this.bird = new Howl({
+            src: ['/assets/lesson_audio/bird.mp3'],
+            loop: false,
+        })
+
+        this.first = new Howl({
+            src: ['/assets/lesson_audio/first.mp3'],
+            loop: false,
+        })
 
     }
 }

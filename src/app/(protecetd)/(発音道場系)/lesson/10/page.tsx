@@ -67,9 +67,9 @@ export default function Page() {
           
           const PronunciationFeedback = getPronunciationFeedback(IPAFeedback, feedback.recogErrata);
 
-          if(word === "law") {
+          if(word === "bird") {
             setWordARes(PronunciationFeedback);
-          } else if (word === "walk") {
+          } else if (word === "first") {
             setWordBRes(PronunciationFeedback);
           }
   
@@ -96,29 +96,29 @@ export default function Page() {
   };
 
   const playExList = () => {
-    sound.lawBallWalkBought.play();
+    sound.herBirdEarlyFirst.play();
   }
 
   const playWordA = () => {
-    sound.law.play();
+    sound.bird.play();
   }
 
   const playWordB = () => {
-    sound.walk.play();
+    sound.first.play();
   }
 
   if (session) {
 
     return (
       <div className={style.center}>
-        <div className={style.lesson_title}>lesson 9 /ɔː/</div>
+        <div className={style.lesson_title}>lesson 10 /ɝː/</div>
 
         <section>
 
           {page === 0 && 
             <div>
               {/* <h2>Page 0</h2> */}
-              <div>今回は/ɔː/の発音について学びます！</div>
+              <div>今回は/ɝː/の発音について学びます！</div>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -127,8 +127,8 @@ export default function Page() {
 
           {page === 1 && 
             <div>
-              <p>lawとlowはどちらも「ロー」と発音すると思っていませんか？実際には、英語では母音が違っています。</p>
-              <p>今回はlawの方で用いられる母音/ɔː/について学習します！</p>
+              <p>/ɝː/は日本語に似た音が存在しないものの、英語（特にアメリカ英語）でよく出てくる発音です。</p>
+              <p>/ɝː/をマスターできると英語の発音がワンランクアップします！</p>
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </button>
@@ -141,24 +141,24 @@ export default function Page() {
           {page === 2 && 
             <div>
               <div className={style.section_ttl}>
-                /ɔː/の発音
+                /ɝː/の発音
               </div>
 
               <div>
-                <p>使われている単語：law, ball, walk, boughtなど</p>
+                <p>使われている単語：her, bird, early, firstなど</p>
 
                 <button className={style.audio_btn} onClick={playExList}>
                   <Image src="/assets/lesson_img/play_audio.png" width={50} height={50} alt="Audio"/>
                 </button>
                 <OndokusanCooyright />
 
-                <p>ゆで卵を入れた時のようなイメージで口の中に大きな空間を作り、低い音で「オー」と強く響かせて発音します。</p>
+                <p>舌を水平に持ち上げてて天井の寸前まで移動させ、下の上にできた狭い空間に「ウー」と「アー」の中間の音を強く響かせて発音します。</p>
                 <br />
-                <p>口の中の空間は広くしつつ、唇は丸くして開口部は大きくするのがポイントです。「オゥ」のようにウの音を入れないようにしましょう！</p>
+                <p>口はあまり開けず、舌先を軽く丸めるようにしましょう！</p>
               </div>
 
-              <figure className="mt-[20px] inline-block w-[80%]">
-                <Image src="/assets/lesson_img/o.png" className="" width={498} height={544} alt="o"/>
+              <figure className="mt-[20px] inline-block w-[60%]">
+                <Image src="/assets/lesson_img/er.png" className="" width={434} height={618} alt="er"/>
               </figure>
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
@@ -173,7 +173,7 @@ export default function Page() {
           {page === 3 &&
             <div>
               <div className={style.section_ttl}>
-                lawを発音してみよう！
+                birdを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordA}>
@@ -181,14 +181,14 @@ export default function Page() {
               </button>
               <OndokusanCooyright />
               
-              <p>※ɔと表示されていますが、ɔːと同じ意味です。</p>
+              <p>※ɝと表示されていますが、ɝːと同じ意味です。</p>
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['l', '>'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['b', '3r', 'd'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordARes} />
 
-              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("law")}>
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("bird")}>
             <p>{isRecording ? '録音停止' : '録音スタート'}</p>
             </button>
 
@@ -209,7 +209,7 @@ export default function Page() {
           {page === 4 &&
             <div>
               <div className={style.section_ttl}>
-                walkを発音してみよう！
+                firstを発音してみよう！
               </div>
 
               <button className={style.audio_btn} onClick={playWordB}>
@@ -217,14 +217,14 @@ export default function Page() {
               </button>
               <OndokusanCooyright />
 
-              <p>※ɔと表示されていますが、ɔːと同じ意味です。</p>
+              <p>※ɝと表示されていますが、ɝːと同じ意味です。</p>
 
               <div>お手本</div>
-              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['w', '>', 'k'])}/>
+              <CorrectPronunciationDisplay pronunciation={Worldbet.cnvWorldbetToIPA(['f', '3r', 's', 't'])}/>
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordBRes} />
 
-            <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("walk")}>
+            <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("first")}>
             <p>{isRecording ? '録音停止' : '録音スタート'}</p>
             </button>
 
@@ -233,7 +233,7 @@ export default function Page() {
                 <p>{error && `エラー: ${error}`}</p>
             </section>
 
-              <Link href="/lesson/9/completed_ket" className={style.next_btn}>
+              <Link href="/lesson/10/completed_hrr" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
               </Link>
               <button className={style.back_btn} onClick={() => setPage(prev => prev - 1)}>
