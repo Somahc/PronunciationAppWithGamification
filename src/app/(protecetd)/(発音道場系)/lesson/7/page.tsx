@@ -187,11 +187,14 @@ export default function Page() {
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordARes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("bat")}>
-                {isRecording ? '録音停止' : '録音スタート'}<br />
-                {isProcessing && '...処理中'}<br />
-                {error && `エラー: ${error}`}
-              </button>
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("bat")}>
+                <p>{isRecording ? '録音停止' : '録音スタート'}</p>
+            </button>
+
+            <section>
+                <p>{isProcessing && '...処理中'}</p>
+                <p>{error && `エラー: ${error}`}</p>
+            </section>
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
@@ -218,11 +221,14 @@ export default function Page() {
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={wordBRes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("camp")}>
-                {isRecording ? '録音停止' : '録音スタート'}<br />
-                {isProcessing && '...処理中'}<br />
-                {error && `エラー: ${error}`}
-              </button>
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("camp")}>
+            <p>{isRecording ? '録音停止' : '録音スタート'}</p>
+            </button>
+
+            <section>
+                <p>{isProcessing && '...処理中'}</p>
+                <p>{error && `エラー: ${error}`}</p>
+            </section>
 
               <Link href="/lesson/7/completed_fkg" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>

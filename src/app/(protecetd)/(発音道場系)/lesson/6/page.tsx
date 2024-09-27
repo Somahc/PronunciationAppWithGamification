@@ -186,11 +186,14 @@ export default function Page() {
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={bodyRes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("body")}>
-                {isRecording ? '録音停止' : '録音スタート'}<br />
-                {isProcessing && '...処理中'}<br />
-                {error && `エラー: ${error}`}
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("body")}>
+                <p>{isRecording ? '録音停止' : '録音スタート'}</p>
               </button>
+
+              <section>
+                  <p>{isProcessing && '...処理中'}</p>
+                  <p>{error && `エラー: ${error}`}</p>
+              </section>
 
               <button className={style.next_btn} onClick={() => setPage(prev => prev + 1)}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
@@ -217,11 +220,14 @@ export default function Page() {
               <div>あなたの発音</div>
               <PronunciationDisplay pronunciation={notRes} />
 
-              <button onClick={() => isRecording ? stopRecording() : startRecording("hot")}>
-                {isRecording ? '録音停止' : '録音スタート'}<br />
-                {isProcessing && '...処理中'}<br />
-                {error && `エラー: ${error}`}
+              <button className="border border-solid rounded-md p-2 bg-green-300 hover:bg-green-400" onClick={() => isRecording ? stopRecording() : startRecording("hot")}>
+                <p>{isRecording ? '録音停止' : '録音スタート'}</p>
               </button>
+
+              <section>
+                  <p>{isProcessing && '...処理中'}</p>
+                  <p>{error && `エラー: ${error}`}</p>
+              </section>
 
               <Link href="/lesson/6/completed_dfi" className={style.next_btn}>
                 <Image src="/assets/lesson_img/next_btn.png" width={50} height={50} alt="Next"/>
