@@ -48,6 +48,35 @@ export const POST = async (req: NextRequest, { params }: { params: { lessonId: s
         }
     })
 
+    const currentPoint = await prisma.point.findFirst({
+        where: {
+            userId: session.user.id
+        }
+    })
+
+    // point情報がない場合は新規作成
+    if (!currentPoint) {
+
+        await prisma.point.create({
+            data: {
+                userId: session.user.id,
+            }
+        })
+        
+    }
+
+    // activityPointを+10
+    await prisma.point.update({
+        where: {
+            userId: session.user.id
+        },
+        data: {
+            activityPoint: {
+                increment: 10
+            }
+        }
+    })
+
     return NextResponse.json(newComment, { status: 201 });
 
 }
