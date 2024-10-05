@@ -1,0 +1,7 @@
+{
+    "build": {
+        "env": {
+        "PRISMA_QUERY_ENGINE_LIBRARY": "true"
+        }
+    }
+}
