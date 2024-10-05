@@ -5,11 +5,30 @@ import { getBadgeRanking } from "@/app/lib/getBadgeRanking"
 import classNames from "classnames";
 import ToTopBtn from "@/app/components/ToTopBtn";
 
+export type BpRanking = {
+    basicPoint: number;
+    user: {
+        name: string | null;
+    }
+}
+
+export type ApRanking = {
+    activityPoint: number;
+    user: {
+        name: string | null;
+    }
+}
+
+export type BadgeRanking = {
+    badgeCount: number;
+    userName: string | null;
+}
+
 export default async function Page() {
 
-    const basicPointRanking = await getBasicPointRanking();
-    const activityPointRanking = await getActivityPointRanking();
-    const badgeRanking = await getBadgeRanking();
+    const basicPointRanking: BpRanking[] = await getBasicPointRanking();
+    const activityPointRanking: ApRanking[] = await getActivityPointRanking();
+    const badgeRanking: BadgeRanking[] = await getBadgeRanking();
 
     return (
         <>
