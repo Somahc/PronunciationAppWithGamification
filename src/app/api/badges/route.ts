@@ -11,7 +11,8 @@ export const POST = async ( req: NextRequest ) => {
 
     const { userId } = await body;
 
-    if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+    // if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+    if(!userId) return NextResponse.json({ message: 'User ID is required' }, { status: 400 });
 
     try {
 
@@ -109,7 +110,8 @@ export const GET = async ( req: NextRequest ) => {
 
     const userId = searchParams.get('userId');
 
-    if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+    // if (!userId) return { status: 400, json: { message: 'User ID is required' } };
+    if(!userId) return NextResponse.json({ message: 'User ID is required' }, { status: 400 });
 
     try {
 

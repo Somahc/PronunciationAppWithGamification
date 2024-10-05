@@ -17,7 +17,8 @@ export const POST = async ( req: NextRequest ) => {
 
     const { userId, lessonId } = await body;
     
-    if (!userId || !lessonId) return { status: 400, json: { message: 'User ID and Lesson ID are required' } };
+    // if (!userId || !lessonId) return { status: 400, json: { message: 'User ID and Lesson ID are required' } };
+    if (!userId || !lessonId) return NextResponse.json({ message: 'User ID and Lesson ID are required' }, { status: 400 });
 
     // 該当レッスンをすでにクリアしているかどうか
     const isAlreadyCompleted = await prisma.lessonProgress.findFirst({
