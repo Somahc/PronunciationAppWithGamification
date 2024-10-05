@@ -1,0 +1,168 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                String              @id @default(cuid())
+  name              String?
+  email             String?             @unique
+  emailVerified     DateTime?
+  image             String?
+  accounts          Account[]
+  sessions          Session[]
+  Points            Point[]
+  LessonProgress    LessonProgress[]
+  UserBadge         UserBadge[]
+  Comment           Comment[]
+  ChallengeProgress ChallengeProgress[]
+  ChallengeResult   ChallengeResult[]
+}
+
+model Point {
+  userId        String @id @map("user_id")
+  basicPoint    Int    @default(0) @map("basic_point")
+  activityPoint Int    @default(0) @map("activity_point")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("points")
+}
+
+model Lesson {
+  lessonId Int    @id @default(autoincrement()) @map("lesson_id")
+  title    String
+
+  LessonProgress LessonProgress[]
+  Comment        Comment[]
+
+  @@map("lessons")
+}
+
+model LessonProgress {
+  lessonId  Int     @map("lesson_id")
+  userId    String  @map("user_id")
+  completed Boolean
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lessonId], references: [lessonId], onDelete: Cascade)
+
+  @@id([lessonId, userId])
+  @@unique([lessonId, userId], name: "lesson_progress_identifier")
+  @@map("lesson_progresses")
+}
+
+model Badge {
+  badgeId     Int         @id @default(autoincrement()) @map("badge_id")
+  name        String
+  description String
+  image       String?
+  criteria    Json
+  UserBadge   UserBadge[]
+
+  @@map("badges")
+}
+
+model UserBadge {
+  userId     String   @map("user_id")
+  badgeId    Int      @map("badge_id")
+  obtainedAt DateTime @map("obtained_at")
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge Badge @relation(fields: [badgeId], references: [badgeId], onDelete: Cascade)
+
+  @@id([userId, badgeId])
+  @@unique([userId, badgeId], name: "user_badge_identifier")
+  @@map("user_badges")
+}
+
+model Comment {
+  commentId String   @id @default(cuid()) @map("comment_id")
+  lessonId  Int      @map("lesson_id")
+  userId    String   @map("user_id")
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+  like      Int      @default(0)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lessonId], references: [lessonId], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model ChallengeLesson {
+  challengeId Int    @id @map("challenge_id")
+  title       String
+
+  ChallengeProgress ChallengeProgress[]
+
+  @@map("challenge_lessons")
+}
+
+model ChallengeProgress {
+  challengeId Int     @map("challenge_id")
+  userId      String  @map("user_id")
+  completed   Boolean
+
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge ChallengeLesson @relation(fields: [challengeId], references: [challengeId], onDelete: Cascade)
+
+  @@id([challengeId, userId])
+  @@unique([challengeId, userId], name: "challenge_progress_identifier")
+  @@map("challenge_progresses")
+}
+
+model ChallengeResult {
+  resultId      Int      @id @default(autoincrement()) @map("result_id")
+  userId        String   @map("user_id")
+  challengeDate DateTime @default(now()) @map("challenge_date")
+  accuracy      Int
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("challenge_results")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

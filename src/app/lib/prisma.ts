@@ -1,5 +1,6 @@
 // prismaを用いるためのグローバル変数定義
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import { PrismaClient} from "../prisma/generated/client";
 
 let prisma: PrismaClient;
 
