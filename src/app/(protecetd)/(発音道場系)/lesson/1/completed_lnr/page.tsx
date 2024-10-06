@@ -10,7 +10,7 @@ export default async function Page() {
     if (!session) {
         return (
             <>
-                <div>ログインしてください</div>
+                <div>ログインしてくださいな</div>
                 <p className="text-xl mt-5"><a href="/signin" className="text-sky-500 hover:text-sky-600">/signinページ</a>でログイン</p>
             </>
         )
