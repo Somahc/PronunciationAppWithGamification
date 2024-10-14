@@ -63,6 +63,13 @@ export const POST = async ( req: NextRequest ) => {
                     }
                 }
             })
+
+            await prisma.lessonReviews.create({
+                data: {
+                    userId,
+                    lessonId,
+                }
+            })
         } else {
             // 未クリアだったらlesson_progressesに記録
             await prisma.lessonProgress.create({
@@ -90,6 +97,8 @@ export const POST = async ( req: NextRequest ) => {
         return NextResponse.json({ message: 'Lesson completed' }, { status: 201 });
 
     } catch (err) {
+
+        console.log("えらー", err);
 
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
 

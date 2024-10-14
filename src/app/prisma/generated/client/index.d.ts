@@ -59,21 +59,6 @@ export type UserBadge = $Result.DefaultSelection<Prisma.$UserBadgePayload>
  */
 export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
 /**
- * Model ChallengeLesson
- * 
- */
-export type ChallengeLesson = $Result.DefaultSelection<Prisma.$ChallengeLessonPayload>
-/**
- * Model ChallengeProgress
- * 
- */
-export type ChallengeProgress = $Result.DefaultSelection<Prisma.$ChallengeProgressPayload>
-/**
- * Model ChallengeResult
- * 
- */
-export type ChallengeResult = $Result.DefaultSelection<Prisma.$ChallengeResultPayload>
-/**
  * Model VerificationToken
  * 
  */
@@ -83,6 +68,11 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  * 
  */
 export type SrhiAnswer = $Result.DefaultSelection<Prisma.$SrhiAnswerPayload>
+/**
+ * Model LessonReviews
+ * 
+ */
+export type LessonReviews = $Result.DefaultSelection<Prisma.$LessonReviewsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -297,36 +287,6 @@ export class PrismaClient<
   get comment(): Prisma.CommentDelegate<ExtArgs>;
 
   /**
-   * `prisma.challengeLesson`: Exposes CRUD operations for the **ChallengeLesson** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ChallengeLessons
-    * const challengeLessons = await prisma.challengeLesson.findMany()
-    * ```
-    */
-  get challengeLesson(): Prisma.ChallengeLessonDelegate<ExtArgs>;
-
-  /**
-   * `prisma.challengeProgress`: Exposes CRUD operations for the **ChallengeProgress** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ChallengeProgresses
-    * const challengeProgresses = await prisma.challengeProgress.findMany()
-    * ```
-    */
-  get challengeProgress(): Prisma.ChallengeProgressDelegate<ExtArgs>;
-
-  /**
-   * `prisma.challengeResult`: Exposes CRUD operations for the **ChallengeResult** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ChallengeResults
-    * const challengeResults = await prisma.challengeResult.findMany()
-    * ```
-    */
-  get challengeResult(): Prisma.ChallengeResultDelegate<ExtArgs>;
-
-  /**
    * `prisma.verificationToken`: Exposes CRUD operations for the **VerificationToken** model.
     * Example usage:
     * ```ts
@@ -345,6 +305,16 @@ export class PrismaClient<
     * ```
     */
   get srhiAnswer(): Prisma.SrhiAnswerDelegate<ExtArgs>;
+
+  /**
+   * `prisma.lessonReviews`: Exposes CRUD operations for the **LessonReviews** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LessonReviews
+    * const lessonReviews = await prisma.lessonReviews.findMany()
+    * ```
+    */
+  get lessonReviews(): Prisma.LessonReviewsDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -831,11 +801,9 @@ export namespace Prisma {
     Badge: 'Badge',
     UserBadge: 'UserBadge',
     Comment: 'Comment',
-    ChallengeLesson: 'ChallengeLesson',
-    ChallengeProgress: 'ChallengeProgress',
-    ChallengeResult: 'ChallengeResult',
     VerificationToken: 'VerificationToken',
-    SrhiAnswer: 'SrhiAnswer'
+    SrhiAnswer: 'SrhiAnswer',
+    LessonReviews: 'LessonReviews'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -852,7 +820,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'point' | 'lesson' | 'lessonProgress' | 'badge' | 'userBadge' | 'comment' | 'challengeLesson' | 'challengeProgress' | 'challengeResult' | 'verificationToken' | 'srhiAnswer'
+      modelProps: 'account' | 'session' | 'user' | 'point' | 'lesson' | 'lessonProgress' | 'badge' | 'userBadge' | 'comment' | 'verificationToken' | 'srhiAnswer' | 'lessonReviews'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1486,216 +1454,6 @@ export namespace Prisma {
           }
         }
       }
-      ChallengeLesson: {
-        payload: Prisma.$ChallengeLessonPayload<ExtArgs>
-        fields: Prisma.ChallengeLessonFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ChallengeLessonFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ChallengeLessonFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          findFirst: {
-            args: Prisma.ChallengeLessonFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ChallengeLessonFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          findMany: {
-            args: Prisma.ChallengeLessonFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>[]
-          }
-          create: {
-            args: Prisma.ChallengeLessonCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          createMany: {
-            args: Prisma.ChallengeLessonCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ChallengeLessonCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>[]
-          }
-          delete: {
-            args: Prisma.ChallengeLessonDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          update: {
-            args: Prisma.ChallengeLessonUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          deleteMany: {
-            args: Prisma.ChallengeLessonDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ChallengeLessonUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ChallengeLessonUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeLessonPayload>
-          }
-          aggregate: {
-            args: Prisma.ChallengeLessonAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateChallengeLesson>
-          }
-          groupBy: {
-            args: Prisma.ChallengeLessonGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeLessonGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ChallengeLessonCountArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeLessonCountAggregateOutputType> | number
-          }
-        }
-      }
-      ChallengeProgress: {
-        payload: Prisma.$ChallengeProgressPayload<ExtArgs>
-        fields: Prisma.ChallengeProgressFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ChallengeProgressFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          findFirst: {
-            args: Prisma.ChallengeProgressFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ChallengeProgressFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          findMany: {
-            args: Prisma.ChallengeProgressFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>[]
-          }
-          create: {
-            args: Prisma.ChallengeProgressCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          createMany: {
-            args: Prisma.ChallengeProgressCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ChallengeProgressCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>[]
-          }
-          delete: {
-            args: Prisma.ChallengeProgressDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          update: {
-            args: Prisma.ChallengeProgressUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          deleteMany: {
-            args: Prisma.ChallengeProgressDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ChallengeProgressUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ChallengeProgressUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeProgressPayload>
-          }
-          aggregate: {
-            args: Prisma.ChallengeProgressAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateChallengeProgress>
-          }
-          groupBy: {
-            args: Prisma.ChallengeProgressGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeProgressGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ChallengeProgressCountArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeProgressCountAggregateOutputType> | number
-          }
-        }
-      }
-      ChallengeResult: {
-        payload: Prisma.$ChallengeResultPayload<ExtArgs>
-        fields: Prisma.ChallengeResultFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ChallengeResultFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ChallengeResultFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          findFirst: {
-            args: Prisma.ChallengeResultFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ChallengeResultFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          findMany: {
-            args: Prisma.ChallengeResultFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>[]
-          }
-          create: {
-            args: Prisma.ChallengeResultCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          createMany: {
-            args: Prisma.ChallengeResultCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ChallengeResultCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>[]
-          }
-          delete: {
-            args: Prisma.ChallengeResultDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          update: {
-            args: Prisma.ChallengeResultUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          deleteMany: {
-            args: Prisma.ChallengeResultDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ChallengeResultUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ChallengeResultUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ChallengeResultPayload>
-          }
-          aggregate: {
-            args: Prisma.ChallengeResultAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateChallengeResult>
-          }
-          groupBy: {
-            args: Prisma.ChallengeResultGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeResultGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ChallengeResultCountArgs<ExtArgs>,
-            result: $Utils.Optional<ChallengeResultCountAggregateOutputType> | number
-          }
-        }
-      }
       VerificationToken: {
         payload: Prisma.$VerificationTokenPayload<ExtArgs>
         fields: Prisma.VerificationTokenFieldRefs
@@ -1833,6 +1591,76 @@ export namespace Prisma {
           count: {
             args: Prisma.SrhiAnswerCountArgs<ExtArgs>,
             result: $Utils.Optional<SrhiAnswerCountAggregateOutputType> | number
+          }
+        }
+      }
+      LessonReviews: {
+        payload: Prisma.$LessonReviewsPayload<ExtArgs>
+        fields: Prisma.LessonReviewsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LessonReviewsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LessonReviewsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          findFirst: {
+            args: Prisma.LessonReviewsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LessonReviewsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          findMany: {
+            args: Prisma.LessonReviewsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>[]
+          }
+          create: {
+            args: Prisma.LessonReviewsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          createMany: {
+            args: Prisma.LessonReviewsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LessonReviewsCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>[]
+          }
+          delete: {
+            args: Prisma.LessonReviewsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          update: {
+            args: Prisma.LessonReviewsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          deleteMany: {
+            args: Prisma.LessonReviewsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LessonReviewsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.LessonReviewsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$LessonReviewsPayload>
+          }
+          aggregate: {
+            args: Prisma.LessonReviewsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateLessonReviews>
+          }
+          groupBy: {
+            args: Prisma.LessonReviewsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<LessonReviewsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LessonReviewsCountArgs<ExtArgs>,
+            result: $Utils.Optional<LessonReviewsCountAggregateOutputType> | number
           }
         }
       }
@@ -2002,8 +1830,7 @@ export namespace Prisma {
     LessonProgress: number
     UserBadge: number
     Comment: number
-    ChallengeProgress: number
-    ChallengeResult: number
+    LessonReviews: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2013,8 +1840,7 @@ export namespace Prisma {
     LessonProgress?: boolean | UserCountOutputTypeCountLessonProgressArgs
     UserBadge?: boolean | UserCountOutputTypeCountUserBadgeArgs
     Comment?: boolean | UserCountOutputTypeCountCommentArgs
-    ChallengeProgress?: boolean | UserCountOutputTypeCountChallengeProgressArgs
-    ChallengeResult?: boolean | UserCountOutputTypeCountChallengeResultArgs
+    LessonReviews?: boolean | UserCountOutputTypeCountLessonReviewsArgs
   }
 
   // Custom InputTypes
@@ -2073,15 +1899,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountChallengeProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountChallengeResultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeResultWhereInput
+  export type UserCountOutputTypeCountLessonReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonReviewsWhereInput
   }
 
 
@@ -2092,11 +1911,13 @@ export namespace Prisma {
   export type LessonCountOutputType = {
     LessonProgress: number
     Comment: number
+    LessonReviews: number
   }
 
   export type LessonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     LessonProgress?: boolean | LessonCountOutputTypeCountLessonProgressArgs
     Comment?: boolean | LessonCountOutputTypeCountCommentArgs
+    LessonReviews?: boolean | LessonCountOutputTypeCountLessonReviewsArgs
   }
 
   // Custom InputTypes
@@ -2122,6 +1943,13 @@ export namespace Prisma {
    */
   export type LessonCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
+  }
+
+  /**
+   * LessonCountOutputType without action
+   */
+  export type LessonCountOutputTypeCountLessonReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonReviewsWhereInput
   }
 
 
@@ -2153,37 +1981,6 @@ export namespace Prisma {
    */
   export type BadgeCountOutputTypeCountUserBadgeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserBadgeWhereInput
-  }
-
-
-  /**
-   * Count Type ChallengeLessonCountOutputType
-   */
-
-  export type ChallengeLessonCountOutputType = {
-    ChallengeProgress: number
-  }
-
-  export type ChallengeLessonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ChallengeProgress?: boolean | ChallengeLessonCountOutputTypeCountChallengeProgressArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ChallengeLessonCountOutputType without action
-   */
-  export type ChallengeLessonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLessonCountOutputType
-     */
-    select?: ChallengeLessonCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ChallengeLessonCountOutputType without action
-   */
-  export type ChallengeLessonCountOutputTypeCountChallengeProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
   }
 
 
@@ -4385,8 +4182,7 @@ export namespace Prisma {
     LessonProgress?: boolean | User$LessonProgressArgs<ExtArgs>
     UserBadge?: boolean | User$UserBadgeArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
-    ChallengeProgress?: boolean | User$ChallengeProgressArgs<ExtArgs>
-    ChallengeResult?: boolean | User$ChallengeResultArgs<ExtArgs>
+    LessonReviews?: boolean | User$LessonReviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -4413,8 +4209,7 @@ export namespace Prisma {
     LessonProgress?: boolean | User$LessonProgressArgs<ExtArgs>
     UserBadge?: boolean | User$UserBadgeArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
-    ChallengeProgress?: boolean | User$ChallengeProgressArgs<ExtArgs>
-    ChallengeResult?: boolean | User$ChallengeResultArgs<ExtArgs>
+    LessonReviews?: boolean | User$LessonReviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4428,8 +4223,7 @@ export namespace Prisma {
       LessonProgress: Prisma.$LessonProgressPayload<ExtArgs>[]
       UserBadge: Prisma.$UserBadgePayload<ExtArgs>[]
       Comment: Prisma.$CommentPayload<ExtArgs>[]
-      ChallengeProgress: Prisma.$ChallengeProgressPayload<ExtArgs>[]
-      ChallengeResult: Prisma.$ChallengeResultPayload<ExtArgs>[]
+      LessonReviews: Prisma.$LessonReviewsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4839,9 +4633,7 @@ export namespace Prisma {
 
     Comment<T extends User$CommentArgs<ExtArgs> = {}>(args?: Subset<T, User$CommentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    ChallengeProgress<T extends User$ChallengeProgressArgs<ExtArgs> = {}>(args?: Subset<T, User$ChallengeProgressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    ChallengeResult<T extends User$ChallengeResultArgs<ExtArgs> = {}>(args?: Subset<T, User$ChallengeResultArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findMany'> | Null>;
+    LessonReviews<T extends User$LessonReviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$LessonReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5310,43 +5102,23 @@ export namespace Prisma {
   }
 
   /**
-   * User.ChallengeProgress
+   * User.LessonReviews
    */
-  export type User$ChallengeProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$LessonReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ChallengeProgress
+     * Select specific fields to fetch from the LessonReviews
      */
-    select?: ChallengeProgressSelect<ExtArgs> | null
+    select?: LessonReviewsSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    cursor?: ChallengeProgressWhereUniqueInput
+    include?: LessonReviewsInclude<ExtArgs> | null
+    where?: LessonReviewsWhereInput
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    cursor?: LessonReviewsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * User.ChallengeResult
-   */
-  export type User$ChallengeResultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    where?: ChallengeResultWhereInput
-    orderBy?: ChallengeResultOrderByWithRelationInput | ChallengeResultOrderByWithRelationInput[]
-    cursor?: ChallengeResultWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeResultScalarFieldEnum | ChallengeResultScalarFieldEnum[]
+    distinct?: LessonReviewsScalarFieldEnum | LessonReviewsScalarFieldEnum[]
   }
 
   /**
@@ -6513,6 +6285,7 @@ export namespace Prisma {
     title?: boolean
     LessonProgress?: boolean | Lesson$LessonProgressArgs<ExtArgs>
     Comment?: boolean | Lesson$CommentArgs<ExtArgs>
+    LessonReviews?: boolean | Lesson$LessonReviewsArgs<ExtArgs>
     _count?: boolean | LessonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lesson"]>
 
@@ -6529,6 +6302,7 @@ export namespace Prisma {
   export type LessonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     LessonProgress?: boolean | Lesson$LessonProgressArgs<ExtArgs>
     Comment?: boolean | Lesson$CommentArgs<ExtArgs>
+    LessonReviews?: boolean | Lesson$LessonReviewsArgs<ExtArgs>
     _count?: boolean | LessonCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type LessonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6538,6 +6312,7 @@ export namespace Prisma {
     objects: {
       LessonProgress: Prisma.$LessonProgressPayload<ExtArgs>[]
       Comment: Prisma.$CommentPayload<ExtArgs>[]
+      LessonReviews: Prisma.$LessonReviewsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       lessonId: number
@@ -6936,6 +6711,8 @@ export namespace Prisma {
 
     Comment<T extends Lesson$CommentArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$CommentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    LessonReviews<T extends Lesson$LessonReviewsArgs<ExtArgs> = {}>(args?: Subset<T, Lesson$LessonReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7317,6 +7094,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Lesson.LessonReviews
+   */
+  export type Lesson$LessonReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    where?: LessonReviewsWhereInput
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    cursor?: LessonReviewsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LessonReviewsScalarFieldEnum | LessonReviewsScalarFieldEnum[]
   }
 
   /**
@@ -11319,2951 +11116,6 @@ export namespace Prisma {
 
 
   /**
-   * Model ChallengeLesson
-   */
-
-  export type AggregateChallengeLesson = {
-    _count: ChallengeLessonCountAggregateOutputType | null
-    _avg: ChallengeLessonAvgAggregateOutputType | null
-    _sum: ChallengeLessonSumAggregateOutputType | null
-    _min: ChallengeLessonMinAggregateOutputType | null
-    _max: ChallengeLessonMaxAggregateOutputType | null
-  }
-
-  export type ChallengeLessonAvgAggregateOutputType = {
-    challengeId: number | null
-  }
-
-  export type ChallengeLessonSumAggregateOutputType = {
-    challengeId: number | null
-  }
-
-  export type ChallengeLessonMinAggregateOutputType = {
-    challengeId: number | null
-    title: string | null
-  }
-
-  export type ChallengeLessonMaxAggregateOutputType = {
-    challengeId: number | null
-    title: string | null
-  }
-
-  export type ChallengeLessonCountAggregateOutputType = {
-    challengeId: number
-    title: number
-    _all: number
-  }
-
-
-  export type ChallengeLessonAvgAggregateInputType = {
-    challengeId?: true
-  }
-
-  export type ChallengeLessonSumAggregateInputType = {
-    challengeId?: true
-  }
-
-  export type ChallengeLessonMinAggregateInputType = {
-    challengeId?: true
-    title?: true
-  }
-
-  export type ChallengeLessonMaxAggregateInputType = {
-    challengeId?: true
-    title?: true
-  }
-
-  export type ChallengeLessonCountAggregateInputType = {
-    challengeId?: true
-    title?: true
-    _all?: true
-  }
-
-  export type ChallengeLessonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeLesson to aggregate.
-     */
-    where?: ChallengeLessonWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeLessons to fetch.
-     */
-    orderBy?: ChallengeLessonOrderByWithRelationInput | ChallengeLessonOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ChallengeLessonWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeLessons from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeLessons.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ChallengeLessons
-    **/
-    _count?: true | ChallengeLessonCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ChallengeLessonAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ChallengeLessonSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ChallengeLessonMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ChallengeLessonMaxAggregateInputType
-  }
-
-  export type GetChallengeLessonAggregateType<T extends ChallengeLessonAggregateArgs> = {
-        [P in keyof T & keyof AggregateChallengeLesson]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChallengeLesson[P]>
-      : GetScalarType<T[P], AggregateChallengeLesson[P]>
-  }
-
-
-
-
-  export type ChallengeLessonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeLessonWhereInput
-    orderBy?: ChallengeLessonOrderByWithAggregationInput | ChallengeLessonOrderByWithAggregationInput[]
-    by: ChallengeLessonScalarFieldEnum[] | ChallengeLessonScalarFieldEnum
-    having?: ChallengeLessonScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ChallengeLessonCountAggregateInputType | true
-    _avg?: ChallengeLessonAvgAggregateInputType
-    _sum?: ChallengeLessonSumAggregateInputType
-    _min?: ChallengeLessonMinAggregateInputType
-    _max?: ChallengeLessonMaxAggregateInputType
-  }
-
-  export type ChallengeLessonGroupByOutputType = {
-    challengeId: number
-    title: string
-    _count: ChallengeLessonCountAggregateOutputType | null
-    _avg: ChallengeLessonAvgAggregateOutputType | null
-    _sum: ChallengeLessonSumAggregateOutputType | null
-    _min: ChallengeLessonMinAggregateOutputType | null
-    _max: ChallengeLessonMaxAggregateOutputType | null
-  }
-
-  type GetChallengeLessonGroupByPayload<T extends ChallengeLessonGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ChallengeLessonGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChallengeLessonGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChallengeLessonGroupByOutputType[P]>
-            : GetScalarType<T[P], ChallengeLessonGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ChallengeLessonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    challengeId?: boolean
-    title?: boolean
-    ChallengeProgress?: boolean | ChallengeLesson$ChallengeProgressArgs<ExtArgs>
-    _count?: boolean | ChallengeLessonCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeLesson"]>
-
-  export type ChallengeLessonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    challengeId?: boolean
-    title?: boolean
-  }, ExtArgs["result"]["challengeLesson"]>
-
-  export type ChallengeLessonSelectScalar = {
-    challengeId?: boolean
-    title?: boolean
-  }
-
-  export type ChallengeLessonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ChallengeProgress?: boolean | ChallengeLesson$ChallengeProgressArgs<ExtArgs>
-    _count?: boolean | ChallengeLessonCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type ChallengeLessonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $ChallengeLessonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ChallengeLesson"
-    objects: {
-      ChallengeProgress: Prisma.$ChallengeProgressPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      challengeId: number
-      title: string
-    }, ExtArgs["result"]["challengeLesson"]>
-    composites: {}
-  }
-
-  type ChallengeLessonGetPayload<S extends boolean | null | undefined | ChallengeLessonDefaultArgs> = $Result.GetResult<Prisma.$ChallengeLessonPayload, S>
-
-  type ChallengeLessonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ChallengeLessonFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: ChallengeLessonCountAggregateInputType | true
-    }
-
-  export interface ChallengeLessonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChallengeLesson'], meta: { name: 'ChallengeLesson' } }
-    /**
-     * Find zero or one ChallengeLesson that matches the filter.
-     * @param {ChallengeLessonFindUniqueArgs} args - Arguments to find a ChallengeLesson
-     * @example
-     * // Get one ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ChallengeLessonFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonFindUniqueArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one ChallengeLesson that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {ChallengeLessonFindUniqueOrThrowArgs} args - Arguments to find a ChallengeLesson
-     * @example
-     * // Get one ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ChallengeLessonFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first ChallengeLesson that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonFindFirstArgs} args - Arguments to find a ChallengeLesson
-     * @example
-     * // Get one ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ChallengeLessonFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonFindFirstArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first ChallengeLesson that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonFindFirstOrThrowArgs} args - Arguments to find a ChallengeLesson
-     * @example
-     * // Get one ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ChallengeLessonFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more ChallengeLessons that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ChallengeLessons
-     * const challengeLessons = await prisma.challengeLesson.findMany()
-     * 
-     * // Get first 10 ChallengeLessons
-     * const challengeLessons = await prisma.challengeLesson.findMany({ take: 10 })
-     * 
-     * // Only select the `challengeId`
-     * const challengeLessonWithChallengeIdOnly = await prisma.challengeLesson.findMany({ select: { challengeId: true } })
-     * 
-    **/
-    findMany<T extends ChallengeLessonFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a ChallengeLesson.
-     * @param {ChallengeLessonCreateArgs} args - Arguments to create a ChallengeLesson.
-     * @example
-     * // Create one ChallengeLesson
-     * const ChallengeLesson = await prisma.challengeLesson.create({
-     *   data: {
-     *     // ... data to create a ChallengeLesson
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ChallengeLessonCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonCreateArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many ChallengeLessons.
-     * @param {ChallengeLessonCreateManyArgs} args - Arguments to create many ChallengeLessons.
-     * @example
-     * // Create many ChallengeLessons
-     * const challengeLesson = await prisma.challengeLesson.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-    **/
-    createMany<T extends ChallengeLessonCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ChallengeLessons and returns the data saved in the database.
-     * @param {ChallengeLessonCreateManyAndReturnArgs} args - Arguments to create many ChallengeLessons.
-     * @example
-     * // Create many ChallengeLessons
-     * const challengeLesson = await prisma.challengeLesson.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ChallengeLessons and only return the `challengeId`
-     * const challengeLessonWithChallengeIdOnly = await prisma.challengeLesson.createManyAndReturn({ 
-     *   select: { challengeId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends ChallengeLessonCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'createManyAndReturn'>>
-
-    /**
-     * Delete a ChallengeLesson.
-     * @param {ChallengeLessonDeleteArgs} args - Arguments to delete one ChallengeLesson.
-     * @example
-     * // Delete one ChallengeLesson
-     * const ChallengeLesson = await prisma.challengeLesson.delete({
-     *   where: {
-     *     // ... filter to delete one ChallengeLesson
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ChallengeLessonDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonDeleteArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one ChallengeLesson.
-     * @param {ChallengeLessonUpdateArgs} args - Arguments to update one ChallengeLesson.
-     * @example
-     * // Update one ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ChallengeLessonUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonUpdateArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more ChallengeLessons.
-     * @param {ChallengeLessonDeleteManyArgs} args - Arguments to filter ChallengeLessons to delete.
-     * @example
-     * // Delete a few ChallengeLessons
-     * const { count } = await prisma.challengeLesson.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ChallengeLessonDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeLessonDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ChallengeLessons.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ChallengeLessons
-     * const challengeLesson = await prisma.challengeLesson.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ChallengeLessonUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ChallengeLesson.
-     * @param {ChallengeLessonUpsertArgs} args - Arguments to update or create a ChallengeLesson.
-     * @example
-     * // Update or create a ChallengeLesson
-     * const challengeLesson = await prisma.challengeLesson.upsert({
-     *   create: {
-     *     // ... data to create a ChallengeLesson
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ChallengeLesson we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ChallengeLessonUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeLessonUpsertArgs<ExtArgs>>
-    ): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of ChallengeLessons.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonCountArgs} args - Arguments to filter ChallengeLessons to count.
-     * @example
-     * // Count the number of ChallengeLessons
-     * const count = await prisma.challengeLesson.count({
-     *   where: {
-     *     // ... the filter for the ChallengeLessons we want to count
-     *   }
-     * })
-    **/
-    count<T extends ChallengeLessonCountArgs>(
-      args?: Subset<T, ChallengeLessonCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChallengeLessonCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ChallengeLesson.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ChallengeLessonAggregateArgs>(args: Subset<T, ChallengeLessonAggregateArgs>): Prisma.PrismaPromise<GetChallengeLessonAggregateType<T>>
-
-    /**
-     * Group by ChallengeLesson.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeLessonGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ChallengeLessonGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChallengeLessonGroupByArgs['orderBy'] }
-        : { orderBy?: ChallengeLessonGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ChallengeLessonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChallengeLessonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ChallengeLesson model
-   */
-  readonly fields: ChallengeLessonFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ChallengeLesson.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ChallengeLessonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    ChallengeProgress<T extends ChallengeLesson$ChallengeProgressArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeLesson$ChallengeProgressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the ChallengeLesson model
-   */ 
-  interface ChallengeLessonFieldRefs {
-    readonly challengeId: FieldRef<"ChallengeLesson", 'Int'>
-    readonly title: FieldRef<"ChallengeLesson", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ChallengeLesson findUnique
-   */
-  export type ChallengeLessonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeLesson to fetch.
-     */
-    where: ChallengeLessonWhereUniqueInput
-  }
-
-  /**
-   * ChallengeLesson findUniqueOrThrow
-   */
-  export type ChallengeLessonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeLesson to fetch.
-     */
-    where: ChallengeLessonWhereUniqueInput
-  }
-
-  /**
-   * ChallengeLesson findFirst
-   */
-  export type ChallengeLessonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeLesson to fetch.
-     */
-    where?: ChallengeLessonWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeLessons to fetch.
-     */
-    orderBy?: ChallengeLessonOrderByWithRelationInput | ChallengeLessonOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeLessons.
-     */
-    cursor?: ChallengeLessonWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeLessons from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeLessons.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeLessons.
-     */
-    distinct?: ChallengeLessonScalarFieldEnum | ChallengeLessonScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeLesson findFirstOrThrow
-   */
-  export type ChallengeLessonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeLesson to fetch.
-     */
-    where?: ChallengeLessonWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeLessons to fetch.
-     */
-    orderBy?: ChallengeLessonOrderByWithRelationInput | ChallengeLessonOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeLessons.
-     */
-    cursor?: ChallengeLessonWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeLessons from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeLessons.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeLessons.
-     */
-    distinct?: ChallengeLessonScalarFieldEnum | ChallengeLessonScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeLesson findMany
-   */
-  export type ChallengeLessonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeLessons to fetch.
-     */
-    where?: ChallengeLessonWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeLessons to fetch.
-     */
-    orderBy?: ChallengeLessonOrderByWithRelationInput | ChallengeLessonOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ChallengeLessons.
-     */
-    cursor?: ChallengeLessonWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeLessons from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeLessons.
-     */
-    skip?: number
-    distinct?: ChallengeLessonScalarFieldEnum | ChallengeLessonScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeLesson create
-   */
-  export type ChallengeLessonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ChallengeLesson.
-     */
-    data: XOR<ChallengeLessonCreateInput, ChallengeLessonUncheckedCreateInput>
-  }
-
-  /**
-   * ChallengeLesson createMany
-   */
-  export type ChallengeLessonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ChallengeLessons.
-     */
-    data: ChallengeLessonCreateManyInput | ChallengeLessonCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ChallengeLesson createManyAndReturn
-   */
-  export type ChallengeLessonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many ChallengeLessons.
-     */
-    data: ChallengeLessonCreateManyInput | ChallengeLessonCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ChallengeLesson update
-   */
-  export type ChallengeLessonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ChallengeLesson.
-     */
-    data: XOR<ChallengeLessonUpdateInput, ChallengeLessonUncheckedUpdateInput>
-    /**
-     * Choose, which ChallengeLesson to update.
-     */
-    where: ChallengeLessonWhereUniqueInput
-  }
-
-  /**
-   * ChallengeLesson updateMany
-   */
-  export type ChallengeLessonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ChallengeLessons.
-     */
-    data: XOR<ChallengeLessonUpdateManyMutationInput, ChallengeLessonUncheckedUpdateManyInput>
-    /**
-     * Filter which ChallengeLessons to update
-     */
-    where?: ChallengeLessonWhereInput
-  }
-
-  /**
-   * ChallengeLesson upsert
-   */
-  export type ChallengeLessonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ChallengeLesson to update in case it exists.
-     */
-    where: ChallengeLessonWhereUniqueInput
-    /**
-     * In case the ChallengeLesson found by the `where` argument doesn't exist, create a new ChallengeLesson with this data.
-     */
-    create: XOR<ChallengeLessonCreateInput, ChallengeLessonUncheckedCreateInput>
-    /**
-     * In case the ChallengeLesson was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ChallengeLessonUpdateInput, ChallengeLessonUncheckedUpdateInput>
-  }
-
-  /**
-   * ChallengeLesson delete
-   */
-  export type ChallengeLessonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-    /**
-     * Filter which ChallengeLesson to delete.
-     */
-    where: ChallengeLessonWhereUniqueInput
-  }
-
-  /**
-   * ChallengeLesson deleteMany
-   */
-  export type ChallengeLessonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeLessons to delete
-     */
-    where?: ChallengeLessonWhereInput
-  }
-
-  /**
-   * ChallengeLesson.ChallengeProgress
-   */
-  export type ChallengeLesson$ChallengeProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    cursor?: ChallengeProgressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeLesson without action
-   */
-  export type ChallengeLessonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeLesson
-     */
-    select?: ChallengeLessonSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeLessonInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model ChallengeProgress
-   */
-
-  export type AggregateChallengeProgress = {
-    _count: ChallengeProgressCountAggregateOutputType | null
-    _avg: ChallengeProgressAvgAggregateOutputType | null
-    _sum: ChallengeProgressSumAggregateOutputType | null
-    _min: ChallengeProgressMinAggregateOutputType | null
-    _max: ChallengeProgressMaxAggregateOutputType | null
-  }
-
-  export type ChallengeProgressAvgAggregateOutputType = {
-    challengeId: number | null
-  }
-
-  export type ChallengeProgressSumAggregateOutputType = {
-    challengeId: number | null
-  }
-
-  export type ChallengeProgressMinAggregateOutputType = {
-    challengeId: number | null
-    userId: string | null
-    completed: boolean | null
-  }
-
-  export type ChallengeProgressMaxAggregateOutputType = {
-    challengeId: number | null
-    userId: string | null
-    completed: boolean | null
-  }
-
-  export type ChallengeProgressCountAggregateOutputType = {
-    challengeId: number
-    userId: number
-    completed: number
-    _all: number
-  }
-
-
-  export type ChallengeProgressAvgAggregateInputType = {
-    challengeId?: true
-  }
-
-  export type ChallengeProgressSumAggregateInputType = {
-    challengeId?: true
-  }
-
-  export type ChallengeProgressMinAggregateInputType = {
-    challengeId?: true
-    userId?: true
-    completed?: true
-  }
-
-  export type ChallengeProgressMaxAggregateInputType = {
-    challengeId?: true
-    userId?: true
-    completed?: true
-  }
-
-  export type ChallengeProgressCountAggregateInputType = {
-    challengeId?: true
-    userId?: true
-    completed?: true
-    _all?: true
-  }
-
-  export type ChallengeProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeProgress to aggregate.
-     */
-    where?: ChallengeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeProgresses to fetch.
-     */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ChallengeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ChallengeProgresses
-    **/
-    _count?: true | ChallengeProgressCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ChallengeProgressAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ChallengeProgressSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ChallengeProgressMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ChallengeProgressMaxAggregateInputType
-  }
-
-  export type GetChallengeProgressAggregateType<T extends ChallengeProgressAggregateArgs> = {
-        [P in keyof T & keyof AggregateChallengeProgress]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChallengeProgress[P]>
-      : GetScalarType<T[P], AggregateChallengeProgress[P]>
-  }
-
-
-
-
-  export type ChallengeProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeProgressWhereInput
-    orderBy?: ChallengeProgressOrderByWithAggregationInput | ChallengeProgressOrderByWithAggregationInput[]
-    by: ChallengeProgressScalarFieldEnum[] | ChallengeProgressScalarFieldEnum
-    having?: ChallengeProgressScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ChallengeProgressCountAggregateInputType | true
-    _avg?: ChallengeProgressAvgAggregateInputType
-    _sum?: ChallengeProgressSumAggregateInputType
-    _min?: ChallengeProgressMinAggregateInputType
-    _max?: ChallengeProgressMaxAggregateInputType
-  }
-
-  export type ChallengeProgressGroupByOutputType = {
-    challengeId: number
-    userId: string
-    completed: boolean
-    _count: ChallengeProgressCountAggregateOutputType | null
-    _avg: ChallengeProgressAvgAggregateOutputType | null
-    _sum: ChallengeProgressSumAggregateOutputType | null
-    _min: ChallengeProgressMinAggregateOutputType | null
-    _max: ChallengeProgressMaxAggregateOutputType | null
-  }
-
-  type GetChallengeProgressGroupByPayload<T extends ChallengeProgressGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ChallengeProgressGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChallengeProgressGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChallengeProgressGroupByOutputType[P]>
-            : GetScalarType<T[P], ChallengeProgressGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ChallengeProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    challengeId?: boolean
-    userId?: boolean
-    completed?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeLessonDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeProgress"]>
-
-  export type ChallengeProgressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    challengeId?: boolean
-    userId?: boolean
-    completed?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeLessonDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeProgress"]>
-
-  export type ChallengeProgressSelectScalar = {
-    challengeId?: boolean
-    userId?: boolean
-    completed?: boolean
-  }
-
-  export type ChallengeProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeLessonDefaultArgs<ExtArgs>
-  }
-  export type ChallengeProgressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    challenge?: boolean | ChallengeLessonDefaultArgs<ExtArgs>
-  }
-
-  export type $ChallengeProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ChallengeProgress"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      challenge: Prisma.$ChallengeLessonPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      challengeId: number
-      userId: string
-      completed: boolean
-    }, ExtArgs["result"]["challengeProgress"]>
-    composites: {}
-  }
-
-  type ChallengeProgressGetPayload<S extends boolean | null | undefined | ChallengeProgressDefaultArgs> = $Result.GetResult<Prisma.$ChallengeProgressPayload, S>
-
-  type ChallengeProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ChallengeProgressFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: ChallengeProgressCountAggregateInputType | true
-    }
-
-  export interface ChallengeProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChallengeProgress'], meta: { name: 'ChallengeProgress' } }
-    /**
-     * Find zero or one ChallengeProgress that matches the filter.
-     * @param {ChallengeProgressFindUniqueArgs} args - Arguments to find a ChallengeProgress
-     * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ChallengeProgressFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressFindUniqueArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one ChallengeProgress that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {ChallengeProgressFindUniqueOrThrowArgs} args - Arguments to find a ChallengeProgress
-     * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first ChallengeProgress that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindFirstArgs} args - Arguments to find a ChallengeProgress
-     * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ChallengeProgressFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindFirstArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first ChallengeProgress that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindFirstOrThrowArgs} args - Arguments to find a ChallengeProgress
-     * @example
-     * // Get one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ChallengeProgressFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more ChallengeProgresses that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ChallengeProgresses
-     * const challengeProgresses = await prisma.challengeProgress.findMany()
-     * 
-     * // Get first 10 ChallengeProgresses
-     * const challengeProgresses = await prisma.challengeProgress.findMany({ take: 10 })
-     * 
-     * // Only select the `challengeId`
-     * const challengeProgressWithChallengeIdOnly = await prisma.challengeProgress.findMany({ select: { challengeId: true } })
-     * 
-    **/
-    findMany<T extends ChallengeProgressFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a ChallengeProgress.
-     * @param {ChallengeProgressCreateArgs} args - Arguments to create a ChallengeProgress.
-     * @example
-     * // Create one ChallengeProgress
-     * const ChallengeProgress = await prisma.challengeProgress.create({
-     *   data: {
-     *     // ... data to create a ChallengeProgress
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ChallengeProgressCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressCreateArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many ChallengeProgresses.
-     * @param {ChallengeProgressCreateManyArgs} args - Arguments to create many ChallengeProgresses.
-     * @example
-     * // Create many ChallengeProgresses
-     * const challengeProgress = await prisma.challengeProgress.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-    **/
-    createMany<T extends ChallengeProgressCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ChallengeProgresses and returns the data saved in the database.
-     * @param {ChallengeProgressCreateManyAndReturnArgs} args - Arguments to create many ChallengeProgresses.
-     * @example
-     * // Create many ChallengeProgresses
-     * const challengeProgress = await prisma.challengeProgress.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ChallengeProgresses and only return the `challengeId`
-     * const challengeProgressWithChallengeIdOnly = await prisma.challengeProgress.createManyAndReturn({ 
-     *   select: { challengeId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends ChallengeProgressCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'createManyAndReturn'>>
-
-    /**
-     * Delete a ChallengeProgress.
-     * @param {ChallengeProgressDeleteArgs} args - Arguments to delete one ChallengeProgress.
-     * @example
-     * // Delete one ChallengeProgress
-     * const ChallengeProgress = await prisma.challengeProgress.delete({
-     *   where: {
-     *     // ... filter to delete one ChallengeProgress
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ChallengeProgressDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressDeleteArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one ChallengeProgress.
-     * @param {ChallengeProgressUpdateArgs} args - Arguments to update one ChallengeProgress.
-     * @example
-     * // Update one ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ChallengeProgressUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpdateArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more ChallengeProgresses.
-     * @param {ChallengeProgressDeleteManyArgs} args - Arguments to filter ChallengeProgresses to delete.
-     * @example
-     * // Delete a few ChallengeProgresses
-     * const { count } = await prisma.challengeProgress.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ChallengeProgressDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeProgressDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ChallengeProgresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ChallengeProgresses
-     * const challengeProgress = await prisma.challengeProgress.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ChallengeProgressUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ChallengeProgress.
-     * @param {ChallengeProgressUpsertArgs} args - Arguments to update or create a ChallengeProgress.
-     * @example
-     * // Update or create a ChallengeProgress
-     * const challengeProgress = await prisma.challengeProgress.upsert({
-     *   create: {
-     *     // ... data to create a ChallengeProgress
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ChallengeProgress we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ChallengeProgressUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeProgressUpsertArgs<ExtArgs>>
-    ): Prisma__ChallengeProgressClient<$Result.GetResult<Prisma.$ChallengeProgressPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of ChallengeProgresses.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressCountArgs} args - Arguments to filter ChallengeProgresses to count.
-     * @example
-     * // Count the number of ChallengeProgresses
-     * const count = await prisma.challengeProgress.count({
-     *   where: {
-     *     // ... the filter for the ChallengeProgresses we want to count
-     *   }
-     * })
-    **/
-    count<T extends ChallengeProgressCountArgs>(
-      args?: Subset<T, ChallengeProgressCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChallengeProgressCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ChallengeProgress.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ChallengeProgressAggregateArgs>(args: Subset<T, ChallengeProgressAggregateArgs>): Prisma.PrismaPromise<GetChallengeProgressAggregateType<T>>
-
-    /**
-     * Group by ChallengeProgress.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeProgressGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ChallengeProgressGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChallengeProgressGroupByArgs['orderBy'] }
-        : { orderBy?: ChallengeProgressGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ChallengeProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChallengeProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ChallengeProgress model
-   */
-  readonly fields: ChallengeProgressFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ChallengeProgress.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ChallengeProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    challenge<T extends ChallengeLessonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChallengeLessonDefaultArgs<ExtArgs>>): Prisma__ChallengeLessonClient<$Result.GetResult<Prisma.$ChallengeLessonPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the ChallengeProgress model
-   */ 
-  interface ChallengeProgressFieldRefs {
-    readonly challengeId: FieldRef<"ChallengeProgress", 'Int'>
-    readonly userId: FieldRef<"ChallengeProgress", 'String'>
-    readonly completed: FieldRef<"ChallengeProgress", 'Boolean'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ChallengeProgress findUnique
-   */
-  export type ChallengeProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeProgress to fetch.
-     */
-    where: ChallengeProgressWhereUniqueInput
-  }
-
-  /**
-   * ChallengeProgress findUniqueOrThrow
-   */
-  export type ChallengeProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeProgress to fetch.
-     */
-    where: ChallengeProgressWhereUniqueInput
-  }
-
-  /**
-   * ChallengeProgress findFirst
-   */
-  export type ChallengeProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeProgress to fetch.
-     */
-    where?: ChallengeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeProgresses to fetch.
-     */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeProgresses.
-     */
-    cursor?: ChallengeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeProgresses.
-     */
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeProgress findFirstOrThrow
-   */
-  export type ChallengeProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeProgress to fetch.
-     */
-    where?: ChallengeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeProgresses to fetch.
-     */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeProgresses.
-     */
-    cursor?: ChallengeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeProgresses.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeProgresses.
-     */
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeProgress findMany
-   */
-  export type ChallengeProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeProgresses to fetch.
-     */
-    where?: ChallengeProgressWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeProgresses to fetch.
-     */
-    orderBy?: ChallengeProgressOrderByWithRelationInput | ChallengeProgressOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ChallengeProgresses.
-     */
-    cursor?: ChallengeProgressWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeProgresses from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeProgresses.
-     */
-    skip?: number
-    distinct?: ChallengeProgressScalarFieldEnum | ChallengeProgressScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeProgress create
-   */
-  export type ChallengeProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ChallengeProgress.
-     */
-    data: XOR<ChallengeProgressCreateInput, ChallengeProgressUncheckedCreateInput>
-  }
-
-  /**
-   * ChallengeProgress createMany
-   */
-  export type ChallengeProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ChallengeProgresses.
-     */
-    data: ChallengeProgressCreateManyInput | ChallengeProgressCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ChallengeProgress createManyAndReturn
-   */
-  export type ChallengeProgressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many ChallengeProgresses.
-     */
-    data: ChallengeProgressCreateManyInput | ChallengeProgressCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ChallengeProgress update
-   */
-  export type ChallengeProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ChallengeProgress.
-     */
-    data: XOR<ChallengeProgressUpdateInput, ChallengeProgressUncheckedUpdateInput>
-    /**
-     * Choose, which ChallengeProgress to update.
-     */
-    where: ChallengeProgressWhereUniqueInput
-  }
-
-  /**
-   * ChallengeProgress updateMany
-   */
-  export type ChallengeProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ChallengeProgresses.
-     */
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyInput>
-    /**
-     * Filter which ChallengeProgresses to update
-     */
-    where?: ChallengeProgressWhereInput
-  }
-
-  /**
-   * ChallengeProgress upsert
-   */
-  export type ChallengeProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ChallengeProgress to update in case it exists.
-     */
-    where: ChallengeProgressWhereUniqueInput
-    /**
-     * In case the ChallengeProgress found by the `where` argument doesn't exist, create a new ChallengeProgress with this data.
-     */
-    create: XOR<ChallengeProgressCreateInput, ChallengeProgressUncheckedCreateInput>
-    /**
-     * In case the ChallengeProgress was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ChallengeProgressUpdateInput, ChallengeProgressUncheckedUpdateInput>
-  }
-
-  /**
-   * ChallengeProgress delete
-   */
-  export type ChallengeProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-    /**
-     * Filter which ChallengeProgress to delete.
-     */
-    where: ChallengeProgressWhereUniqueInput
-  }
-
-  /**
-   * ChallengeProgress deleteMany
-   */
-  export type ChallengeProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeProgresses to delete
-     */
-    where?: ChallengeProgressWhereInput
-  }
-
-  /**
-   * ChallengeProgress without action
-   */
-  export type ChallengeProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeProgress
-     */
-    select?: ChallengeProgressSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeProgressInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model ChallengeResult
-   */
-
-  export type AggregateChallengeResult = {
-    _count: ChallengeResultCountAggregateOutputType | null
-    _avg: ChallengeResultAvgAggregateOutputType | null
-    _sum: ChallengeResultSumAggregateOutputType | null
-    _min: ChallengeResultMinAggregateOutputType | null
-    _max: ChallengeResultMaxAggregateOutputType | null
-  }
-
-  export type ChallengeResultAvgAggregateOutputType = {
-    resultId: number | null
-    accuracy: number | null
-  }
-
-  export type ChallengeResultSumAggregateOutputType = {
-    resultId: number | null
-    accuracy: number | null
-  }
-
-  export type ChallengeResultMinAggregateOutputType = {
-    resultId: number | null
-    userId: string | null
-    challengeDate: Date | null
-    accuracy: number | null
-    createdAt: Date | null
-  }
-
-  export type ChallengeResultMaxAggregateOutputType = {
-    resultId: number | null
-    userId: string | null
-    challengeDate: Date | null
-    accuracy: number | null
-    createdAt: Date | null
-  }
-
-  export type ChallengeResultCountAggregateOutputType = {
-    resultId: number
-    userId: number
-    challengeDate: number
-    accuracy: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type ChallengeResultAvgAggregateInputType = {
-    resultId?: true
-    accuracy?: true
-  }
-
-  export type ChallengeResultSumAggregateInputType = {
-    resultId?: true
-    accuracy?: true
-  }
-
-  export type ChallengeResultMinAggregateInputType = {
-    resultId?: true
-    userId?: true
-    challengeDate?: true
-    accuracy?: true
-    createdAt?: true
-  }
-
-  export type ChallengeResultMaxAggregateInputType = {
-    resultId?: true
-    userId?: true
-    challengeDate?: true
-    accuracy?: true
-    createdAt?: true
-  }
-
-  export type ChallengeResultCountAggregateInputType = {
-    resultId?: true
-    userId?: true
-    challengeDate?: true
-    accuracy?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type ChallengeResultAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeResult to aggregate.
-     */
-    where?: ChallengeResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeResults to fetch.
-     */
-    orderBy?: ChallengeResultOrderByWithRelationInput | ChallengeResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ChallengeResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ChallengeResults
-    **/
-    _count?: true | ChallengeResultCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ChallengeResultAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ChallengeResultSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ChallengeResultMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ChallengeResultMaxAggregateInputType
-  }
-
-  export type GetChallengeResultAggregateType<T extends ChallengeResultAggregateArgs> = {
-        [P in keyof T & keyof AggregateChallengeResult]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChallengeResult[P]>
-      : GetScalarType<T[P], AggregateChallengeResult[P]>
-  }
-
-
-
-
-  export type ChallengeResultGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ChallengeResultWhereInput
-    orderBy?: ChallengeResultOrderByWithAggregationInput | ChallengeResultOrderByWithAggregationInput[]
-    by: ChallengeResultScalarFieldEnum[] | ChallengeResultScalarFieldEnum
-    having?: ChallengeResultScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ChallengeResultCountAggregateInputType | true
-    _avg?: ChallengeResultAvgAggregateInputType
-    _sum?: ChallengeResultSumAggregateInputType
-    _min?: ChallengeResultMinAggregateInputType
-    _max?: ChallengeResultMaxAggregateInputType
-  }
-
-  export type ChallengeResultGroupByOutputType = {
-    resultId: number
-    userId: string
-    challengeDate: Date
-    accuracy: number
-    createdAt: Date
-    _count: ChallengeResultCountAggregateOutputType | null
-    _avg: ChallengeResultAvgAggregateOutputType | null
-    _sum: ChallengeResultSumAggregateOutputType | null
-    _min: ChallengeResultMinAggregateOutputType | null
-    _max: ChallengeResultMaxAggregateOutputType | null
-  }
-
-  type GetChallengeResultGroupByPayload<T extends ChallengeResultGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ChallengeResultGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChallengeResultGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChallengeResultGroupByOutputType[P]>
-            : GetScalarType<T[P], ChallengeResultGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ChallengeResultSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    resultId?: boolean
-    userId?: boolean
-    challengeDate?: boolean
-    accuracy?: boolean
-    createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeResult"]>
-
-  export type ChallengeResultSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    resultId?: boolean
-    userId?: boolean
-    challengeDate?: boolean
-    accuracy?: boolean
-    createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["challengeResult"]>
-
-  export type ChallengeResultSelectScalar = {
-    resultId?: boolean
-    userId?: boolean
-    challengeDate?: boolean
-    accuracy?: boolean
-    createdAt?: boolean
-  }
-
-  export type ChallengeResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ChallengeResultIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $ChallengeResultPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ChallengeResult"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      resultId: number
-      userId: string
-      challengeDate: Date
-      accuracy: number
-      createdAt: Date
-    }, ExtArgs["result"]["challengeResult"]>
-    composites: {}
-  }
-
-  type ChallengeResultGetPayload<S extends boolean | null | undefined | ChallengeResultDefaultArgs> = $Result.GetResult<Prisma.$ChallengeResultPayload, S>
-
-  type ChallengeResultCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<ChallengeResultFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: ChallengeResultCountAggregateInputType | true
-    }
-
-  export interface ChallengeResultDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChallengeResult'], meta: { name: 'ChallengeResult' } }
-    /**
-     * Find zero or one ChallengeResult that matches the filter.
-     * @param {ChallengeResultFindUniqueArgs} args - Arguments to find a ChallengeResult
-     * @example
-     * // Get one ChallengeResult
-     * const challengeResult = await prisma.challengeResult.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ChallengeResultFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultFindUniqueArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one ChallengeResult that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {ChallengeResultFindUniqueOrThrowArgs} args - Arguments to find a ChallengeResult
-     * @example
-     * // Get one ChallengeResult
-     * const challengeResult = await prisma.challengeResult.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ChallengeResultFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first ChallengeResult that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultFindFirstArgs} args - Arguments to find a ChallengeResult
-     * @example
-     * // Get one ChallengeResult
-     * const challengeResult = await prisma.challengeResult.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ChallengeResultFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultFindFirstArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first ChallengeResult that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultFindFirstOrThrowArgs} args - Arguments to find a ChallengeResult
-     * @example
-     * // Get one ChallengeResult
-     * const challengeResult = await prisma.challengeResult.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ChallengeResultFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more ChallengeResults that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ChallengeResults
-     * const challengeResults = await prisma.challengeResult.findMany()
-     * 
-     * // Get first 10 ChallengeResults
-     * const challengeResults = await prisma.challengeResult.findMany({ take: 10 })
-     * 
-     * // Only select the `resultId`
-     * const challengeResultWithResultIdOnly = await prisma.challengeResult.findMany({ select: { resultId: true } })
-     * 
-    **/
-    findMany<T extends ChallengeResultFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a ChallengeResult.
-     * @param {ChallengeResultCreateArgs} args - Arguments to create a ChallengeResult.
-     * @example
-     * // Create one ChallengeResult
-     * const ChallengeResult = await prisma.challengeResult.create({
-     *   data: {
-     *     // ... data to create a ChallengeResult
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ChallengeResultCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultCreateArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many ChallengeResults.
-     * @param {ChallengeResultCreateManyArgs} args - Arguments to create many ChallengeResults.
-     * @example
-     * // Create many ChallengeResults
-     * const challengeResult = await prisma.challengeResult.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-    **/
-    createMany<T extends ChallengeResultCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ChallengeResults and returns the data saved in the database.
-     * @param {ChallengeResultCreateManyAndReturnArgs} args - Arguments to create many ChallengeResults.
-     * @example
-     * // Create many ChallengeResults
-     * const challengeResult = await prisma.challengeResult.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ChallengeResults and only return the `resultId`
-     * const challengeResultWithResultIdOnly = await prisma.challengeResult.createManyAndReturn({ 
-     *   select: { resultId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends ChallengeResultCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'createManyAndReturn'>>
-
-    /**
-     * Delete a ChallengeResult.
-     * @param {ChallengeResultDeleteArgs} args - Arguments to delete one ChallengeResult.
-     * @example
-     * // Delete one ChallengeResult
-     * const ChallengeResult = await prisma.challengeResult.delete({
-     *   where: {
-     *     // ... filter to delete one ChallengeResult
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ChallengeResultDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultDeleteArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one ChallengeResult.
-     * @param {ChallengeResultUpdateArgs} args - Arguments to update one ChallengeResult.
-     * @example
-     * // Update one ChallengeResult
-     * const challengeResult = await prisma.challengeResult.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ChallengeResultUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultUpdateArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more ChallengeResults.
-     * @param {ChallengeResultDeleteManyArgs} args - Arguments to filter ChallengeResults to delete.
-     * @example
-     * // Delete a few ChallengeResults
-     * const { count } = await prisma.challengeResult.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ChallengeResultDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ChallengeResultDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ChallengeResults.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ChallengeResults
-     * const challengeResult = await prisma.challengeResult.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ChallengeResultUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ChallengeResult.
-     * @param {ChallengeResultUpsertArgs} args - Arguments to update or create a ChallengeResult.
-     * @example
-     * // Update or create a ChallengeResult
-     * const challengeResult = await prisma.challengeResult.upsert({
-     *   create: {
-     *     // ... data to create a ChallengeResult
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ChallengeResult we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ChallengeResultUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ChallengeResultUpsertArgs<ExtArgs>>
-    ): Prisma__ChallengeResultClient<$Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of ChallengeResults.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultCountArgs} args - Arguments to filter ChallengeResults to count.
-     * @example
-     * // Count the number of ChallengeResults
-     * const count = await prisma.challengeResult.count({
-     *   where: {
-     *     // ... the filter for the ChallengeResults we want to count
-     *   }
-     * })
-    **/
-    count<T extends ChallengeResultCountArgs>(
-      args?: Subset<T, ChallengeResultCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChallengeResultCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ChallengeResult.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ChallengeResultAggregateArgs>(args: Subset<T, ChallengeResultAggregateArgs>): Prisma.PrismaPromise<GetChallengeResultAggregateType<T>>
-
-    /**
-     * Group by ChallengeResult.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ChallengeResultGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ChallengeResultGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChallengeResultGroupByArgs['orderBy'] }
-        : { orderBy?: ChallengeResultGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ChallengeResultGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChallengeResultGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ChallengeResult model
-   */
-  readonly fields: ChallengeResultFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ChallengeResult.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ChallengeResultClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the ChallengeResult model
-   */ 
-  interface ChallengeResultFieldRefs {
-    readonly resultId: FieldRef<"ChallengeResult", 'Int'>
-    readonly userId: FieldRef<"ChallengeResult", 'String'>
-    readonly challengeDate: FieldRef<"ChallengeResult", 'DateTime'>
-    readonly accuracy: FieldRef<"ChallengeResult", 'Int'>
-    readonly createdAt: FieldRef<"ChallengeResult", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ChallengeResult findUnique
-   */
-  export type ChallengeResultFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeResult to fetch.
-     */
-    where: ChallengeResultWhereUniqueInput
-  }
-
-  /**
-   * ChallengeResult findUniqueOrThrow
-   */
-  export type ChallengeResultFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeResult to fetch.
-     */
-    where: ChallengeResultWhereUniqueInput
-  }
-
-  /**
-   * ChallengeResult findFirst
-   */
-  export type ChallengeResultFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeResult to fetch.
-     */
-    where?: ChallengeResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeResults to fetch.
-     */
-    orderBy?: ChallengeResultOrderByWithRelationInput | ChallengeResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeResults.
-     */
-    cursor?: ChallengeResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeResults.
-     */
-    distinct?: ChallengeResultScalarFieldEnum | ChallengeResultScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeResult findFirstOrThrow
-   */
-  export type ChallengeResultFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeResult to fetch.
-     */
-    where?: ChallengeResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeResults to fetch.
-     */
-    orderBy?: ChallengeResultOrderByWithRelationInput | ChallengeResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ChallengeResults.
-     */
-    cursor?: ChallengeResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ChallengeResults.
-     */
-    distinct?: ChallengeResultScalarFieldEnum | ChallengeResultScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeResult findMany
-   */
-  export type ChallengeResultFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter, which ChallengeResults to fetch.
-     */
-    where?: ChallengeResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ChallengeResults to fetch.
-     */
-    orderBy?: ChallengeResultOrderByWithRelationInput | ChallengeResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ChallengeResults.
-     */
-    cursor?: ChallengeResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ChallengeResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ChallengeResults.
-     */
-    skip?: number
-    distinct?: ChallengeResultScalarFieldEnum | ChallengeResultScalarFieldEnum[]
-  }
-
-  /**
-   * ChallengeResult create
-   */
-  export type ChallengeResultCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ChallengeResult.
-     */
-    data: XOR<ChallengeResultCreateInput, ChallengeResultUncheckedCreateInput>
-  }
-
-  /**
-   * ChallengeResult createMany
-   */
-  export type ChallengeResultCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ChallengeResults.
-     */
-    data: ChallengeResultCreateManyInput | ChallengeResultCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ChallengeResult createManyAndReturn
-   */
-  export type ChallengeResultCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many ChallengeResults.
-     */
-    data: ChallengeResultCreateManyInput | ChallengeResultCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ChallengeResult update
-   */
-  export type ChallengeResultUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ChallengeResult.
-     */
-    data: XOR<ChallengeResultUpdateInput, ChallengeResultUncheckedUpdateInput>
-    /**
-     * Choose, which ChallengeResult to update.
-     */
-    where: ChallengeResultWhereUniqueInput
-  }
-
-  /**
-   * ChallengeResult updateMany
-   */
-  export type ChallengeResultUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ChallengeResults.
-     */
-    data: XOR<ChallengeResultUpdateManyMutationInput, ChallengeResultUncheckedUpdateManyInput>
-    /**
-     * Filter which ChallengeResults to update
-     */
-    where?: ChallengeResultWhereInput
-  }
-
-  /**
-   * ChallengeResult upsert
-   */
-  export type ChallengeResultUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ChallengeResult to update in case it exists.
-     */
-    where: ChallengeResultWhereUniqueInput
-    /**
-     * In case the ChallengeResult found by the `where` argument doesn't exist, create a new ChallengeResult with this data.
-     */
-    create: XOR<ChallengeResultCreateInput, ChallengeResultUncheckedCreateInput>
-    /**
-     * In case the ChallengeResult was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ChallengeResultUpdateInput, ChallengeResultUncheckedUpdateInput>
-  }
-
-  /**
-   * ChallengeResult delete
-   */
-  export type ChallengeResultDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-    /**
-     * Filter which ChallengeResult to delete.
-     */
-    where: ChallengeResultWhereUniqueInput
-  }
-
-  /**
-   * ChallengeResult deleteMany
-   */
-  export type ChallengeResultDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ChallengeResults to delete
-     */
-    where?: ChallengeResultWhereInput
-  }
-
-  /**
-   * ChallengeResult without action
-   */
-  export type ChallengeResultDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChallengeResult
-     */
-    select?: ChallengeResultSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ChallengeResultInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model VerificationToken
    */
 
@@ -16170,6 +13022,982 @@ export namespace Prisma {
 
 
   /**
+   * Model LessonReviews
+   */
+
+  export type AggregateLessonReviews = {
+    _count: LessonReviewsCountAggregateOutputType | null
+    _avg: LessonReviewsAvgAggregateOutputType | null
+    _sum: LessonReviewsSumAggregateOutputType | null
+    _min: LessonReviewsMinAggregateOutputType | null
+    _max: LessonReviewsMaxAggregateOutputType | null
+  }
+
+  export type LessonReviewsAvgAggregateOutputType = {
+    lessonId: number | null
+  }
+
+  export type LessonReviewsSumAggregateOutputType = {
+    lessonId: number | null
+  }
+
+  export type LessonReviewsMinAggregateOutputType = {
+    lessonId: number | null
+    userId: string | null
+    reviewedAt: Date | null
+  }
+
+  export type LessonReviewsMaxAggregateOutputType = {
+    lessonId: number | null
+    userId: string | null
+    reviewedAt: Date | null
+  }
+
+  export type LessonReviewsCountAggregateOutputType = {
+    lessonId: number
+    userId: number
+    reviewedAt: number
+    _all: number
+  }
+
+
+  export type LessonReviewsAvgAggregateInputType = {
+    lessonId?: true
+  }
+
+  export type LessonReviewsSumAggregateInputType = {
+    lessonId?: true
+  }
+
+  export type LessonReviewsMinAggregateInputType = {
+    lessonId?: true
+    userId?: true
+    reviewedAt?: true
+  }
+
+  export type LessonReviewsMaxAggregateInputType = {
+    lessonId?: true
+    userId?: true
+    reviewedAt?: true
+  }
+
+  export type LessonReviewsCountAggregateInputType = {
+    lessonId?: true
+    userId?: true
+    reviewedAt?: true
+    _all?: true
+  }
+
+  export type LessonReviewsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LessonReviews to aggregate.
+     */
+    where?: LessonReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LessonReviews to fetch.
+     */
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LessonReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LessonReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LessonReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LessonReviews
+    **/
+    _count?: true | LessonReviewsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LessonReviewsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LessonReviewsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LessonReviewsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LessonReviewsMaxAggregateInputType
+  }
+
+  export type GetLessonReviewsAggregateType<T extends LessonReviewsAggregateArgs> = {
+        [P in keyof T & keyof AggregateLessonReviews]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLessonReviews[P]>
+      : GetScalarType<T[P], AggregateLessonReviews[P]>
+  }
+
+
+
+
+  export type LessonReviewsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonReviewsWhereInput
+    orderBy?: LessonReviewsOrderByWithAggregationInput | LessonReviewsOrderByWithAggregationInput[]
+    by: LessonReviewsScalarFieldEnum[] | LessonReviewsScalarFieldEnum
+    having?: LessonReviewsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LessonReviewsCountAggregateInputType | true
+    _avg?: LessonReviewsAvgAggregateInputType
+    _sum?: LessonReviewsSumAggregateInputType
+    _min?: LessonReviewsMinAggregateInputType
+    _max?: LessonReviewsMaxAggregateInputType
+  }
+
+  export type LessonReviewsGroupByOutputType = {
+    lessonId: number
+    userId: string
+    reviewedAt: Date
+    _count: LessonReviewsCountAggregateOutputType | null
+    _avg: LessonReviewsAvgAggregateOutputType | null
+    _sum: LessonReviewsSumAggregateOutputType | null
+    _min: LessonReviewsMinAggregateOutputType | null
+    _max: LessonReviewsMaxAggregateOutputType | null
+  }
+
+  type GetLessonReviewsGroupByPayload<T extends LessonReviewsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LessonReviewsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LessonReviewsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LessonReviewsGroupByOutputType[P]>
+            : GetScalarType<T[P], LessonReviewsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LessonReviewsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    lessonId?: boolean
+    userId?: boolean
+    reviewedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    lesson?: boolean | LessonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lessonReviews"]>
+
+  export type LessonReviewsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    lessonId?: boolean
+    userId?: boolean
+    reviewedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    lesson?: boolean | LessonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lessonReviews"]>
+
+  export type LessonReviewsSelectScalar = {
+    lessonId?: boolean
+    userId?: boolean
+    reviewedAt?: boolean
+  }
+
+  export type LessonReviewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    lesson?: boolean | LessonDefaultArgs<ExtArgs>
+  }
+  export type LessonReviewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    lesson?: boolean | LessonDefaultArgs<ExtArgs>
+  }
+
+  export type $LessonReviewsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LessonReviews"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      lesson: Prisma.$LessonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      lessonId: number
+      userId: string
+      reviewedAt: Date
+    }, ExtArgs["result"]["lessonReviews"]>
+    composites: {}
+  }
+
+  type LessonReviewsGetPayload<S extends boolean | null | undefined | LessonReviewsDefaultArgs> = $Result.GetResult<Prisma.$LessonReviewsPayload, S>
+
+  type LessonReviewsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LessonReviewsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LessonReviewsCountAggregateInputType | true
+    }
+
+  export interface LessonReviewsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LessonReviews'], meta: { name: 'LessonReviews' } }
+    /**
+     * Find zero or one LessonReviews that matches the filter.
+     * @param {LessonReviewsFindUniqueArgs} args - Arguments to find a LessonReviews
+     * @example
+     * // Get one LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends LessonReviewsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsFindUniqueArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one LessonReviews that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {LessonReviewsFindUniqueOrThrowArgs} args - Arguments to find a LessonReviews
+     * @example
+     * // Get one LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends LessonReviewsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first LessonReviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsFindFirstArgs} args - Arguments to find a LessonReviews
+     * @example
+     * // Get one LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends LessonReviewsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsFindFirstArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first LessonReviews that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsFindFirstOrThrowArgs} args - Arguments to find a LessonReviews
+     * @example
+     * // Get one LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends LessonReviewsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more LessonReviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findMany()
+     * 
+     * // Get first 10 LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.findMany({ take: 10 })
+     * 
+     * // Only select the `lessonId`
+     * const lessonReviewsWithLessonIdOnly = await prisma.lessonReviews.findMany({ select: { lessonId: true } })
+     * 
+    **/
+    findMany<T extends LessonReviewsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a LessonReviews.
+     * @param {LessonReviewsCreateArgs} args - Arguments to create a LessonReviews.
+     * @example
+     * // Create one LessonReviews
+     * const LessonReviews = await prisma.lessonReviews.create({
+     *   data: {
+     *     // ... data to create a LessonReviews
+     *   }
+     * })
+     * 
+    **/
+    create<T extends LessonReviewsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsCreateArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many LessonReviews.
+     * @param {LessonReviewsCreateManyArgs} args - Arguments to create many LessonReviews.
+     * @example
+     * // Create many LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends LessonReviewsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LessonReviews and returns the data saved in the database.
+     * @param {LessonReviewsCreateManyAndReturnArgs} args - Arguments to create many LessonReviews.
+     * @example
+     * // Create many LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LessonReviews and only return the `lessonId`
+     * const lessonReviewsWithLessonIdOnly = await prisma.lessonReviews.createManyAndReturn({ 
+     *   select: { lessonId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends LessonReviewsCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a LessonReviews.
+     * @param {LessonReviewsDeleteArgs} args - Arguments to delete one LessonReviews.
+     * @example
+     * // Delete one LessonReviews
+     * const LessonReviews = await prisma.lessonReviews.delete({
+     *   where: {
+     *     // ... filter to delete one LessonReviews
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends LessonReviewsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsDeleteArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one LessonReviews.
+     * @param {LessonReviewsUpdateArgs} args - Arguments to update one LessonReviews.
+     * @example
+     * // Update one LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends LessonReviewsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsUpdateArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more LessonReviews.
+     * @param {LessonReviewsDeleteManyArgs} args - Arguments to filter LessonReviews to delete.
+     * @example
+     * // Delete a few LessonReviews
+     * const { count } = await prisma.lessonReviews.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends LessonReviewsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, LessonReviewsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LessonReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends LessonReviewsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LessonReviews.
+     * @param {LessonReviewsUpsertArgs} args - Arguments to update or create a LessonReviews.
+     * @example
+     * // Update or create a LessonReviews
+     * const lessonReviews = await prisma.lessonReviews.upsert({
+     *   create: {
+     *     // ... data to create a LessonReviews
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LessonReviews we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends LessonReviewsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, LessonReviewsUpsertArgs<ExtArgs>>
+    ): Prisma__LessonReviewsClient<$Result.GetResult<Prisma.$LessonReviewsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of LessonReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsCountArgs} args - Arguments to filter LessonReviews to count.
+     * @example
+     * // Count the number of LessonReviews
+     * const count = await prisma.lessonReviews.count({
+     *   where: {
+     *     // ... the filter for the LessonReviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends LessonReviewsCountArgs>(
+      args?: Subset<T, LessonReviewsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LessonReviewsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LessonReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LessonReviewsAggregateArgs>(args: Subset<T, LessonReviewsAggregateArgs>): Prisma.PrismaPromise<GetLessonReviewsAggregateType<T>>
+
+    /**
+     * Group by LessonReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonReviewsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LessonReviewsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LessonReviewsGroupByArgs['orderBy'] }
+        : { orderBy?: LessonReviewsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LessonReviewsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLessonReviewsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LessonReviews model
+   */
+  readonly fields: LessonReviewsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LessonReviews.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LessonReviewsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    lesson<T extends LessonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LessonDefaultArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the LessonReviews model
+   */ 
+  interface LessonReviewsFieldRefs {
+    readonly lessonId: FieldRef<"LessonReviews", 'Int'>
+    readonly userId: FieldRef<"LessonReviews", 'String'>
+    readonly reviewedAt: FieldRef<"LessonReviews", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LessonReviews findUnique
+   */
+  export type LessonReviewsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which LessonReviews to fetch.
+     */
+    where: LessonReviewsWhereUniqueInput
+  }
+
+  /**
+   * LessonReviews findUniqueOrThrow
+   */
+  export type LessonReviewsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which LessonReviews to fetch.
+     */
+    where: LessonReviewsWhereUniqueInput
+  }
+
+  /**
+   * LessonReviews findFirst
+   */
+  export type LessonReviewsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which LessonReviews to fetch.
+     */
+    where?: LessonReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LessonReviews to fetch.
+     */
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LessonReviews.
+     */
+    cursor?: LessonReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LessonReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LessonReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LessonReviews.
+     */
+    distinct?: LessonReviewsScalarFieldEnum | LessonReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * LessonReviews findFirstOrThrow
+   */
+  export type LessonReviewsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which LessonReviews to fetch.
+     */
+    where?: LessonReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LessonReviews to fetch.
+     */
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LessonReviews.
+     */
+    cursor?: LessonReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LessonReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LessonReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LessonReviews.
+     */
+    distinct?: LessonReviewsScalarFieldEnum | LessonReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * LessonReviews findMany
+   */
+  export type LessonReviewsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter, which LessonReviews to fetch.
+     */
+    where?: LessonReviewsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LessonReviews to fetch.
+     */
+    orderBy?: LessonReviewsOrderByWithRelationInput | LessonReviewsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LessonReviews.
+     */
+    cursor?: LessonReviewsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LessonReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LessonReviews.
+     */
+    skip?: number
+    distinct?: LessonReviewsScalarFieldEnum | LessonReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * LessonReviews create
+   */
+  export type LessonReviewsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LessonReviews.
+     */
+    data: XOR<LessonReviewsCreateInput, LessonReviewsUncheckedCreateInput>
+  }
+
+  /**
+   * LessonReviews createMany
+   */
+  export type LessonReviewsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LessonReviews.
+     */
+    data: LessonReviewsCreateManyInput | LessonReviewsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LessonReviews createManyAndReturn
+   */
+  export type LessonReviewsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many LessonReviews.
+     */
+    data: LessonReviewsCreateManyInput | LessonReviewsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LessonReviews update
+   */
+  export type LessonReviewsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LessonReviews.
+     */
+    data: XOR<LessonReviewsUpdateInput, LessonReviewsUncheckedUpdateInput>
+    /**
+     * Choose, which LessonReviews to update.
+     */
+    where: LessonReviewsWhereUniqueInput
+  }
+
+  /**
+   * LessonReviews updateMany
+   */
+  export type LessonReviewsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LessonReviews.
+     */
+    data: XOR<LessonReviewsUpdateManyMutationInput, LessonReviewsUncheckedUpdateManyInput>
+    /**
+     * Filter which LessonReviews to update
+     */
+    where?: LessonReviewsWhereInput
+  }
+
+  /**
+   * LessonReviews upsert
+   */
+  export type LessonReviewsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LessonReviews to update in case it exists.
+     */
+    where: LessonReviewsWhereUniqueInput
+    /**
+     * In case the LessonReviews found by the `where` argument doesn't exist, create a new LessonReviews with this data.
+     */
+    create: XOR<LessonReviewsCreateInput, LessonReviewsUncheckedCreateInput>
+    /**
+     * In case the LessonReviews was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LessonReviewsUpdateInput, LessonReviewsUncheckedUpdateInput>
+  }
+
+  /**
+   * LessonReviews delete
+   */
+  export type LessonReviewsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+    /**
+     * Filter which LessonReviews to delete.
+     */
+    where: LessonReviewsWhereUniqueInput
+  }
+
+  /**
+   * LessonReviews deleteMany
+   */
+  export type LessonReviewsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LessonReviews to delete
+     */
+    where?: LessonReviewsWhereInput
+  }
+
+  /**
+   * LessonReviews without action
+   */
+  export type LessonReviewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LessonReviews
+     */
+    select?: LessonReviewsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonReviewsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16281,34 +14109,6 @@ export namespace Prisma {
   export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
-  export const ChallengeLessonScalarFieldEnum: {
-    challengeId: 'challengeId',
-    title: 'title'
-  };
-
-  export type ChallengeLessonScalarFieldEnum = (typeof ChallengeLessonScalarFieldEnum)[keyof typeof ChallengeLessonScalarFieldEnum]
-
-
-  export const ChallengeProgressScalarFieldEnum: {
-    challengeId: 'challengeId',
-    userId: 'userId',
-    completed: 'completed'
-  };
-
-  export type ChallengeProgressScalarFieldEnum = (typeof ChallengeProgressScalarFieldEnum)[keyof typeof ChallengeProgressScalarFieldEnum]
-
-
-  export const ChallengeResultScalarFieldEnum: {
-    resultId: 'resultId',
-    userId: 'userId',
-    challengeDate: 'challengeDate',
-    accuracy: 'accuracy',
-    createdAt: 'createdAt'
-  };
-
-  export type ChallengeResultScalarFieldEnum = (typeof ChallengeResultScalarFieldEnum)[keyof typeof ChallengeResultScalarFieldEnum]
-
-
   export const VerificationTokenScalarFieldEnum: {
     identifier: 'identifier',
     token: 'token',
@@ -16332,6 +14132,15 @@ export namespace Prisma {
   };
 
   export type SrhiAnswerScalarFieldEnum = (typeof SrhiAnswerScalarFieldEnum)[keyof typeof SrhiAnswerScalarFieldEnum]
+
+
+  export const LessonReviewsScalarFieldEnum: {
+    lessonId: 'lessonId',
+    userId: 'userId',
+    reviewedAt: 'reviewedAt'
+  };
+
+  export type LessonReviewsScalarFieldEnum = (typeof LessonReviewsScalarFieldEnum)[keyof typeof LessonReviewsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -16610,8 +14419,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressListRelationFilter
     UserBadge?: UserBadgeListRelationFilter
     Comment?: CommentListRelationFilter
-    ChallengeProgress?: ChallengeProgressListRelationFilter
-    ChallengeResult?: ChallengeResultListRelationFilter
+    LessonReviews?: LessonReviewsListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -16626,8 +14434,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressOrderByRelationAggregateInput
     UserBadge?: UserBadgeOrderByRelationAggregateInput
     Comment?: CommentOrderByRelationAggregateInput
-    ChallengeProgress?: ChallengeProgressOrderByRelationAggregateInput
-    ChallengeResult?: ChallengeResultOrderByRelationAggregateInput
+    LessonReviews?: LessonReviewsOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -16645,8 +14452,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressListRelationFilter
     UserBadge?: UserBadgeListRelationFilter
     Comment?: CommentListRelationFilter
-    ChallengeProgress?: ChallengeProgressListRelationFilter
-    ChallengeResult?: ChallengeResultListRelationFilter
+    LessonReviews?: LessonReviewsListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -16726,6 +14532,7 @@ export namespace Prisma {
     title?: StringFilter<"Lesson"> | string
     LessonProgress?: LessonProgressListRelationFilter
     Comment?: CommentListRelationFilter
+    LessonReviews?: LessonReviewsListRelationFilter
   }
 
   export type LessonOrderByWithRelationInput = {
@@ -16733,6 +14540,7 @@ export namespace Prisma {
     title?: SortOrder
     LessonProgress?: LessonProgressOrderByRelationAggregateInput
     Comment?: CommentOrderByRelationAggregateInput
+    LessonReviews?: LessonReviewsOrderByRelationAggregateInput
   }
 
   export type LessonWhereUniqueInput = Prisma.AtLeast<{
@@ -16743,6 +14551,7 @@ export namespace Prisma {
     title?: StringFilter<"Lesson"> | string
     LessonProgress?: LessonProgressListRelationFilter
     Comment?: CommentListRelationFilter
+    LessonReviews?: LessonReviewsListRelationFilter
   }, "lessonId">
 
   export type LessonOrderByWithAggregationInput = {
@@ -16994,157 +14803,6 @@ export namespace Prisma {
     like?: IntWithAggregatesFilter<"Comment"> | number
   }
 
-  export type ChallengeLessonWhereInput = {
-    AND?: ChallengeLessonWhereInput | ChallengeLessonWhereInput[]
-    OR?: ChallengeLessonWhereInput[]
-    NOT?: ChallengeLessonWhereInput | ChallengeLessonWhereInput[]
-    challengeId?: IntFilter<"ChallengeLesson"> | number
-    title?: StringFilter<"ChallengeLesson"> | string
-    ChallengeProgress?: ChallengeProgressListRelationFilter
-  }
-
-  export type ChallengeLessonOrderByWithRelationInput = {
-    challengeId?: SortOrder
-    title?: SortOrder
-    ChallengeProgress?: ChallengeProgressOrderByRelationAggregateInput
-  }
-
-  export type ChallengeLessonWhereUniqueInput = Prisma.AtLeast<{
-    challengeId?: number
-    AND?: ChallengeLessonWhereInput | ChallengeLessonWhereInput[]
-    OR?: ChallengeLessonWhereInput[]
-    NOT?: ChallengeLessonWhereInput | ChallengeLessonWhereInput[]
-    title?: StringFilter<"ChallengeLesson"> | string
-    ChallengeProgress?: ChallengeProgressListRelationFilter
-  }, "challengeId">
-
-  export type ChallengeLessonOrderByWithAggregationInput = {
-    challengeId?: SortOrder
-    title?: SortOrder
-    _count?: ChallengeLessonCountOrderByAggregateInput
-    _avg?: ChallengeLessonAvgOrderByAggregateInput
-    _max?: ChallengeLessonMaxOrderByAggregateInput
-    _min?: ChallengeLessonMinOrderByAggregateInput
-    _sum?: ChallengeLessonSumOrderByAggregateInput
-  }
-
-  export type ChallengeLessonScalarWhereWithAggregatesInput = {
-    AND?: ChallengeLessonScalarWhereWithAggregatesInput | ChallengeLessonScalarWhereWithAggregatesInput[]
-    OR?: ChallengeLessonScalarWhereWithAggregatesInput[]
-    NOT?: ChallengeLessonScalarWhereWithAggregatesInput | ChallengeLessonScalarWhereWithAggregatesInput[]
-    challengeId?: IntWithAggregatesFilter<"ChallengeLesson"> | number
-    title?: StringWithAggregatesFilter<"ChallengeLesson"> | string
-  }
-
-  export type ChallengeProgressWhereInput = {
-    AND?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    OR?: ChallengeProgressWhereInput[]
-    NOT?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    challengeId?: IntFilter<"ChallengeProgress"> | number
-    userId?: StringFilter<"ChallengeProgress"> | string
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    challenge?: XOR<ChallengeLessonRelationFilter, ChallengeLessonWhereInput>
-  }
-
-  export type ChallengeProgressOrderByWithRelationInput = {
-    challengeId?: SortOrder
-    userId?: SortOrder
-    completed?: SortOrder
-    user?: UserOrderByWithRelationInput
-    challenge?: ChallengeLessonOrderByWithRelationInput
-  }
-
-  export type ChallengeProgressWhereUniqueInput = Prisma.AtLeast<{
-    challenge_progress_identifier?: ChallengeProgressChallenge_progress_identifierCompoundUniqueInput
-    challengeId_userId?: ChallengeProgressChallengeIdUserIdCompoundUniqueInput
-    AND?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    OR?: ChallengeProgressWhereInput[]
-    NOT?: ChallengeProgressWhereInput | ChallengeProgressWhereInput[]
-    challengeId?: IntFilter<"ChallengeProgress"> | number
-    userId?: StringFilter<"ChallengeProgress"> | string
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    challenge?: XOR<ChallengeLessonRelationFilter, ChallengeLessonWhereInput>
-  }, "challengeId_userId" | "challenge_progress_identifier">
-
-  export type ChallengeProgressOrderByWithAggregationInput = {
-    challengeId?: SortOrder
-    userId?: SortOrder
-    completed?: SortOrder
-    _count?: ChallengeProgressCountOrderByAggregateInput
-    _avg?: ChallengeProgressAvgOrderByAggregateInput
-    _max?: ChallengeProgressMaxOrderByAggregateInput
-    _min?: ChallengeProgressMinOrderByAggregateInput
-    _sum?: ChallengeProgressSumOrderByAggregateInput
-  }
-
-  export type ChallengeProgressScalarWhereWithAggregatesInput = {
-    AND?: ChallengeProgressScalarWhereWithAggregatesInput | ChallengeProgressScalarWhereWithAggregatesInput[]
-    OR?: ChallengeProgressScalarWhereWithAggregatesInput[]
-    NOT?: ChallengeProgressScalarWhereWithAggregatesInput | ChallengeProgressScalarWhereWithAggregatesInput[]
-    challengeId?: IntWithAggregatesFilter<"ChallengeProgress"> | number
-    userId?: StringWithAggregatesFilter<"ChallengeProgress"> | string
-    completed?: BoolWithAggregatesFilter<"ChallengeProgress"> | boolean
-  }
-
-  export type ChallengeResultWhereInput = {
-    AND?: ChallengeResultWhereInput | ChallengeResultWhereInput[]
-    OR?: ChallengeResultWhereInput[]
-    NOT?: ChallengeResultWhereInput | ChallengeResultWhereInput[]
-    resultId?: IntFilter<"ChallengeResult"> | number
-    userId?: StringFilter<"ChallengeResult"> | string
-    challengeDate?: DateTimeFilter<"ChallengeResult"> | Date | string
-    accuracy?: IntFilter<"ChallengeResult"> | number
-    createdAt?: DateTimeFilter<"ChallengeResult"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }
-
-  export type ChallengeResultOrderByWithRelationInput = {
-    resultId?: SortOrder
-    userId?: SortOrder
-    challengeDate?: SortOrder
-    accuracy?: SortOrder
-    createdAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type ChallengeResultWhereUniqueInput = Prisma.AtLeast<{
-    resultId?: number
-    AND?: ChallengeResultWhereInput | ChallengeResultWhereInput[]
-    OR?: ChallengeResultWhereInput[]
-    NOT?: ChallengeResultWhereInput | ChallengeResultWhereInput[]
-    userId?: StringFilter<"ChallengeResult"> | string
-    challengeDate?: DateTimeFilter<"ChallengeResult"> | Date | string
-    accuracy?: IntFilter<"ChallengeResult"> | number
-    createdAt?: DateTimeFilter<"ChallengeResult"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "resultId">
-
-  export type ChallengeResultOrderByWithAggregationInput = {
-    resultId?: SortOrder
-    userId?: SortOrder
-    challengeDate?: SortOrder
-    accuracy?: SortOrder
-    createdAt?: SortOrder
-    _count?: ChallengeResultCountOrderByAggregateInput
-    _avg?: ChallengeResultAvgOrderByAggregateInput
-    _max?: ChallengeResultMaxOrderByAggregateInput
-    _min?: ChallengeResultMinOrderByAggregateInput
-    _sum?: ChallengeResultSumOrderByAggregateInput
-  }
-
-  export type ChallengeResultScalarWhereWithAggregatesInput = {
-    AND?: ChallengeResultScalarWhereWithAggregatesInput | ChallengeResultScalarWhereWithAggregatesInput[]
-    OR?: ChallengeResultScalarWhereWithAggregatesInput[]
-    NOT?: ChallengeResultScalarWhereWithAggregatesInput | ChallengeResultScalarWhereWithAggregatesInput[]
-    resultId?: IntWithAggregatesFilter<"ChallengeResult"> | number
-    userId?: StringWithAggregatesFilter<"ChallengeResult"> | string
-    challengeDate?: DateTimeWithAggregatesFilter<"ChallengeResult"> | Date | string
-    accuracy?: IntWithAggregatesFilter<"ChallengeResult"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"ChallengeResult"> | Date | string
-  }
-
   export type VerificationTokenWhereInput = {
     AND?: VerificationTokenWhereInput | VerificationTokenWhereInput[]
     OR?: VerificationTokenWhereInput[]
@@ -17265,6 +14923,58 @@ export namespace Prisma {
     q6?: IntWithAggregatesFilter<"SrhiAnswer"> | number
     q7?: IntWithAggregatesFilter<"SrhiAnswer"> | number
     submittedAt?: DateTimeWithAggregatesFilter<"SrhiAnswer"> | Date | string
+  }
+
+  export type LessonReviewsWhereInput = {
+    AND?: LessonReviewsWhereInput | LessonReviewsWhereInput[]
+    OR?: LessonReviewsWhereInput[]
+    NOT?: LessonReviewsWhereInput | LessonReviewsWhereInput[]
+    lessonId?: IntFilter<"LessonReviews"> | number
+    userId?: StringFilter<"LessonReviews"> | string
+    reviewedAt?: DateTimeFilter<"LessonReviews"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    lesson?: XOR<LessonRelationFilter, LessonWhereInput>
+  }
+
+  export type LessonReviewsOrderByWithRelationInput = {
+    lessonId?: SortOrder
+    userId?: SortOrder
+    reviewedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    lesson?: LessonOrderByWithRelationInput
+  }
+
+  export type LessonReviewsWhereUniqueInput = Prisma.AtLeast<{
+    lesson_review_identifier?: LessonReviewsLesson_review_identifierCompoundUniqueInput
+    lessonId_userId?: LessonReviewsLessonIdUserIdCompoundUniqueInput
+    AND?: LessonReviewsWhereInput | LessonReviewsWhereInput[]
+    OR?: LessonReviewsWhereInput[]
+    NOT?: LessonReviewsWhereInput | LessonReviewsWhereInput[]
+    lessonId?: IntFilter<"LessonReviews"> | number
+    userId?: StringFilter<"LessonReviews"> | string
+    reviewedAt?: DateTimeFilter<"LessonReviews"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    lesson?: XOR<LessonRelationFilter, LessonWhereInput>
+  }, "lessonId_userId" | "lesson_review_identifier">
+
+  export type LessonReviewsOrderByWithAggregationInput = {
+    lessonId?: SortOrder
+    userId?: SortOrder
+    reviewedAt?: SortOrder
+    _count?: LessonReviewsCountOrderByAggregateInput
+    _avg?: LessonReviewsAvgOrderByAggregateInput
+    _max?: LessonReviewsMaxOrderByAggregateInput
+    _min?: LessonReviewsMinOrderByAggregateInput
+    _sum?: LessonReviewsSumOrderByAggregateInput
+  }
+
+  export type LessonReviewsScalarWhereWithAggregatesInput = {
+    AND?: LessonReviewsScalarWhereWithAggregatesInput | LessonReviewsScalarWhereWithAggregatesInput[]
+    OR?: LessonReviewsScalarWhereWithAggregatesInput[]
+    NOT?: LessonReviewsScalarWhereWithAggregatesInput | LessonReviewsScalarWhereWithAggregatesInput[]
+    lessonId?: IntWithAggregatesFilter<"LessonReviews"> | number
+    userId?: StringWithAggregatesFilter<"LessonReviews"> | string
+    reviewedAt?: DateTimeWithAggregatesFilter<"LessonReviews"> | Date | string
   }
 
   export type AccountCreateInput = {
@@ -17431,8 +15141,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -17447,8 +15156,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -17463,8 +15171,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -17479,8 +15186,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17552,6 +15258,7 @@ export namespace Prisma {
     title: string
     LessonProgress?: LessonProgressCreateNestedManyWithoutLessonInput
     Comment?: CommentCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutLessonInput
   }
 
   export type LessonUncheckedCreateInput = {
@@ -17559,12 +15266,14 @@ export namespace Prisma {
     title: string
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutLessonInput
     Comment?: CommentUncheckedCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutLessonInput
   }
 
   export type LessonUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     LessonProgress?: LessonProgressUpdateManyWithoutLessonNestedInput
     Comment?: CommentUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutLessonNestedInput
   }
 
   export type LessonUncheckedUpdateInput = {
@@ -17572,6 +15281,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutLessonNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutLessonNestedInput
   }
 
   export type LessonCreateManyInput = {
@@ -17793,137 +15503,6 @@ export namespace Prisma {
     like?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ChallengeLessonCreateInput = {
-    challengeId: number
-    title: string
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutChallengeInput
-  }
-
-  export type ChallengeLessonUncheckedCreateInput = {
-    challengeId: number
-    title: string
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutChallengeInput
-  }
-
-  export type ChallengeLessonUpdateInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type ChallengeLessonUncheckedUpdateInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutChallengeNestedInput
-  }
-
-  export type ChallengeLessonCreateManyInput = {
-    challengeId: number
-    title: string
-  }
-
-  export type ChallengeLessonUpdateManyMutationInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ChallengeLessonUncheckedUpdateManyInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ChallengeProgressCreateInput = {
-    completed: boolean
-    user: UserCreateNestedOneWithoutChallengeProgressInput
-    challenge: ChallengeLessonCreateNestedOneWithoutChallengeProgressInput
-  }
-
-  export type ChallengeProgressUncheckedCreateInput = {
-    challengeId: number
-    userId: string
-    completed: boolean
-  }
-
-  export type ChallengeProgressUpdateInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutChallengeProgressNestedInput
-    challenge?: ChallengeLessonUpdateOneRequiredWithoutChallengeProgressNestedInput
-  }
-
-  export type ChallengeProgressUncheckedUpdateInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeProgressCreateManyInput = {
-    challengeId: number
-    userId: string
-    completed: boolean
-  }
-
-  export type ChallengeProgressUpdateManyMutationInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeResultCreateInput = {
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutChallengeResultInput
-  }
-
-  export type ChallengeResultUncheckedCreateInput = {
-    resultId?: number
-    userId: string
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
-  }
-
-  export type ChallengeResultUpdateInput = {
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutChallengeResultNestedInput
-  }
-
-  export type ChallengeResultUncheckedUpdateInput = {
-    resultId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeResultCreateManyInput = {
-    resultId?: number
-    userId: string
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
-  }
-
-  export type ChallengeResultUpdateManyMutationInput = {
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeResultUncheckedUpdateManyInput = {
-    resultId?: IntFieldUpdateOperationsInput | number
-    userId?: StringFieldUpdateOperationsInput | string
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type VerificationTokenCreateInput = {
     identifier: string
     token: string
@@ -18052,6 +15631,46 @@ export namespace Prisma {
     q6?: IntFieldUpdateOperationsInput | number
     q7?: IntFieldUpdateOperationsInput | number
     submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonReviewsCreateInput = {
+    reviewedAt?: Date | string
+    user: UserCreateNestedOneWithoutLessonReviewsInput
+    lesson: LessonCreateNestedOneWithoutLessonReviewsInput
+  }
+
+  export type LessonReviewsUncheckedCreateInput = {
+    lessonId: number
+    userId: string
+    reviewedAt?: Date | string
+  }
+
+  export type LessonReviewsUpdateInput = {
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLessonReviewsNestedInput
+    lesson?: LessonUpdateOneRequiredWithoutLessonReviewsNestedInput
+  }
+
+  export type LessonReviewsUncheckedUpdateInput = {
+    lessonId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonReviewsCreateManyInput = {
+    lessonId: number
+    userId: string
+    reviewedAt?: Date | string
+  }
+
+  export type LessonReviewsUpdateManyMutationInput = {
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonReviewsUncheckedUpdateManyInput = {
+    lessonId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -18308,16 +15927,10 @@ export namespace Prisma {
     none?: CommentWhereInput
   }
 
-  export type ChallengeProgressListRelationFilter = {
-    every?: ChallengeProgressWhereInput
-    some?: ChallengeProgressWhereInput
-    none?: ChallengeProgressWhereInput
-  }
-
-  export type ChallengeResultListRelationFilter = {
-    every?: ChallengeResultWhereInput
-    some?: ChallengeResultWhereInput
-    none?: ChallengeResultWhereInput
+  export type LessonReviewsListRelationFilter = {
+    every?: LessonReviewsWhereInput
+    some?: LessonReviewsWhereInput
+    none?: LessonReviewsWhereInput
   }
 
   export type AccountOrderByRelationAggregateInput = {
@@ -18344,11 +15957,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ChallengeProgressOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ChallengeResultOrderByRelationAggregateInput = {
+  export type LessonReviewsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18680,104 +16289,6 @@ export namespace Prisma {
     like?: SortOrder
   }
 
-  export type ChallengeLessonCountOrderByAggregateInput = {
-    challengeId?: SortOrder
-    title?: SortOrder
-  }
-
-  export type ChallengeLessonAvgOrderByAggregateInput = {
-    challengeId?: SortOrder
-  }
-
-  export type ChallengeLessonMaxOrderByAggregateInput = {
-    challengeId?: SortOrder
-    title?: SortOrder
-  }
-
-  export type ChallengeLessonMinOrderByAggregateInput = {
-    challengeId?: SortOrder
-    title?: SortOrder
-  }
-
-  export type ChallengeLessonSumOrderByAggregateInput = {
-    challengeId?: SortOrder
-  }
-
-  export type ChallengeLessonRelationFilter = {
-    is?: ChallengeLessonWhereInput
-    isNot?: ChallengeLessonWhereInput
-  }
-
-  export type ChallengeProgressChallenge_progress_identifierCompoundUniqueInput = {
-    challengeId: number
-    userId: string
-  }
-
-  export type ChallengeProgressChallengeIdUserIdCompoundUniqueInput = {
-    challengeId: number
-    userId: string
-  }
-
-  export type ChallengeProgressCountOrderByAggregateInput = {
-    challengeId?: SortOrder
-    userId?: SortOrder
-    completed?: SortOrder
-  }
-
-  export type ChallengeProgressAvgOrderByAggregateInput = {
-    challengeId?: SortOrder
-  }
-
-  export type ChallengeProgressMaxOrderByAggregateInput = {
-    challengeId?: SortOrder
-    userId?: SortOrder
-    completed?: SortOrder
-  }
-
-  export type ChallengeProgressMinOrderByAggregateInput = {
-    challengeId?: SortOrder
-    userId?: SortOrder
-    completed?: SortOrder
-  }
-
-  export type ChallengeProgressSumOrderByAggregateInput = {
-    challengeId?: SortOrder
-  }
-
-  export type ChallengeResultCountOrderByAggregateInput = {
-    resultId?: SortOrder
-    userId?: SortOrder
-    challengeDate?: SortOrder
-    accuracy?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type ChallengeResultAvgOrderByAggregateInput = {
-    resultId?: SortOrder
-    accuracy?: SortOrder
-  }
-
-  export type ChallengeResultMaxOrderByAggregateInput = {
-    resultId?: SortOrder
-    userId?: SortOrder
-    challengeDate?: SortOrder
-    accuracy?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type ChallengeResultMinOrderByAggregateInput = {
-    resultId?: SortOrder
-    userId?: SortOrder
-    challengeDate?: SortOrder
-    accuracy?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type ChallengeResultSumOrderByAggregateInput = {
-    resultId?: SortOrder
-    accuracy?: SortOrder
-  }
-
   export type VerificationTokenIdentifierTokenCompoundUniqueInput = {
     identifier: string
     token: string
@@ -18860,6 +16371,42 @@ export namespace Prisma {
     q5?: SortOrder
     q6?: SortOrder
     q7?: SortOrder
+  }
+
+  export type LessonReviewsLesson_review_identifierCompoundUniqueInput = {
+    lessonId: number
+    userId: string
+  }
+
+  export type LessonReviewsLessonIdUserIdCompoundUniqueInput = {
+    lessonId: number
+    userId: string
+  }
+
+  export type LessonReviewsCountOrderByAggregateInput = {
+    lessonId?: SortOrder
+    userId?: SortOrder
+    reviewedAt?: SortOrder
+  }
+
+  export type LessonReviewsAvgOrderByAggregateInput = {
+    lessonId?: SortOrder
+  }
+
+  export type LessonReviewsMaxOrderByAggregateInput = {
+    lessonId?: SortOrder
+    userId?: SortOrder
+    reviewedAt?: SortOrder
+  }
+
+  export type LessonReviewsMinOrderByAggregateInput = {
+    lessonId?: SortOrder
+    userId?: SortOrder
+    reviewedAt?: SortOrder
+  }
+
+  export type LessonReviewsSumOrderByAggregateInput = {
+    lessonId?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -18952,18 +16499,11 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type ChallengeProgressCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type ChallengeResultCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput> | ChallengeResultCreateWithoutUserInput[] | ChallengeResultUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeResultCreateOrConnectWithoutUserInput | ChallengeResultCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeResultCreateManyUserInputEnvelope
-    connect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
+  export type LessonReviewsCreateNestedManyWithoutUserInput = {
+    create?: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput> | LessonReviewsCreateWithoutUserInput[] | LessonReviewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutUserInput | LessonReviewsCreateOrConnectWithoutUserInput[]
+    createMany?: LessonReviewsCreateManyUserInputEnvelope
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -19008,18 +16548,11 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type ChallengeProgressUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type ChallengeResultUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput> | ChallengeResultCreateWithoutUserInput[] | ChallengeResultUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeResultCreateOrConnectWithoutUserInput | ChallengeResultCreateOrConnectWithoutUserInput[]
-    createMany?: ChallengeResultCreateManyUserInputEnvelope
-    connect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
+  export type LessonReviewsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput> | LessonReviewsCreateWithoutUserInput[] | LessonReviewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutUserInput | LessonReviewsCreateOrConnectWithoutUserInput[]
+    createMany?: LessonReviewsCreateManyUserInputEnvelope
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -19110,32 +16643,18 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type ChallengeProgressUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutUserInput | ChallengeProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutUserInput | ChallengeProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutUserInput | ChallengeProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type ChallengeResultUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput> | ChallengeResultCreateWithoutUserInput[] | ChallengeResultUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeResultCreateOrConnectWithoutUserInput | ChallengeResultCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeResultUpsertWithWhereUniqueWithoutUserInput | ChallengeResultUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeResultCreateManyUserInputEnvelope
-    set?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    disconnect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    delete?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    connect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    update?: ChallengeResultUpdateWithWhereUniqueWithoutUserInput | ChallengeResultUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeResultUpdateManyWithWhereWithoutUserInput | ChallengeResultUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeResultScalarWhereInput | ChallengeResultScalarWhereInput[]
+  export type LessonReviewsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput> | LessonReviewsCreateWithoutUserInput[] | LessonReviewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutUserInput | LessonReviewsCreateOrConnectWithoutUserInput[]
+    upsert?: LessonReviewsUpsertWithWhereUniqueWithoutUserInput | LessonReviewsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LessonReviewsCreateManyUserInputEnvelope
+    set?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    disconnect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    delete?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    update?: LessonReviewsUpdateWithWhereUniqueWithoutUserInput | LessonReviewsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LessonReviewsUpdateManyWithWhereWithoutUserInput | LessonReviewsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
   }
 
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
@@ -19222,32 +16741,18 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput> | ChallengeProgressCreateWithoutUserInput[] | ChallengeProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutUserInput | ChallengeProgressCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutUserInput | ChallengeProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeProgressCreateManyUserInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutUserInput | ChallengeProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutUserInput | ChallengeProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type ChallengeResultUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput> | ChallengeResultCreateWithoutUserInput[] | ChallengeResultUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ChallengeResultCreateOrConnectWithoutUserInput | ChallengeResultCreateOrConnectWithoutUserInput[]
-    upsert?: ChallengeResultUpsertWithWhereUniqueWithoutUserInput | ChallengeResultUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ChallengeResultCreateManyUserInputEnvelope
-    set?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    disconnect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    delete?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    connect?: ChallengeResultWhereUniqueInput | ChallengeResultWhereUniqueInput[]
-    update?: ChallengeResultUpdateWithWhereUniqueWithoutUserInput | ChallengeResultUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ChallengeResultUpdateManyWithWhereWithoutUserInput | ChallengeResultUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ChallengeResultScalarWhereInput | ChallengeResultScalarWhereInput[]
+  export type LessonReviewsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput> | LessonReviewsCreateWithoutUserInput[] | LessonReviewsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutUserInput | LessonReviewsCreateOrConnectWithoutUserInput[]
+    upsert?: LessonReviewsUpsertWithWhereUniqueWithoutUserInput | LessonReviewsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LessonReviewsCreateManyUserInputEnvelope
+    set?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    disconnect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    delete?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    update?: LessonReviewsUpdateWithWhereUniqueWithoutUserInput | LessonReviewsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LessonReviewsUpdateManyWithWhereWithoutUserInput | LessonReviewsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutPointsInput = {
@@ -19286,6 +16791,13 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
+  export type LessonReviewsCreateNestedManyWithoutLessonInput = {
+    create?: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput> | LessonReviewsCreateWithoutLessonInput[] | LessonReviewsUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutLessonInput | LessonReviewsCreateOrConnectWithoutLessonInput[]
+    createMany?: LessonReviewsCreateManyLessonInputEnvelope
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+  }
+
   export type LessonProgressUncheckedCreateNestedManyWithoutLessonInput = {
     create?: XOR<LessonProgressCreateWithoutLessonInput, LessonProgressUncheckedCreateWithoutLessonInput> | LessonProgressCreateWithoutLessonInput[] | LessonProgressUncheckedCreateWithoutLessonInput[]
     connectOrCreate?: LessonProgressCreateOrConnectWithoutLessonInput | LessonProgressCreateOrConnectWithoutLessonInput[]
@@ -19298,6 +16810,13 @@ export namespace Prisma {
     connectOrCreate?: CommentCreateOrConnectWithoutLessonInput | CommentCreateOrConnectWithoutLessonInput[]
     createMany?: CommentCreateManyLessonInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type LessonReviewsUncheckedCreateNestedManyWithoutLessonInput = {
+    create?: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput> | LessonReviewsCreateWithoutLessonInput[] | LessonReviewsUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutLessonInput | LessonReviewsCreateOrConnectWithoutLessonInput[]
+    createMany?: LessonReviewsCreateManyLessonInputEnvelope
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
   }
 
   export type LessonProgressUpdateManyWithoutLessonNestedInput = {
@@ -19328,6 +16847,20 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
+  export type LessonReviewsUpdateManyWithoutLessonNestedInput = {
+    create?: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput> | LessonReviewsCreateWithoutLessonInput[] | LessonReviewsUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutLessonInput | LessonReviewsCreateOrConnectWithoutLessonInput[]
+    upsert?: LessonReviewsUpsertWithWhereUniqueWithoutLessonInput | LessonReviewsUpsertWithWhereUniqueWithoutLessonInput[]
+    createMany?: LessonReviewsCreateManyLessonInputEnvelope
+    set?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    disconnect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    delete?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    update?: LessonReviewsUpdateWithWhereUniqueWithoutLessonInput | LessonReviewsUpdateWithWhereUniqueWithoutLessonInput[]
+    updateMany?: LessonReviewsUpdateManyWithWhereWithoutLessonInput | LessonReviewsUpdateManyWithWhereWithoutLessonInput[]
+    deleteMany?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
+  }
+
   export type LessonProgressUncheckedUpdateManyWithoutLessonNestedInput = {
     create?: XOR<LessonProgressCreateWithoutLessonInput, LessonProgressUncheckedCreateWithoutLessonInput> | LessonProgressCreateWithoutLessonInput[] | LessonProgressUncheckedCreateWithoutLessonInput[]
     connectOrCreate?: LessonProgressCreateOrConnectWithoutLessonInput | LessonProgressCreateOrConnectWithoutLessonInput[]
@@ -19354,6 +16887,20 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutLessonInput | CommentUpdateWithWhereUniqueWithoutLessonInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutLessonInput | CommentUpdateManyWithWhereWithoutLessonInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type LessonReviewsUncheckedUpdateManyWithoutLessonNestedInput = {
+    create?: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput> | LessonReviewsCreateWithoutLessonInput[] | LessonReviewsUncheckedCreateWithoutLessonInput[]
+    connectOrCreate?: LessonReviewsCreateOrConnectWithoutLessonInput | LessonReviewsCreateOrConnectWithoutLessonInput[]
+    upsert?: LessonReviewsUpsertWithWhereUniqueWithoutLessonInput | LessonReviewsUpsertWithWhereUniqueWithoutLessonInput[]
+    createMany?: LessonReviewsCreateManyLessonInputEnvelope
+    set?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    disconnect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    delete?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    connect?: LessonReviewsWhereUniqueInput | LessonReviewsWhereUniqueInput[]
+    update?: LessonReviewsUpdateWithWhereUniqueWithoutLessonInput | LessonReviewsUpdateWithWhereUniqueWithoutLessonInput[]
+    updateMany?: LessonReviewsUpdateManyWithWhereWithoutLessonInput | LessonReviewsUpdateManyWithWhereWithoutLessonInput[]
+    deleteMany?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutLessonProgressInput = {
@@ -19486,88 +17033,32 @@ export namespace Prisma {
     update?: XOR<XOR<LessonUpdateToOneWithWhereWithoutCommentInput, LessonUpdateWithoutCommentInput>, LessonUncheckedUpdateWithoutCommentInput>
   }
 
-  export type ChallengeProgressCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressUncheckedCreateNestedManyWithoutChallengeInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-  }
-
-  export type ChallengeProgressUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutChallengeInput | ChallengeProgressUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyWithoutChallengeNestedInput = {
-    create?: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput> | ChallengeProgressCreateWithoutChallengeInput[] | ChallengeProgressUncheckedCreateWithoutChallengeInput[]
-    connectOrCreate?: ChallengeProgressCreateOrConnectWithoutChallengeInput | ChallengeProgressCreateOrConnectWithoutChallengeInput[]
-    upsert?: ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput[]
-    createMany?: ChallengeProgressCreateManyChallengeInputEnvelope
-    set?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    disconnect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    delete?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    connect?: ChallengeProgressWhereUniqueInput | ChallengeProgressWhereUniqueInput[]
-    update?: ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput | ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput[]
-    updateMany?: ChallengeProgressUpdateManyWithWhereWithoutChallengeInput | ChallengeProgressUpdateManyWithWhereWithoutChallengeInput[]
-    deleteMany?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutChallengeProgressInput = {
-    create?: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeProgressInput
+  export type UserCreateNestedOneWithoutLessonReviewsInput = {
+    create?: XOR<UserCreateWithoutLessonReviewsInput, UserUncheckedCreateWithoutLessonReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLessonReviewsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ChallengeLessonCreateNestedOneWithoutChallengeProgressInput = {
-    create?: XOR<ChallengeLessonCreateWithoutChallengeProgressInput, ChallengeLessonUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: ChallengeLessonCreateOrConnectWithoutChallengeProgressInput
-    connect?: ChallengeLessonWhereUniqueInput
+  export type LessonCreateNestedOneWithoutLessonReviewsInput = {
+    create?: XOR<LessonCreateWithoutLessonReviewsInput, LessonUncheckedCreateWithoutLessonReviewsInput>
+    connectOrCreate?: LessonCreateOrConnectWithoutLessonReviewsInput
+    connect?: LessonWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutChallengeProgressNestedInput = {
-    create?: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeProgressInput
-    upsert?: UserUpsertWithoutChallengeProgressInput
+  export type UserUpdateOneRequiredWithoutLessonReviewsNestedInput = {
+    create?: XOR<UserCreateWithoutLessonReviewsInput, UserUncheckedCreateWithoutLessonReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLessonReviewsInput
+    upsert?: UserUpsertWithoutLessonReviewsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChallengeProgressInput, UserUpdateWithoutChallengeProgressInput>, UserUncheckedUpdateWithoutChallengeProgressInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLessonReviewsInput, UserUpdateWithoutLessonReviewsInput>, UserUncheckedUpdateWithoutLessonReviewsInput>
   }
 
-  export type ChallengeLessonUpdateOneRequiredWithoutChallengeProgressNestedInput = {
-    create?: XOR<ChallengeLessonCreateWithoutChallengeProgressInput, ChallengeLessonUncheckedCreateWithoutChallengeProgressInput>
-    connectOrCreate?: ChallengeLessonCreateOrConnectWithoutChallengeProgressInput
-    upsert?: ChallengeLessonUpsertWithoutChallengeProgressInput
-    connect?: ChallengeLessonWhereUniqueInput
-    update?: XOR<XOR<ChallengeLessonUpdateToOneWithWhereWithoutChallengeProgressInput, ChallengeLessonUpdateWithoutChallengeProgressInput>, ChallengeLessonUncheckedUpdateWithoutChallengeProgressInput>
-  }
-
-  export type UserCreateNestedOneWithoutChallengeResultInput = {
-    create?: XOR<UserCreateWithoutChallengeResultInput, UserUncheckedCreateWithoutChallengeResultInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeResultInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutChallengeResultNestedInput = {
-    create?: XOR<UserCreateWithoutChallengeResultInput, UserUncheckedCreateWithoutChallengeResultInput>
-    connectOrCreate?: UserCreateOrConnectWithoutChallengeResultInput
-    upsert?: UserUpsertWithoutChallengeResultInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChallengeResultInput, UserUpdateWithoutChallengeResultInput>, UserUncheckedUpdateWithoutChallengeResultInput>
+  export type LessonUpdateOneRequiredWithoutLessonReviewsNestedInput = {
+    create?: XOR<LessonCreateWithoutLessonReviewsInput, LessonUncheckedCreateWithoutLessonReviewsInput>
+    connectOrCreate?: LessonCreateOrConnectWithoutLessonReviewsInput
+    upsert?: LessonUpsertWithoutLessonReviewsInput
+    connect?: LessonWhereUniqueInput
+    update?: XOR<XOR<LessonUpdateToOneWithWhereWithoutLessonReviewsInput, LessonUpdateWithoutLessonReviewsInput>, LessonUncheckedUpdateWithoutLessonReviewsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -19804,8 +17295,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -19819,8 +17309,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -19850,8 +17339,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -19865,8 +17353,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -19880,8 +17367,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -19895,8 +17381,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -19926,8 +17411,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -19941,8 +17425,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -20093,46 +17576,23 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ChallengeProgressCreateWithoutUserInput = {
-    completed: boolean
-    challenge: ChallengeLessonCreateNestedOneWithoutChallengeProgressInput
+  export type LessonReviewsCreateWithoutUserInput = {
+    reviewedAt?: Date | string
+    lesson: LessonCreateNestedOneWithoutLessonReviewsInput
   }
 
-  export type ChallengeProgressUncheckedCreateWithoutUserInput = {
-    challengeId: number
-    completed: boolean
+  export type LessonReviewsUncheckedCreateWithoutUserInput = {
+    lessonId: number
+    reviewedAt?: Date | string
   }
 
-  export type ChallengeProgressCreateOrConnectWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    create: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput>
+  export type LessonReviewsCreateOrConnectWithoutUserInput = {
+    where: LessonReviewsWhereUniqueInput
+    create: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput>
   }
 
-  export type ChallengeProgressCreateManyUserInputEnvelope = {
-    data: ChallengeProgressCreateManyUserInput | ChallengeProgressCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChallengeResultCreateWithoutUserInput = {
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
-  }
-
-  export type ChallengeResultUncheckedCreateWithoutUserInput = {
-    resultId?: number
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
-  }
-
-  export type ChallengeResultCreateOrConnectWithoutUserInput = {
-    where: ChallengeResultWhereUniqueInput
-    create: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput>
-  }
-
-  export type ChallengeResultCreateManyUserInputEnvelope = {
-    data: ChallengeResultCreateManyUserInput | ChallengeResultCreateManyUserInput[]
+  export type LessonReviewsCreateManyUserInputEnvelope = {
+    data: LessonReviewsCreateManyUserInput | LessonReviewsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -20300,56 +17760,29 @@ export namespace Prisma {
     like?: IntFilter<"Comment"> | number
   }
 
-  export type ChallengeProgressUpsertWithWhereUniqueWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    update: XOR<ChallengeProgressUpdateWithoutUserInput, ChallengeProgressUncheckedUpdateWithoutUserInput>
-    create: XOR<ChallengeProgressCreateWithoutUserInput, ChallengeProgressUncheckedCreateWithoutUserInput>
+  export type LessonReviewsUpsertWithWhereUniqueWithoutUserInput = {
+    where: LessonReviewsWhereUniqueInput
+    update: XOR<LessonReviewsUpdateWithoutUserInput, LessonReviewsUncheckedUpdateWithoutUserInput>
+    create: XOR<LessonReviewsCreateWithoutUserInput, LessonReviewsUncheckedCreateWithoutUserInput>
   }
 
-  export type ChallengeProgressUpdateWithWhereUniqueWithoutUserInput = {
-    where: ChallengeProgressWhereUniqueInput
-    data: XOR<ChallengeProgressUpdateWithoutUserInput, ChallengeProgressUncheckedUpdateWithoutUserInput>
+  export type LessonReviewsUpdateWithWhereUniqueWithoutUserInput = {
+    where: LessonReviewsWhereUniqueInput
+    data: XOR<LessonReviewsUpdateWithoutUserInput, LessonReviewsUncheckedUpdateWithoutUserInput>
   }
 
-  export type ChallengeProgressUpdateManyWithWhereWithoutUserInput = {
-    where: ChallengeProgressScalarWhereInput
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyWithoutUserInput>
+  export type LessonReviewsUpdateManyWithWhereWithoutUserInput = {
+    where: LessonReviewsScalarWhereInput
+    data: XOR<LessonReviewsUpdateManyMutationInput, LessonReviewsUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type ChallengeProgressScalarWhereInput = {
-    AND?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-    OR?: ChallengeProgressScalarWhereInput[]
-    NOT?: ChallengeProgressScalarWhereInput | ChallengeProgressScalarWhereInput[]
-    challengeId?: IntFilter<"ChallengeProgress"> | number
-    userId?: StringFilter<"ChallengeProgress"> | string
-    completed?: BoolFilter<"ChallengeProgress"> | boolean
-  }
-
-  export type ChallengeResultUpsertWithWhereUniqueWithoutUserInput = {
-    where: ChallengeResultWhereUniqueInput
-    update: XOR<ChallengeResultUpdateWithoutUserInput, ChallengeResultUncheckedUpdateWithoutUserInput>
-    create: XOR<ChallengeResultCreateWithoutUserInput, ChallengeResultUncheckedCreateWithoutUserInput>
-  }
-
-  export type ChallengeResultUpdateWithWhereUniqueWithoutUserInput = {
-    where: ChallengeResultWhereUniqueInput
-    data: XOR<ChallengeResultUpdateWithoutUserInput, ChallengeResultUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ChallengeResultUpdateManyWithWhereWithoutUserInput = {
-    where: ChallengeResultScalarWhereInput
-    data: XOR<ChallengeResultUpdateManyMutationInput, ChallengeResultUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type ChallengeResultScalarWhereInput = {
-    AND?: ChallengeResultScalarWhereInput | ChallengeResultScalarWhereInput[]
-    OR?: ChallengeResultScalarWhereInput[]
-    NOT?: ChallengeResultScalarWhereInput | ChallengeResultScalarWhereInput[]
-    resultId?: IntFilter<"ChallengeResult"> | number
-    userId?: StringFilter<"ChallengeResult"> | string
-    challengeDate?: DateTimeFilter<"ChallengeResult"> | Date | string
-    accuracy?: IntFilter<"ChallengeResult"> | number
-    createdAt?: DateTimeFilter<"ChallengeResult"> | Date | string
+  export type LessonReviewsScalarWhereInput = {
+    AND?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
+    OR?: LessonReviewsScalarWhereInput[]
+    NOT?: LessonReviewsScalarWhereInput | LessonReviewsScalarWhereInput[]
+    lessonId?: IntFilter<"LessonReviews"> | number
+    userId?: StringFilter<"LessonReviews"> | string
+    reviewedAt?: DateTimeFilter<"LessonReviews"> | Date | string
   }
 
   export type UserCreateWithoutPointsInput = {
@@ -20363,8 +17796,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPointsInput = {
@@ -20378,8 +17810,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPointsInput = {
@@ -20409,8 +17840,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPointsInput = {
@@ -20424,8 +17854,7 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type LessonProgressCreateWithoutLessonInput = {
@@ -20476,6 +17905,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type LessonReviewsCreateWithoutLessonInput = {
+    reviewedAt?: Date | string
+    user: UserCreateNestedOneWithoutLessonReviewsInput
+  }
+
+  export type LessonReviewsUncheckedCreateWithoutLessonInput = {
+    userId: string
+    reviewedAt?: Date | string
+  }
+
+  export type LessonReviewsCreateOrConnectWithoutLessonInput = {
+    where: LessonReviewsWhereUniqueInput
+    create: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput>
+  }
+
+  export type LessonReviewsCreateManyLessonInputEnvelope = {
+    data: LessonReviewsCreateManyLessonInput | LessonReviewsCreateManyLessonInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LessonProgressUpsertWithWhereUniqueWithoutLessonInput = {
     where: LessonProgressWhereUniqueInput
     update: XOR<LessonProgressUpdateWithoutLessonInput, LessonProgressUncheckedUpdateWithoutLessonInput>
@@ -20508,6 +17957,22 @@ export namespace Prisma {
     data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutLessonInput>
   }
 
+  export type LessonReviewsUpsertWithWhereUniqueWithoutLessonInput = {
+    where: LessonReviewsWhereUniqueInput
+    update: XOR<LessonReviewsUpdateWithoutLessonInput, LessonReviewsUncheckedUpdateWithoutLessonInput>
+    create: XOR<LessonReviewsCreateWithoutLessonInput, LessonReviewsUncheckedCreateWithoutLessonInput>
+  }
+
+  export type LessonReviewsUpdateWithWhereUniqueWithoutLessonInput = {
+    where: LessonReviewsWhereUniqueInput
+    data: XOR<LessonReviewsUpdateWithoutLessonInput, LessonReviewsUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type LessonReviewsUpdateManyWithWhereWithoutLessonInput = {
+    where: LessonReviewsScalarWhereInput
+    data: XOR<LessonReviewsUpdateManyMutationInput, LessonReviewsUncheckedUpdateManyWithoutLessonInput>
+  }
+
   export type UserCreateWithoutLessonProgressInput = {
     id?: string
     name?: string | null
@@ -20519,8 +17984,7 @@ export namespace Prisma {
     Points?: PointCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLessonProgressInput = {
@@ -20534,8 +17998,7 @@ export namespace Prisma {
     Points?: PointUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLessonProgressInput = {
@@ -20546,12 +18009,14 @@ export namespace Prisma {
   export type LessonCreateWithoutLessonProgressInput = {
     title: string
     Comment?: CommentCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutLessonInput
   }
 
   export type LessonUncheckedCreateWithoutLessonProgressInput = {
     lessonId?: number
     title: string
     Comment?: CommentUncheckedCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutLessonInput
   }
 
   export type LessonCreateOrConnectWithoutLessonProgressInput = {
@@ -20581,8 +18046,7 @@ export namespace Prisma {
     Points?: PointUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLessonProgressInput = {
@@ -20596,8 +18060,7 @@ export namespace Prisma {
     Points?: PointUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type LessonUpsertWithoutLessonProgressInput = {
@@ -20614,12 +18077,14 @@ export namespace Prisma {
   export type LessonUpdateWithoutLessonProgressInput = {
     title?: StringFieldUpdateOperationsInput | string
     Comment?: CommentUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutLessonNestedInput
   }
 
   export type LessonUncheckedUpdateWithoutLessonProgressInput = {
     lessonId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     Comment?: CommentUncheckedUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutLessonNestedInput
   }
 
   export type UserBadgeCreateWithoutBadgeInput = {
@@ -20669,8 +18134,7 @@ export namespace Prisma {
     Points?: PointCreateNestedManyWithoutUserInput
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserBadgeInput = {
@@ -20684,8 +18148,7 @@ export namespace Prisma {
     Points?: PointUncheckedCreateNestedManyWithoutUserInput
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserBadgeInput = {
@@ -20735,8 +18198,7 @@ export namespace Prisma {
     Points?: PointUpdateManyWithoutUserNestedInput
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserBadgeInput = {
@@ -20750,8 +18212,7 @@ export namespace Prisma {
     Points?: PointUncheckedUpdateManyWithoutUserNestedInput
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BadgeUpsertWithoutUserBadgeInput = {
@@ -20791,8 +18252,7 @@ export namespace Prisma {
     Points?: PointCreateNestedManyWithoutUserInput
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
@@ -20806,8 +18266,7 @@ export namespace Prisma {
     Points?: PointUncheckedCreateNestedManyWithoutUserInput
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentInput = {
@@ -20818,12 +18277,14 @@ export namespace Prisma {
   export type LessonCreateWithoutCommentInput = {
     title: string
     LessonProgress?: LessonProgressCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsCreateNestedManyWithoutLessonInput
   }
 
   export type LessonUncheckedCreateWithoutCommentInput = {
     lessonId?: number
     title: string
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutLessonInput
+    LessonReviews?: LessonReviewsUncheckedCreateNestedManyWithoutLessonInput
   }
 
   export type LessonCreateOrConnectWithoutCommentInput = {
@@ -20853,8 +18314,7 @@ export namespace Prisma {
     Points?: PointUpdateManyWithoutUserNestedInput
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
@@ -20868,8 +18328,7 @@ export namespace Prisma {
     Points?: PointUncheckedUpdateManyWithoutUserNestedInput
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type LessonUpsertWithoutCommentInput = {
@@ -20886,51 +18345,17 @@ export namespace Prisma {
   export type LessonUpdateWithoutCommentInput = {
     title?: StringFieldUpdateOperationsInput | string
     LessonProgress?: LessonProgressUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUpdateManyWithoutLessonNestedInput
   }
 
   export type LessonUncheckedUpdateWithoutCommentInput = {
     lessonId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutLessonNestedInput
+    LessonReviews?: LessonReviewsUncheckedUpdateManyWithoutLessonNestedInput
   }
 
-  export type ChallengeProgressCreateWithoutChallengeInput = {
-    completed: boolean
-    user: UserCreateNestedOneWithoutChallengeProgressInput
-  }
-
-  export type ChallengeProgressUncheckedCreateWithoutChallengeInput = {
-    userId: string
-    completed: boolean
-  }
-
-  export type ChallengeProgressCreateOrConnectWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    create: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressCreateManyChallengeInputEnvelope = {
-    data: ChallengeProgressCreateManyChallengeInput | ChallengeProgressCreateManyChallengeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChallengeProgressUpsertWithWhereUniqueWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    update: XOR<ChallengeProgressUpdateWithoutChallengeInput, ChallengeProgressUncheckedUpdateWithoutChallengeInput>
-    create: XOR<ChallengeProgressCreateWithoutChallengeInput, ChallengeProgressUncheckedCreateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressUpdateWithWhereUniqueWithoutChallengeInput = {
-    where: ChallengeProgressWhereUniqueInput
-    data: XOR<ChallengeProgressUpdateWithoutChallengeInput, ChallengeProgressUncheckedUpdateWithoutChallengeInput>
-  }
-
-  export type ChallengeProgressUpdateManyWithWhereWithoutChallengeInput = {
-    where: ChallengeProgressScalarWhereInput
-    data: XOR<ChallengeProgressUpdateManyMutationInput, ChallengeProgressUncheckedUpdateManyWithoutChallengeInput>
-  }
-
-  export type UserCreateWithoutChallengeProgressInput = {
+  export type UserCreateWithoutLessonReviewsInput = {
     id?: string
     name?: string | null
     email?: string | null
@@ -20942,10 +18367,9 @@ export namespace Prisma {
     LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutChallengeProgressInput = {
+  export type UserUncheckedCreateWithoutLessonReviewsInput = {
     id?: string
     name?: string | null
     email?: string | null
@@ -20957,41 +18381,43 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
     UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeResult?: ChallengeResultUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutChallengeProgressInput = {
+  export type UserCreateOrConnectWithoutLessonReviewsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
+    create: XOR<UserCreateWithoutLessonReviewsInput, UserUncheckedCreateWithoutLessonReviewsInput>
   }
 
-  export type ChallengeLessonCreateWithoutChallengeProgressInput = {
-    challengeId: number
+  export type LessonCreateWithoutLessonReviewsInput = {
     title: string
+    LessonProgress?: LessonProgressCreateNestedManyWithoutLessonInput
+    Comment?: CommentCreateNestedManyWithoutLessonInput
   }
 
-  export type ChallengeLessonUncheckedCreateWithoutChallengeProgressInput = {
-    challengeId: number
+  export type LessonUncheckedCreateWithoutLessonReviewsInput = {
+    lessonId?: number
     title: string
+    LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutLessonInput
+    Comment?: CommentUncheckedCreateNestedManyWithoutLessonInput
   }
 
-  export type ChallengeLessonCreateOrConnectWithoutChallengeProgressInput = {
-    where: ChallengeLessonWhereUniqueInput
-    create: XOR<ChallengeLessonCreateWithoutChallengeProgressInput, ChallengeLessonUncheckedCreateWithoutChallengeProgressInput>
+  export type LessonCreateOrConnectWithoutLessonReviewsInput = {
+    where: LessonWhereUniqueInput
+    create: XOR<LessonCreateWithoutLessonReviewsInput, LessonUncheckedCreateWithoutLessonReviewsInput>
   }
 
-  export type UserUpsertWithoutChallengeProgressInput = {
-    update: XOR<UserUpdateWithoutChallengeProgressInput, UserUncheckedUpdateWithoutChallengeProgressInput>
-    create: XOR<UserCreateWithoutChallengeProgressInput, UserUncheckedCreateWithoutChallengeProgressInput>
+  export type UserUpsertWithoutLessonReviewsInput = {
+    update: XOR<UserUpdateWithoutLessonReviewsInput, UserUncheckedUpdateWithoutLessonReviewsInput>
+    create: XOR<UserCreateWithoutLessonReviewsInput, UserUncheckedCreateWithoutLessonReviewsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutChallengeProgressInput = {
+  export type UserUpdateToOneWithWhereWithoutLessonReviewsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutChallengeProgressInput, UserUncheckedUpdateWithoutChallengeProgressInput>
+    data: XOR<UserUpdateWithoutLessonReviewsInput, UserUncheckedUpdateWithoutLessonReviewsInput>
   }
 
-  export type UserUpdateWithoutChallengeProgressInput = {
+  export type UserUpdateWithoutLessonReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21003,10 +18429,9 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutChallengeProgressInput = {
+  export type UserUncheckedUpdateWithoutLessonReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21018,104 +18443,30 @@ export namespace Prisma {
     LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
     UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeResult?: ChallengeResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ChallengeLessonUpsertWithoutChallengeProgressInput = {
-    update: XOR<ChallengeLessonUpdateWithoutChallengeProgressInput, ChallengeLessonUncheckedUpdateWithoutChallengeProgressInput>
-    create: XOR<ChallengeLessonCreateWithoutChallengeProgressInput, ChallengeLessonUncheckedCreateWithoutChallengeProgressInput>
-    where?: ChallengeLessonWhereInput
+  export type LessonUpsertWithoutLessonReviewsInput = {
+    update: XOR<LessonUpdateWithoutLessonReviewsInput, LessonUncheckedUpdateWithoutLessonReviewsInput>
+    create: XOR<LessonCreateWithoutLessonReviewsInput, LessonUncheckedCreateWithoutLessonReviewsInput>
+    where?: LessonWhereInput
   }
 
-  export type ChallengeLessonUpdateToOneWithWhereWithoutChallengeProgressInput = {
-    where?: ChallengeLessonWhereInput
-    data: XOR<ChallengeLessonUpdateWithoutChallengeProgressInput, ChallengeLessonUncheckedUpdateWithoutChallengeProgressInput>
+  export type LessonUpdateToOneWithWhereWithoutLessonReviewsInput = {
+    where?: LessonWhereInput
+    data: XOR<LessonUpdateWithoutLessonReviewsInput, LessonUncheckedUpdateWithoutLessonReviewsInput>
   }
 
-  export type ChallengeLessonUpdateWithoutChallengeProgressInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
+  export type LessonUpdateWithoutLessonReviewsInput = {
     title?: StringFieldUpdateOperationsInput | string
+    LessonProgress?: LessonProgressUpdateManyWithoutLessonNestedInput
+    Comment?: CommentUpdateManyWithoutLessonNestedInput
   }
 
-  export type ChallengeLessonUncheckedUpdateWithoutChallengeProgressInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
+  export type LessonUncheckedUpdateWithoutLessonReviewsInput = {
+    lessonId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserCreateWithoutChallengeResultInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    Points?: PointCreateNestedManyWithoutUserInput
-    LessonProgress?: LessonProgressCreateNestedManyWithoutUserInput
-    UserBadge?: UserBadgeCreateNestedManyWithoutUserInput
-    Comment?: CommentCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutChallengeResultInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Points?: PointUncheckedCreateNestedManyWithoutUserInput
-    LessonProgress?: LessonProgressUncheckedCreateNestedManyWithoutUserInput
-    UserBadge?: UserBadgeUncheckedCreateNestedManyWithoutUserInput
-    Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    ChallengeProgress?: ChallengeProgressUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutChallengeResultInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutChallengeResultInput, UserUncheckedCreateWithoutChallengeResultInput>
-  }
-
-  export type UserUpsertWithoutChallengeResultInput = {
-    update: XOR<UserUpdateWithoutChallengeResultInput, UserUncheckedUpdateWithoutChallengeResultInput>
-    create: XOR<UserCreateWithoutChallengeResultInput, UserUncheckedCreateWithoutChallengeResultInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutChallengeResultInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutChallengeResultInput, UserUncheckedUpdateWithoutChallengeResultInput>
-  }
-
-  export type UserUpdateWithoutChallengeResultInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    Points?: PointUpdateManyWithoutUserNestedInput
-    LessonProgress?: LessonProgressUpdateManyWithoutUserNestedInput
-    UserBadge?: UserBadgeUpdateManyWithoutUserNestedInput
-    Comment?: CommentUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutChallengeResultInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Points?: PointUncheckedUpdateManyWithoutUserNestedInput
-    LessonProgress?: LessonProgressUncheckedUpdateManyWithoutUserNestedInput
-    UserBadge?: UserBadgeUncheckedUpdateManyWithoutUserNestedInput
-    Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    ChallengeProgress?: ChallengeProgressUncheckedUpdateManyWithoutUserNestedInput
+    LessonProgress?: LessonProgressUncheckedUpdateManyWithoutLessonNestedInput
+    Comment?: CommentUncheckedUpdateManyWithoutLessonNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -21162,16 +18513,9 @@ export namespace Prisma {
     like?: number
   }
 
-  export type ChallengeProgressCreateManyUserInput = {
-    challengeId: number
-    completed: boolean
-  }
-
-  export type ChallengeResultCreateManyUserInput = {
-    resultId?: number
-    challengeDate?: Date | string
-    accuracy: number
-    createdAt?: Date | string
+  export type LessonReviewsCreateManyUserInput = {
+    lessonId: number
+    reviewedAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -21306,39 +18650,19 @@ export namespace Prisma {
     like?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ChallengeProgressUpdateWithoutUserInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    challenge?: ChallengeLessonUpdateOneRequiredWithoutChallengeProgressNestedInput
+  export type LessonReviewsUpdateWithoutUserInput = {
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lesson?: LessonUpdateOneRequiredWithoutLessonReviewsNestedInput
   }
 
-  export type ChallengeProgressUncheckedUpdateWithoutUserInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
+  export type LessonReviewsUncheckedUpdateWithoutUserInput = {
+    lessonId?: IntFieldUpdateOperationsInput | number
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeProgressUncheckedUpdateManyWithoutUserInput = {
-    challengeId?: IntFieldUpdateOperationsInput | number
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeResultUpdateWithoutUserInput = {
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeResultUncheckedUpdateWithoutUserInput = {
-    resultId?: IntFieldUpdateOperationsInput | number
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChallengeResultUncheckedUpdateManyWithoutUserInput = {
-    resultId?: IntFieldUpdateOperationsInput | number
-    challengeDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    accuracy?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type LessonReviewsUncheckedUpdateManyWithoutUserInput = {
+    lessonId?: IntFieldUpdateOperationsInput | number
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonProgressCreateManyLessonInput = {
@@ -21353,6 +18677,11 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     like?: number
+  }
+
+  export type LessonReviewsCreateManyLessonInput = {
+    userId: string
+    reviewedAt?: Date | string
   }
 
   export type LessonProgressUpdateWithoutLessonInput = {
@@ -21397,6 +18726,21 @@ export namespace Prisma {
     like?: IntFieldUpdateOperationsInput | number
   }
 
+  export type LessonReviewsUpdateWithoutLessonInput = {
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLessonReviewsNestedInput
+  }
+
+  export type LessonReviewsUncheckedUpdateWithoutLessonInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonReviewsUncheckedUpdateManyWithoutLessonInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    reviewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserBadgeCreateManyBadgeInput = {
     userId: string
     obtainedAt: Date | string
@@ -21417,26 +18761,6 @@ export namespace Prisma {
     obtainedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChallengeProgressCreateManyChallengeInput = {
-    userId: string
-    completed: boolean
-  }
-
-  export type ChallengeProgressUpdateWithoutChallengeInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutChallengeProgressNestedInput
-  }
-
-  export type ChallengeProgressUncheckedUpdateWithoutChallengeInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ChallengeProgressUncheckedUpdateManyWithoutChallengeInput = {
-    userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
 
 
   /**
@@ -21454,10 +18778,6 @@ export namespace Prisma {
      * @deprecated Use BadgeCountOutputTypeDefaultArgs instead
      */
     export type BadgeCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BadgeCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ChallengeLessonCountOutputTypeDefaultArgs instead
-     */
-    export type ChallengeLessonCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChallengeLessonCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
@@ -21495,18 +18815,6 @@ export namespace Prisma {
      */
     export type CommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CommentDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use ChallengeLessonDefaultArgs instead
-     */
-    export type ChallengeLessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChallengeLessonDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ChallengeProgressDefaultArgs instead
-     */
-    export type ChallengeProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChallengeProgressDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ChallengeResultDefaultArgs instead
-     */
-    export type ChallengeResultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChallengeResultDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use VerificationTokenDefaultArgs instead
      */
     export type VerificationTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = VerificationTokenDefaultArgs<ExtArgs>
@@ -21514,6 +18822,10 @@ export namespace Prisma {
      * @deprecated Use SrhiAnswerDefaultArgs instead
      */
     export type SrhiAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SrhiAnswerDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LessonReviewsDefaultArgs instead
+     */
+    export type LessonReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LessonReviewsDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

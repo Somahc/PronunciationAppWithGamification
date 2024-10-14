@@ -40,19 +40,20 @@ model Session {
 }
 
 model User {
-    id                String              @id @default(cuid())
-    name              String?
-    email             String?             @unique
-    emailVerified     DateTime?
-    image             String?
-    accounts          Account[]
-    sessions          Session[]
-    Points            Point[]
-    LessonProgress    LessonProgress[]
-    UserBadge         UserBadge[]
-    Comment           Comment[]
-    ChallengeProgress ChallengeProgress[]
-    ChallengeResult   ChallengeResult[]
+    id             String           @id @default(cuid())
+    name           String?
+    email          String?          @unique
+    emailVerified  DateTime?
+    image          String?
+    accounts       Account[]
+    sessions       Session[]
+    Points         Point[]
+    LessonProgress LessonProgress[]
+    UserBadge      UserBadge[]
+    Comment        Comment[]
+    // ChallengeProgress ChallengeProgress[]
+    // ChallengeResult   ChallengeResult[]
+    LessonReviews  LessonReviews[]
 }
 
 model Point {
@@ -71,6 +72,7 @@ model Lesson {
 
     LessonProgress LessonProgress[]
     Comment        Comment[]
+    LessonReviews  LessonReviews[]
 
     @@map("lessons")
 }
@@ -127,39 +129,39 @@ model Comment {
     @@map("comments")
 }
 
-model ChallengeLesson {
-    challengeId Int    @id @map("challenge_id")
-    title       String
+// model ChallengeLesson {
+//     challengeId Int    @id @map("challenge_id")
+//     title       String
 
-    ChallengeProgress ChallengeProgress[]
+//     ChallengeProgress ChallengeProgress[]
 
-    @@map("challenge_lessons")
-}
+//     @@map("challenge_lessons")
+// }
 
-model ChallengeProgress {
-    challengeId Int     @map("challenge_id")
-    userId      String  @map("user_id")
-    completed   Boolean
+// model ChallengeProgress {
+//     challengeId Int     @map("challenge_id")
+//     userId      String  @map("user_id")
+//     completed   Boolean
 
-    user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-    challenge ChallengeLesson @relation(fields: [challengeId], references: [challengeId], onDelete: Cascade)
+//     user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+//     challenge ChallengeLesson @relation(fields: [challengeId], references: [challengeId], onDelete: Cascade)
 
-    @@id([challengeId, userId])
-    @@unique([challengeId, userId], name: "challenge_progress_identifier")
-    @@map("challenge_progresses")
-}
+//     @@id([challengeId, userId])
+//     @@unique([challengeId, userId], name: "challenge_progress_identifier")
+//     @@map("challenge_progresses")
+// }
 
-model ChallengeResult {
-    resultId      Int      @id @default(autoincrement()) @map("result_id")
-    userId        String   @map("user_id")
-    challengeDate DateTime @default(now()) @map("challenge_date")
-    accuracy      Int
-    createdAt     DateTime @default(now()) @map("created_at")
+// model ChallengeResult {
+//     resultId      Int      @id @default(autoincrement()) @map("result_id")
+//     userId        String   @map("user_id")
+//     challengeDate DateTime @default(now()) @map("challenge_date")
+//     accuracy      Int
+//     createdAt     DateTime @default(now()) @map("created_at")
 
-    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+//     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@map("challenge_results")
-}
+//     @@map("challenge_results")
+// }
 
 model VerificationToken {
     identifier String
@@ -182,4 +184,17 @@ model SrhiAnswer {
     submittedAt DateTime @default(now()) @map("submitted_at")
 
     @@map("srhi_answers")
+}
+
+model LessonReviews {
+    lessonId   Int      @map("lesson_id")
+    userId     String   @map("user_id")
+    reviewedAt DateTime @default(now()) @map("reviewed_at")
+
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    lesson Lesson @relation(fields: [lessonId], references: [lessonId], onDelete: Cascade)
+
+    @@id([lessonId, userId])
+    @@unique([lessonId, userId], name: "lesson_review_identifier")
+    @@map("lesson_reviews")
 }

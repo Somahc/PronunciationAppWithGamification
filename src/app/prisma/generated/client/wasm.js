@@ -190,25 +190,6 @@ exports.Prisma.CommentScalarFieldEnum = {
   like: 'like'
 };
 
-exports.Prisma.ChallengeLessonScalarFieldEnum = {
-  challengeId: 'challengeId',
-  title: 'title'
-};
-
-exports.Prisma.ChallengeProgressScalarFieldEnum = {
-  challengeId: 'challengeId',
-  userId: 'userId',
-  completed: 'completed'
-};
-
-exports.Prisma.ChallengeResultScalarFieldEnum = {
-  resultId: 'resultId',
-  userId: 'userId',
-  challengeDate: 'challengeDate',
-  accuracy: 'accuracy',
-  createdAt: 'createdAt'
-};
-
 exports.Prisma.VerificationTokenScalarFieldEnum = {
   identifier: 'identifier',
   token: 'token',
@@ -226,6 +207,12 @@ exports.Prisma.SrhiAnswerScalarFieldEnum = {
   q6: 'q6',
   q7: 'q7',
   submittedAt: 'submittedAt'
+};
+
+exports.Prisma.LessonReviewsScalarFieldEnum = {
+  lessonId: 'lessonId',
+  userId: 'userId',
+  reviewedAt: 'reviewedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -264,11 +251,9 @@ exports.Prisma.ModelName = {
   Badge: 'Badge',
   UserBadge: 'UserBadge',
   Comment: 'Comment',
-  ChallengeLesson: 'ChallengeLesson',
-  ChallengeProgress: 'ChallengeProgress',
-  ChallengeResult: 'ChallengeResult',
   VerificationToken: 'VerificationToken',
-  SrhiAnswer: 'SrhiAnswer'
+  SrhiAnswer: 'SrhiAnswer',
+  LessonReviews: 'LessonReviews'
 };
 
 /**
