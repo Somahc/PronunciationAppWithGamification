@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/lib/next-auth/options";
 import style from "../page.module.scss";
 import ToTopBtn from "@/app/components/ToTopBtn";
+import ToSrhiBtn from "@/app/components/ToSrhiBtn";
 
 export default async function Page() {
 
@@ -10,7 +11,7 @@ export default async function Page() {
     if (!session) {
         return (
             <>
-                <div>ログインしてくださいな</div>
+                <div>ログインしてください</div>
                 <p className="text-xl mt-5"><a href="/signin" className="text-sky-500 hover:text-sky-600">/signinページ</a>でログイン</p>
             </>
         )
@@ -33,6 +34,7 @@ export default async function Page() {
     return (
         <div className="h-screen flex flex-col justify-center items-center">
             <p className={style.section_ttl}>レッスン/s/　完了！</p>
+            <ToSrhiBtn />
             <ToTopBtn />
         </div>
     )

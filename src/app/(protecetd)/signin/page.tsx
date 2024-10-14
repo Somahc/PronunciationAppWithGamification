@@ -1,7 +1,6 @@
 "use client"
 
 import { useSession, signIn, signOut } from "next-auth/react";
-import AudioRecorder from "./audioRecorder";
 import Image from "next/image";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
         </div>
         <p className="text-2xl mb-2">Welcome <span className="font-bold">{session.user?.name}</span>. Signed In As</p>
         <p className="font-bold mb-4">{session.user?.email}</p>
-        <AudioRecorder />
         <button className="bg-red-600 py-2 px-6 rounded-md" onClick={() => signOut()}>Sign out</button>
         <a href="/lesson" className="bg-red-600 py-2 px-6 rounded-md">to lessonHome</a>
       </div>

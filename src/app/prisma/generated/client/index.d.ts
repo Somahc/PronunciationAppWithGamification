@@ -78,6 +78,11 @@ export type ChallengeResult = $Result.DefaultSelection<Prisma.$ChallengeResultPa
  * 
  */
 export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTokenPayload>
+/**
+ * Model SrhiAnswer
+ * 
+ */
+export type SrhiAnswer = $Result.DefaultSelection<Prisma.$SrhiAnswerPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -330,6 +335,16 @@ export class PrismaClient<
     * ```
     */
   get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs>;
+
+  /**
+   * `prisma.srhiAnswer`: Exposes CRUD operations for the **SrhiAnswer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SrhiAnswers
+    * const srhiAnswers = await prisma.srhiAnswer.findMany()
+    * ```
+    */
+  get srhiAnswer(): Prisma.SrhiAnswerDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -819,7 +834,8 @@ export namespace Prisma {
     ChallengeLesson: 'ChallengeLesson',
     ChallengeProgress: 'ChallengeProgress',
     ChallengeResult: 'ChallengeResult',
-    VerificationToken: 'VerificationToken'
+    VerificationToken: 'VerificationToken',
+    SrhiAnswer: 'SrhiAnswer'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -836,7 +852,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'point' | 'lesson' | 'lessonProgress' | 'badge' | 'userBadge' | 'comment' | 'challengeLesson' | 'challengeProgress' | 'challengeResult' | 'verificationToken'
+      modelProps: 'account' | 'session' | 'user' | 'point' | 'lesson' | 'lessonProgress' | 'badge' | 'userBadge' | 'comment' | 'challengeLesson' | 'challengeProgress' | 'challengeResult' | 'verificationToken' | 'srhiAnswer'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1747,6 +1763,76 @@ export namespace Prisma {
           count: {
             args: Prisma.VerificationTokenCountArgs<ExtArgs>,
             result: $Utils.Optional<VerificationTokenCountAggregateOutputType> | number
+          }
+        }
+      }
+      SrhiAnswer: {
+        payload: Prisma.$SrhiAnswerPayload<ExtArgs>
+        fields: Prisma.SrhiAnswerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SrhiAnswerFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SrhiAnswerFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          findFirst: {
+            args: Prisma.SrhiAnswerFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SrhiAnswerFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          findMany: {
+            args: Prisma.SrhiAnswerFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>[]
+          }
+          create: {
+            args: Prisma.SrhiAnswerCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          createMany: {
+            args: Prisma.SrhiAnswerCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SrhiAnswerCreateManyAndReturnArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>[]
+          }
+          delete: {
+            args: Prisma.SrhiAnswerDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          update: {
+            args: Prisma.SrhiAnswerUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          deleteMany: {
+            args: Prisma.SrhiAnswerDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SrhiAnswerUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.SrhiAnswerUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$SrhiAnswerPayload>
+          }
+          aggregate: {
+            args: Prisma.SrhiAnswerAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateSrhiAnswer>
+          }
+          groupBy: {
+            args: Prisma.SrhiAnswerGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<SrhiAnswerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SrhiAnswerCountArgs<ExtArgs>,
+            result: $Utils.Optional<SrhiAnswerCountAggregateOutputType> | number
           }
         }
       }
@@ -7272,18 +7358,21 @@ export namespace Prisma {
     lessonId: number | null
     userId: string | null
     completed: boolean | null
+    completedAt: Date | null
   }
 
   export type LessonProgressMaxAggregateOutputType = {
     lessonId: number | null
     userId: string | null
     completed: boolean | null
+    completedAt: Date | null
   }
 
   export type LessonProgressCountAggregateOutputType = {
     lessonId: number
     userId: number
     completed: number
+    completedAt: number
     _all: number
   }
 
@@ -7300,18 +7389,21 @@ export namespace Prisma {
     lessonId?: true
     userId?: true
     completed?: true
+    completedAt?: true
   }
 
   export type LessonProgressMaxAggregateInputType = {
     lessonId?: true
     userId?: true
     completed?: true
+    completedAt?: true
   }
 
   export type LessonProgressCountAggregateInputType = {
     lessonId?: true
     userId?: true
     completed?: true
+    completedAt?: true
     _all?: true
   }
 
@@ -7405,6 +7497,7 @@ export namespace Prisma {
     lessonId: number
     userId: string
     completed: boolean
+    completedAt: Date
     _count: LessonProgressCountAggregateOutputType | null
     _avg: LessonProgressAvgAggregateOutputType | null
     _sum: LessonProgressSumAggregateOutputType | null
@@ -7430,6 +7523,7 @@ export namespace Prisma {
     lessonId?: boolean
     userId?: boolean
     completed?: boolean
+    completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lessonProgress"]>
@@ -7438,6 +7532,7 @@ export namespace Prisma {
     lessonId?: boolean
     userId?: boolean
     completed?: boolean
+    completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     lesson?: boolean | LessonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lessonProgress"]>
@@ -7446,6 +7541,7 @@ export namespace Prisma {
     lessonId?: boolean
     userId?: boolean
     completed?: boolean
+    completedAt?: boolean
   }
 
   export type LessonProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7467,6 +7563,7 @@ export namespace Prisma {
       lessonId: number
       userId: string
       completed: boolean
+      completedAt: Date
     }, ExtArgs["result"]["lessonProgress"]>
     composites: {}
   }
@@ -7892,6 +7989,7 @@ export namespace Prisma {
     readonly lessonId: FieldRef<"LessonProgress", 'Int'>
     readonly userId: FieldRef<"LessonProgress", 'String'>
     readonly completed: FieldRef<"LessonProgress", 'Boolean'>
+    readonly completedAt: FieldRef<"LessonProgress", 'DateTime'>
   }
     
 
@@ -15046,6 +15144,1032 @@ export namespace Prisma {
 
 
   /**
+   * Model SrhiAnswer
+   */
+
+  export type AggregateSrhiAnswer = {
+    _count: SrhiAnswerCountAggregateOutputType | null
+    _avg: SrhiAnswerAvgAggregateOutputType | null
+    _sum: SrhiAnswerSumAggregateOutputType | null
+    _min: SrhiAnswerMinAggregateOutputType | null
+    _max: SrhiAnswerMaxAggregateOutputType | null
+  }
+
+  export type SrhiAnswerAvgAggregateOutputType = {
+    srhiId: number | null
+    q1: number | null
+    q2: number | null
+    q3: number | null
+    q4: number | null
+    q5: number | null
+    q6: number | null
+    q7: number | null
+  }
+
+  export type SrhiAnswerSumAggregateOutputType = {
+    srhiId: number | null
+    q1: number | null
+    q2: number | null
+    q3: number | null
+    q4: number | null
+    q5: number | null
+    q6: number | null
+    q7: number | null
+  }
+
+  export type SrhiAnswerMinAggregateOutputType = {
+    srhiId: number | null
+    userId: string | null
+    q1: number | null
+    q2: number | null
+    q3: number | null
+    q4: number | null
+    q5: number | null
+    q6: number | null
+    q7: number | null
+    submittedAt: Date | null
+  }
+
+  export type SrhiAnswerMaxAggregateOutputType = {
+    srhiId: number | null
+    userId: string | null
+    q1: number | null
+    q2: number | null
+    q3: number | null
+    q4: number | null
+    q5: number | null
+    q6: number | null
+    q7: number | null
+    submittedAt: Date | null
+  }
+
+  export type SrhiAnswerCountAggregateOutputType = {
+    srhiId: number
+    userId: number
+    q1: number
+    q2: number
+    q3: number
+    q4: number
+    q5: number
+    q6: number
+    q7: number
+    submittedAt: number
+    _all: number
+  }
+
+
+  export type SrhiAnswerAvgAggregateInputType = {
+    srhiId?: true
+    q1?: true
+    q2?: true
+    q3?: true
+    q4?: true
+    q5?: true
+    q6?: true
+    q7?: true
+  }
+
+  export type SrhiAnswerSumAggregateInputType = {
+    srhiId?: true
+    q1?: true
+    q2?: true
+    q3?: true
+    q4?: true
+    q5?: true
+    q6?: true
+    q7?: true
+  }
+
+  export type SrhiAnswerMinAggregateInputType = {
+    srhiId?: true
+    userId?: true
+    q1?: true
+    q2?: true
+    q3?: true
+    q4?: true
+    q5?: true
+    q6?: true
+    q7?: true
+    submittedAt?: true
+  }
+
+  export type SrhiAnswerMaxAggregateInputType = {
+    srhiId?: true
+    userId?: true
+    q1?: true
+    q2?: true
+    q3?: true
+    q4?: true
+    q5?: true
+    q6?: true
+    q7?: true
+    submittedAt?: true
+  }
+
+  export type SrhiAnswerCountAggregateInputType = {
+    srhiId?: true
+    userId?: true
+    q1?: true
+    q2?: true
+    q3?: true
+    q4?: true
+    q5?: true
+    q6?: true
+    q7?: true
+    submittedAt?: true
+    _all?: true
+  }
+
+  export type SrhiAnswerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SrhiAnswer to aggregate.
+     */
+    where?: SrhiAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SrhiAnswers to fetch.
+     */
+    orderBy?: SrhiAnswerOrderByWithRelationInput | SrhiAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SrhiAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SrhiAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SrhiAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SrhiAnswers
+    **/
+    _count?: true | SrhiAnswerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SrhiAnswerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SrhiAnswerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SrhiAnswerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SrhiAnswerMaxAggregateInputType
+  }
+
+  export type GetSrhiAnswerAggregateType<T extends SrhiAnswerAggregateArgs> = {
+        [P in keyof T & keyof AggregateSrhiAnswer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSrhiAnswer[P]>
+      : GetScalarType<T[P], AggregateSrhiAnswer[P]>
+  }
+
+
+
+
+  export type SrhiAnswerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SrhiAnswerWhereInput
+    orderBy?: SrhiAnswerOrderByWithAggregationInput | SrhiAnswerOrderByWithAggregationInput[]
+    by: SrhiAnswerScalarFieldEnum[] | SrhiAnswerScalarFieldEnum
+    having?: SrhiAnswerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SrhiAnswerCountAggregateInputType | true
+    _avg?: SrhiAnswerAvgAggregateInputType
+    _sum?: SrhiAnswerSumAggregateInputType
+    _min?: SrhiAnswerMinAggregateInputType
+    _max?: SrhiAnswerMaxAggregateInputType
+  }
+
+  export type SrhiAnswerGroupByOutputType = {
+    srhiId: number
+    userId: string
+    q1: number
+    q2: number
+    q3: number
+    q4: number
+    q5: number
+    q6: number
+    q7: number
+    submittedAt: Date
+    _count: SrhiAnswerCountAggregateOutputType | null
+    _avg: SrhiAnswerAvgAggregateOutputType | null
+    _sum: SrhiAnswerSumAggregateOutputType | null
+    _min: SrhiAnswerMinAggregateOutputType | null
+    _max: SrhiAnswerMaxAggregateOutputType | null
+  }
+
+  type GetSrhiAnswerGroupByPayload<T extends SrhiAnswerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SrhiAnswerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SrhiAnswerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SrhiAnswerGroupByOutputType[P]>
+            : GetScalarType<T[P], SrhiAnswerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SrhiAnswerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srhiId?: boolean
+    userId?: boolean
+    q1?: boolean
+    q2?: boolean
+    q3?: boolean
+    q4?: boolean
+    q5?: boolean
+    q6?: boolean
+    q7?: boolean
+    submittedAt?: boolean
+  }, ExtArgs["result"]["srhiAnswer"]>
+
+  export type SrhiAnswerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srhiId?: boolean
+    userId?: boolean
+    q1?: boolean
+    q2?: boolean
+    q3?: boolean
+    q4?: boolean
+    q5?: boolean
+    q6?: boolean
+    q7?: boolean
+    submittedAt?: boolean
+  }, ExtArgs["result"]["srhiAnswer"]>
+
+  export type SrhiAnswerSelectScalar = {
+    srhiId?: boolean
+    userId?: boolean
+    q1?: boolean
+    q2?: boolean
+    q3?: boolean
+    q4?: boolean
+    q5?: boolean
+    q6?: boolean
+    q7?: boolean
+    submittedAt?: boolean
+  }
+
+
+  export type $SrhiAnswerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SrhiAnswer"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      srhiId: number
+      userId: string
+      q1: number
+      q2: number
+      q3: number
+      q4: number
+      q5: number
+      q6: number
+      q7: number
+      submittedAt: Date
+    }, ExtArgs["result"]["srhiAnswer"]>
+    composites: {}
+  }
+
+  type SrhiAnswerGetPayload<S extends boolean | null | undefined | SrhiAnswerDefaultArgs> = $Result.GetResult<Prisma.$SrhiAnswerPayload, S>
+
+  type SrhiAnswerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SrhiAnswerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SrhiAnswerCountAggregateInputType | true
+    }
+
+  export interface SrhiAnswerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SrhiAnswer'], meta: { name: 'SrhiAnswer' } }
+    /**
+     * Find zero or one SrhiAnswer that matches the filter.
+     * @param {SrhiAnswerFindUniqueArgs} args - Arguments to find a SrhiAnswer
+     * @example
+     * // Get one SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends SrhiAnswerFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerFindUniqueArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one SrhiAnswer that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SrhiAnswerFindUniqueOrThrowArgs} args - Arguments to find a SrhiAnswer
+     * @example
+     * // Get one SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends SrhiAnswerFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first SrhiAnswer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerFindFirstArgs} args - Arguments to find a SrhiAnswer
+     * @example
+     * // Get one SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends SrhiAnswerFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerFindFirstArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first SrhiAnswer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerFindFirstOrThrowArgs} args - Arguments to find a SrhiAnswer
+     * @example
+     * // Get one SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends SrhiAnswerFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more SrhiAnswers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SrhiAnswers
+     * const srhiAnswers = await prisma.srhiAnswer.findMany()
+     * 
+     * // Get first 10 SrhiAnswers
+     * const srhiAnswers = await prisma.srhiAnswer.findMany({ take: 10 })
+     * 
+     * // Only select the `srhiId`
+     * const srhiAnswerWithSrhiIdOnly = await prisma.srhiAnswer.findMany({ select: { srhiId: true } })
+     * 
+    **/
+    findMany<T extends SrhiAnswerFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a SrhiAnswer.
+     * @param {SrhiAnswerCreateArgs} args - Arguments to create a SrhiAnswer.
+     * @example
+     * // Create one SrhiAnswer
+     * const SrhiAnswer = await prisma.srhiAnswer.create({
+     *   data: {
+     *     // ... data to create a SrhiAnswer
+     *   }
+     * })
+     * 
+    **/
+    create<T extends SrhiAnswerCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerCreateArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many SrhiAnswers.
+     * @param {SrhiAnswerCreateManyArgs} args - Arguments to create many SrhiAnswers.
+     * @example
+     * // Create many SrhiAnswers
+     * const srhiAnswer = await prisma.srhiAnswer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+    **/
+    createMany<T extends SrhiAnswerCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SrhiAnswers and returns the data saved in the database.
+     * @param {SrhiAnswerCreateManyAndReturnArgs} args - Arguments to create many SrhiAnswers.
+     * @example
+     * // Create many SrhiAnswers
+     * const srhiAnswer = await prisma.srhiAnswer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SrhiAnswers and only return the `srhiId`
+     * const srhiAnswerWithSrhiIdOnly = await prisma.srhiAnswer.createManyAndReturn({ 
+     *   select: { srhiId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+    **/
+    createManyAndReturn<T extends SrhiAnswerCreateManyAndReturnArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'createManyAndReturn'>>
+
+    /**
+     * Delete a SrhiAnswer.
+     * @param {SrhiAnswerDeleteArgs} args - Arguments to delete one SrhiAnswer.
+     * @example
+     * // Delete one SrhiAnswer
+     * const SrhiAnswer = await prisma.srhiAnswer.delete({
+     *   where: {
+     *     // ... filter to delete one SrhiAnswer
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends SrhiAnswerDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerDeleteArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one SrhiAnswer.
+     * @param {SrhiAnswerUpdateArgs} args - Arguments to update one SrhiAnswer.
+     * @example
+     * // Update one SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends SrhiAnswerUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerUpdateArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more SrhiAnswers.
+     * @param {SrhiAnswerDeleteManyArgs} args - Arguments to filter SrhiAnswers to delete.
+     * @example
+     * // Delete a few SrhiAnswers
+     * const { count } = await prisma.srhiAnswer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends SrhiAnswerDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, SrhiAnswerDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SrhiAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SrhiAnswers
+     * const srhiAnswer = await prisma.srhiAnswer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends SrhiAnswerUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SrhiAnswer.
+     * @param {SrhiAnswerUpsertArgs} args - Arguments to update or create a SrhiAnswer.
+     * @example
+     * // Update or create a SrhiAnswer
+     * const srhiAnswer = await prisma.srhiAnswer.upsert({
+     *   create: {
+     *     // ... data to create a SrhiAnswer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SrhiAnswer we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends SrhiAnswerUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, SrhiAnswerUpsertArgs<ExtArgs>>
+    ): Prisma__SrhiAnswerClient<$Result.GetResult<Prisma.$SrhiAnswerPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of SrhiAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerCountArgs} args - Arguments to filter SrhiAnswers to count.
+     * @example
+     * // Count the number of SrhiAnswers
+     * const count = await prisma.srhiAnswer.count({
+     *   where: {
+     *     // ... the filter for the SrhiAnswers we want to count
+     *   }
+     * })
+    **/
+    count<T extends SrhiAnswerCountArgs>(
+      args?: Subset<T, SrhiAnswerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SrhiAnswerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SrhiAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SrhiAnswerAggregateArgs>(args: Subset<T, SrhiAnswerAggregateArgs>): Prisma.PrismaPromise<GetSrhiAnswerAggregateType<T>>
+
+    /**
+     * Group by SrhiAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SrhiAnswerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SrhiAnswerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SrhiAnswerGroupByArgs['orderBy'] }
+        : { orderBy?: SrhiAnswerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SrhiAnswerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSrhiAnswerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SrhiAnswer model
+   */
+  readonly fields: SrhiAnswerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SrhiAnswer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SrhiAnswerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the SrhiAnswer model
+   */ 
+  interface SrhiAnswerFieldRefs {
+    readonly srhiId: FieldRef<"SrhiAnswer", 'Int'>
+    readonly userId: FieldRef<"SrhiAnswer", 'String'>
+    readonly q1: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q2: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q3: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q4: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q5: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q6: FieldRef<"SrhiAnswer", 'Int'>
+    readonly q7: FieldRef<"SrhiAnswer", 'Int'>
+    readonly submittedAt: FieldRef<"SrhiAnswer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SrhiAnswer findUnique
+   */
+  export type SrhiAnswerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter, which SrhiAnswer to fetch.
+     */
+    where: SrhiAnswerWhereUniqueInput
+  }
+
+  /**
+   * SrhiAnswer findUniqueOrThrow
+   */
+  export type SrhiAnswerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter, which SrhiAnswer to fetch.
+     */
+    where: SrhiAnswerWhereUniqueInput
+  }
+
+  /**
+   * SrhiAnswer findFirst
+   */
+  export type SrhiAnswerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter, which SrhiAnswer to fetch.
+     */
+    where?: SrhiAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SrhiAnswers to fetch.
+     */
+    orderBy?: SrhiAnswerOrderByWithRelationInput | SrhiAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SrhiAnswers.
+     */
+    cursor?: SrhiAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SrhiAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SrhiAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SrhiAnswers.
+     */
+    distinct?: SrhiAnswerScalarFieldEnum | SrhiAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * SrhiAnswer findFirstOrThrow
+   */
+  export type SrhiAnswerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter, which SrhiAnswer to fetch.
+     */
+    where?: SrhiAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SrhiAnswers to fetch.
+     */
+    orderBy?: SrhiAnswerOrderByWithRelationInput | SrhiAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SrhiAnswers.
+     */
+    cursor?: SrhiAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SrhiAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SrhiAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SrhiAnswers.
+     */
+    distinct?: SrhiAnswerScalarFieldEnum | SrhiAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * SrhiAnswer findMany
+   */
+  export type SrhiAnswerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter, which SrhiAnswers to fetch.
+     */
+    where?: SrhiAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SrhiAnswers to fetch.
+     */
+    orderBy?: SrhiAnswerOrderByWithRelationInput | SrhiAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SrhiAnswers.
+     */
+    cursor?: SrhiAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SrhiAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SrhiAnswers.
+     */
+    skip?: number
+    distinct?: SrhiAnswerScalarFieldEnum | SrhiAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * SrhiAnswer create
+   */
+  export type SrhiAnswerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * The data needed to create a SrhiAnswer.
+     */
+    data: XOR<SrhiAnswerCreateInput, SrhiAnswerUncheckedCreateInput>
+  }
+
+  /**
+   * SrhiAnswer createMany
+   */
+  export type SrhiAnswerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SrhiAnswers.
+     */
+    data: SrhiAnswerCreateManyInput | SrhiAnswerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SrhiAnswer createManyAndReturn
+   */
+  export type SrhiAnswerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SrhiAnswers.
+     */
+    data: SrhiAnswerCreateManyInput | SrhiAnswerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SrhiAnswer update
+   */
+  export type SrhiAnswerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * The data needed to update a SrhiAnswer.
+     */
+    data: XOR<SrhiAnswerUpdateInput, SrhiAnswerUncheckedUpdateInput>
+    /**
+     * Choose, which SrhiAnswer to update.
+     */
+    where: SrhiAnswerWhereUniqueInput
+  }
+
+  /**
+   * SrhiAnswer updateMany
+   */
+  export type SrhiAnswerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SrhiAnswers.
+     */
+    data: XOR<SrhiAnswerUpdateManyMutationInput, SrhiAnswerUncheckedUpdateManyInput>
+    /**
+     * Filter which SrhiAnswers to update
+     */
+    where?: SrhiAnswerWhereInput
+  }
+
+  /**
+   * SrhiAnswer upsert
+   */
+  export type SrhiAnswerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * The filter to search for the SrhiAnswer to update in case it exists.
+     */
+    where: SrhiAnswerWhereUniqueInput
+    /**
+     * In case the SrhiAnswer found by the `where` argument doesn't exist, create a new SrhiAnswer with this data.
+     */
+    create: XOR<SrhiAnswerCreateInput, SrhiAnswerUncheckedCreateInput>
+    /**
+     * In case the SrhiAnswer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SrhiAnswerUpdateInput, SrhiAnswerUncheckedUpdateInput>
+  }
+
+  /**
+   * SrhiAnswer delete
+   */
+  export type SrhiAnswerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+    /**
+     * Filter which SrhiAnswer to delete.
+     */
+    where: SrhiAnswerWhereUniqueInput
+  }
+
+  /**
+   * SrhiAnswer deleteMany
+   */
+  export type SrhiAnswerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SrhiAnswers to delete
+     */
+    where?: SrhiAnswerWhereInput
+  }
+
+  /**
+   * SrhiAnswer without action
+   */
+  export type SrhiAnswerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SrhiAnswer
+     */
+    select?: SrhiAnswerSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -15118,7 +16242,8 @@ export namespace Prisma {
   export const LessonProgressScalarFieldEnum: {
     lessonId: 'lessonId',
     userId: 'userId',
-    completed: 'completed'
+    completed: 'completed',
+    completedAt: 'completedAt'
   };
 
   export type LessonProgressScalarFieldEnum = (typeof LessonProgressScalarFieldEnum)[keyof typeof LessonProgressScalarFieldEnum]
@@ -15191,6 +16316,22 @@ export namespace Prisma {
   };
 
   export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+  export const SrhiAnswerScalarFieldEnum: {
+    srhiId: 'srhiId',
+    userId: 'userId',
+    q1: 'q1',
+    q2: 'q2',
+    q3: 'q3',
+    q4: 'q4',
+    q5: 'q5',
+    q6: 'q6',
+    q7: 'q7',
+    submittedAt: 'submittedAt'
+  };
+
+  export type SrhiAnswerScalarFieldEnum = (typeof SrhiAnswerScalarFieldEnum)[keyof typeof SrhiAnswerScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -15629,6 +16770,7 @@ export namespace Prisma {
     lessonId?: IntFilter<"LessonProgress"> | number
     userId?: StringFilter<"LessonProgress"> | string
     completed?: BoolFilter<"LessonProgress"> | boolean
+    completedAt?: DateTimeFilter<"LessonProgress"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     lesson?: XOR<LessonRelationFilter, LessonWhereInput>
   }
@@ -15637,6 +16779,7 @@ export namespace Prisma {
     lessonId?: SortOrder
     userId?: SortOrder
     completed?: SortOrder
+    completedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     lesson?: LessonOrderByWithRelationInput
   }
@@ -15650,6 +16793,7 @@ export namespace Prisma {
     lessonId?: IntFilter<"LessonProgress"> | number
     userId?: StringFilter<"LessonProgress"> | string
     completed?: BoolFilter<"LessonProgress"> | boolean
+    completedAt?: DateTimeFilter<"LessonProgress"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     lesson?: XOR<LessonRelationFilter, LessonWhereInput>
   }, "lessonId_userId" | "lesson_progress_identifier">
@@ -15658,6 +16802,7 @@ export namespace Prisma {
     lessonId?: SortOrder
     userId?: SortOrder
     completed?: SortOrder
+    completedAt?: SortOrder
     _count?: LessonProgressCountOrderByAggregateInput
     _avg?: LessonProgressAvgOrderByAggregateInput
     _max?: LessonProgressMaxOrderByAggregateInput
@@ -15672,6 +16817,7 @@ export namespace Prisma {
     lessonId?: IntWithAggregatesFilter<"LessonProgress"> | number
     userId?: StringWithAggregatesFilter<"LessonProgress"> | string
     completed?: BoolWithAggregatesFilter<"LessonProgress"> | boolean
+    completedAt?: DateTimeWithAggregatesFilter<"LessonProgress"> | Date | string
   }
 
   export type BadgeWhereInput = {
@@ -16042,6 +17188,85 @@ export namespace Prisma {
     expires?: DateTimeWithAggregatesFilter<"VerificationToken"> | Date | string
   }
 
+  export type SrhiAnswerWhereInput = {
+    AND?: SrhiAnswerWhereInput | SrhiAnswerWhereInput[]
+    OR?: SrhiAnswerWhereInput[]
+    NOT?: SrhiAnswerWhereInput | SrhiAnswerWhereInput[]
+    srhiId?: IntFilter<"SrhiAnswer"> | number
+    userId?: StringFilter<"SrhiAnswer"> | string
+    q1?: IntFilter<"SrhiAnswer"> | number
+    q2?: IntFilter<"SrhiAnswer"> | number
+    q3?: IntFilter<"SrhiAnswer"> | number
+    q4?: IntFilter<"SrhiAnswer"> | number
+    q5?: IntFilter<"SrhiAnswer"> | number
+    q6?: IntFilter<"SrhiAnswer"> | number
+    q7?: IntFilter<"SrhiAnswer"> | number
+    submittedAt?: DateTimeFilter<"SrhiAnswer"> | Date | string
+  }
+
+  export type SrhiAnswerOrderByWithRelationInput = {
+    srhiId?: SortOrder
+    userId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+    submittedAt?: SortOrder
+  }
+
+  export type SrhiAnswerWhereUniqueInput = Prisma.AtLeast<{
+    srhiId?: number
+    AND?: SrhiAnswerWhereInput | SrhiAnswerWhereInput[]
+    OR?: SrhiAnswerWhereInput[]
+    NOT?: SrhiAnswerWhereInput | SrhiAnswerWhereInput[]
+    userId?: StringFilter<"SrhiAnswer"> | string
+    q1?: IntFilter<"SrhiAnswer"> | number
+    q2?: IntFilter<"SrhiAnswer"> | number
+    q3?: IntFilter<"SrhiAnswer"> | number
+    q4?: IntFilter<"SrhiAnswer"> | number
+    q5?: IntFilter<"SrhiAnswer"> | number
+    q6?: IntFilter<"SrhiAnswer"> | number
+    q7?: IntFilter<"SrhiAnswer"> | number
+    submittedAt?: DateTimeFilter<"SrhiAnswer"> | Date | string
+  }, "srhiId">
+
+  export type SrhiAnswerOrderByWithAggregationInput = {
+    srhiId?: SortOrder
+    userId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+    submittedAt?: SortOrder
+    _count?: SrhiAnswerCountOrderByAggregateInput
+    _avg?: SrhiAnswerAvgOrderByAggregateInput
+    _max?: SrhiAnswerMaxOrderByAggregateInput
+    _min?: SrhiAnswerMinOrderByAggregateInput
+    _sum?: SrhiAnswerSumOrderByAggregateInput
+  }
+
+  export type SrhiAnswerScalarWhereWithAggregatesInput = {
+    AND?: SrhiAnswerScalarWhereWithAggregatesInput | SrhiAnswerScalarWhereWithAggregatesInput[]
+    OR?: SrhiAnswerScalarWhereWithAggregatesInput[]
+    NOT?: SrhiAnswerScalarWhereWithAggregatesInput | SrhiAnswerScalarWhereWithAggregatesInput[]
+    srhiId?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    userId?: StringWithAggregatesFilter<"SrhiAnswer"> | string
+    q1?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q2?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q3?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q4?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q5?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q6?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    q7?: IntWithAggregatesFilter<"SrhiAnswer"> | number
+    submittedAt?: DateTimeWithAggregatesFilter<"SrhiAnswer"> | Date | string
+  }
+
   export type AccountCreateInput = {
     id?: string
     type: string
@@ -16365,6 +17590,7 @@ export namespace Prisma {
 
   export type LessonProgressCreateInput = {
     completed: boolean
+    completedAt?: Date | string
     user: UserCreateNestedOneWithoutLessonProgressInput
     lesson: LessonCreateNestedOneWithoutLessonProgressInput
   }
@@ -16373,10 +17599,12 @@ export namespace Prisma {
     lessonId: number
     userId: string
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type LessonProgressUpdateInput = {
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutLessonProgressNestedInput
     lesson?: LessonUpdateOneRequiredWithoutLessonProgressNestedInput
   }
@@ -16385,22 +17613,26 @@ export namespace Prisma {
     lessonId?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonProgressCreateManyInput = {
     lessonId: number
     userId: string
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type LessonProgressUpdateManyMutationInput = {
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonProgressUncheckedUpdateManyInput = {
     lessonId?: IntFieldUpdateOperationsInput | number
     userId?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BadgeCreateInput = {
@@ -16732,6 +17964,94 @@ export namespace Prisma {
     identifier?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SrhiAnswerCreateInput = {
+    userId: string
+    q1: number
+    q2: number
+    q3: number
+    q4: number
+    q5: number
+    q6: number
+    q7: number
+    submittedAt?: Date | string
+  }
+
+  export type SrhiAnswerUncheckedCreateInput = {
+    srhiId?: number
+    userId: string
+    q1: number
+    q2: number
+    q3: number
+    q4: number
+    q5: number
+    q6: number
+    q7: number
+    submittedAt?: Date | string
+  }
+
+  export type SrhiAnswerUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    q1?: IntFieldUpdateOperationsInput | number
+    q2?: IntFieldUpdateOperationsInput | number
+    q3?: IntFieldUpdateOperationsInput | number
+    q4?: IntFieldUpdateOperationsInput | number
+    q5?: IntFieldUpdateOperationsInput | number
+    q6?: IntFieldUpdateOperationsInput | number
+    q7?: IntFieldUpdateOperationsInput | number
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SrhiAnswerUncheckedUpdateInput = {
+    srhiId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    q1?: IntFieldUpdateOperationsInput | number
+    q2?: IntFieldUpdateOperationsInput | number
+    q3?: IntFieldUpdateOperationsInput | number
+    q4?: IntFieldUpdateOperationsInput | number
+    q5?: IntFieldUpdateOperationsInput | number
+    q6?: IntFieldUpdateOperationsInput | number
+    q7?: IntFieldUpdateOperationsInput | number
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SrhiAnswerCreateManyInput = {
+    srhiId?: number
+    userId: string
+    q1: number
+    q2: number
+    q3: number
+    q4: number
+    q5: number
+    q6: number
+    q7: number
+    submittedAt?: Date | string
+  }
+
+  export type SrhiAnswerUpdateManyMutationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    q1?: IntFieldUpdateOperationsInput | number
+    q2?: IntFieldUpdateOperationsInput | number
+    q3?: IntFieldUpdateOperationsInput | number
+    q4?: IntFieldUpdateOperationsInput | number
+    q5?: IntFieldUpdateOperationsInput | number
+    q6?: IntFieldUpdateOperationsInput | number
+    q7?: IntFieldUpdateOperationsInput | number
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SrhiAnswerUncheckedUpdateManyInput = {
+    srhiId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    q1?: IntFieldUpdateOperationsInput | number
+    q2?: IntFieldUpdateOperationsInput | number
+    q3?: IntFieldUpdateOperationsInput | number
+    q4?: IntFieldUpdateOperationsInput | number
+    q5?: IntFieldUpdateOperationsInput | number
+    q6?: IntFieldUpdateOperationsInput | number
+    q7?: IntFieldUpdateOperationsInput | number
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -17172,6 +18492,7 @@ export namespace Prisma {
     lessonId?: SortOrder
     userId?: SortOrder
     completed?: SortOrder
+    completedAt?: SortOrder
   }
 
   export type LessonProgressAvgOrderByAggregateInput = {
@@ -17182,12 +18503,14 @@ export namespace Prisma {
     lessonId?: SortOrder
     userId?: SortOrder
     completed?: SortOrder
+    completedAt?: SortOrder
   }
 
   export type LessonProgressMinOrderByAggregateInput = {
     lessonId?: SortOrder
     userId?: SortOrder
     completed?: SortOrder
+    completedAt?: SortOrder
   }
 
   export type LessonProgressSumOrderByAggregateInput = {
@@ -17476,6 +18799,67 @@ export namespace Prisma {
     identifier?: SortOrder
     token?: SortOrder
     expires?: SortOrder
+  }
+
+  export type SrhiAnswerCountOrderByAggregateInput = {
+    srhiId?: SortOrder
+    userId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+    submittedAt?: SortOrder
+  }
+
+  export type SrhiAnswerAvgOrderByAggregateInput = {
+    srhiId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+  }
+
+  export type SrhiAnswerMaxOrderByAggregateInput = {
+    srhiId?: SortOrder
+    userId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+    submittedAt?: SortOrder
+  }
+
+  export type SrhiAnswerMinOrderByAggregateInput = {
+    srhiId?: SortOrder
+    userId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
+    submittedAt?: SortOrder
+  }
+
+  export type SrhiAnswerSumOrderByAggregateInput = {
+    srhiId?: SortOrder
+    q1?: SortOrder
+    q2?: SortOrder
+    q3?: SortOrder
+    q4?: SortOrder
+    q5?: SortOrder
+    q6?: SortOrder
+    q7?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -18643,12 +20027,14 @@ export namespace Prisma {
 
   export type LessonProgressCreateWithoutUserInput = {
     completed: boolean
+    completedAt?: Date | string
     lesson: LessonCreateNestedOneWithoutLessonProgressInput
   }
 
   export type LessonProgressUncheckedCreateWithoutUserInput = {
     lessonId: number
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type LessonProgressCreateOrConnectWithoutUserInput = {
@@ -18858,6 +20244,7 @@ export namespace Prisma {
     lessonId?: IntFilter<"LessonProgress"> | number
     userId?: StringFilter<"LessonProgress"> | string
     completed?: BoolFilter<"LessonProgress"> | boolean
+    completedAt?: DateTimeFilter<"LessonProgress"> | Date | string
   }
 
   export type UserBadgeUpsertWithWhereUniqueWithoutUserInput = {
@@ -19043,12 +20430,14 @@ export namespace Prisma {
 
   export type LessonProgressCreateWithoutLessonInput = {
     completed: boolean
+    completedAt?: Date | string
     user: UserCreateNestedOneWithoutLessonProgressInput
   }
 
   export type LessonProgressUncheckedCreateWithoutLessonInput = {
     userId: string
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type LessonProgressCreateOrConnectWithoutLessonInput = {
@@ -19757,6 +21146,7 @@ export namespace Prisma {
   export type LessonProgressCreateManyUserInput = {
     lessonId: number
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type UserBadgeCreateManyUserInput = {
@@ -19861,17 +21251,20 @@ export namespace Prisma {
 
   export type LessonProgressUpdateWithoutUserInput = {
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lesson?: LessonUpdateOneRequiredWithoutLessonProgressNestedInput
   }
 
   export type LessonProgressUncheckedUpdateWithoutUserInput = {
     lessonId?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonProgressUncheckedUpdateManyWithoutUserInput = {
     lessonId?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserBadgeUpdateWithoutUserInput = {
@@ -19951,6 +21344,7 @@ export namespace Prisma {
   export type LessonProgressCreateManyLessonInput = {
     userId: string
     completed: boolean
+    completedAt?: Date | string
   }
 
   export type CommentCreateManyLessonInput = {
@@ -19963,17 +21357,20 @@ export namespace Prisma {
 
   export type LessonProgressUpdateWithoutLessonInput = {
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutLessonProgressNestedInput
   }
 
   export type LessonProgressUncheckedUpdateWithoutLessonInput = {
     userId?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LessonProgressUncheckedUpdateManyWithoutLessonInput = {
     userId?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutLessonInput = {
@@ -20113,6 +21510,10 @@ export namespace Prisma {
      * @deprecated Use VerificationTokenDefaultArgs instead
      */
     export type VerificationTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = VerificationTokenDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SrhiAnswerDefaultArgs instead
+     */
+    export type SrhiAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SrhiAnswerDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

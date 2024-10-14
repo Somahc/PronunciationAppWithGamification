@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ToSrhiBtn from './ToSrhiBtn'
 
 export default function Title() {
     return (
@@ -18,6 +19,8 @@ export default function Title() {
             <p className="text-xl bg-white w-full py-2 rounded-md text-center">ランキング</p>
             <p className="text-sm">みんなの活動を確認してみよう</p>
           </Link>
+
+          <ToSrhiBtn />
     
         </div>
       )

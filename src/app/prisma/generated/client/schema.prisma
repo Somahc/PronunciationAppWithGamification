@@ -76,9 +76,10 @@ model Lesson {
 }
 
 model LessonProgress {
-  lessonId  Int     @map("lesson_id")
-  userId    String  @map("user_id")
-  completed Boolean
+  lessonId    Int      @map("lesson_id")
+  userId      String   @map("user_id")
+  completed   Boolean
+  completedAt DateTime @default(now()) @map("completed_at")
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   lesson Lesson @relation(fields: [lessonId], references: [lessonId], onDelete: Cascade)
@@ -166,4 +167,19 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model SrhiAnswer {
+  srhiId      Int      @id @default(autoincrement()) @map("srhi_id")
+  userId      String   @map("user_id")
+  q1          Int
+  q2          Int
+  q3          Int
+  q4          Int
+  q5          Int
+  q6          Int
+  q7          Int
+  submittedAt DateTime @default(now()) @map("submitted_at")
+
+  @@map("srhi_answers")
 }
