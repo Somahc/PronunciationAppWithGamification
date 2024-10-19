@@ -25,6 +25,7 @@ export default function RootLayout({
       <html lang="ja">
         <body className={noto.className}>
           <Container>
+            {/* <Header /> */}
             <HeaderNashi />
             {children}
           </Container>
