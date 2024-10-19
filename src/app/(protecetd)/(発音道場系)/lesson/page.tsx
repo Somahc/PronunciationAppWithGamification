@@ -4,6 +4,7 @@ import { MessageSquare, BookOpen } from "lucide-react";
 import classNames from "classnames";
 import Link from "next/link";
 import ToTopBtn from "@/app/components/ToTopBtn";
+import CommentButton from "@/app/components/CommentButton";
 
 type Lesson = {
     lessonId: number;
@@ -54,10 +55,11 @@ export default async function Page() {
                                     <BookOpen size={19} className=""></BookOpen>
                                     <p>{lesson.title}</p>
                                 </Link>
-                                <Link href={`comments/${lesson.lessonId}`} className="flex justify-center items-center gap-1 p-4 bg-white hover:bg-slate-200 w-full rounded-md">
+                                {/* <Link href={`comments/${lesson.lessonId}`} className="flex justify-center items-center gap-1 p-4 bg-white hover:bg-slate-200 w-full rounded-md">
                                     <MessageSquare size={19} className=""></MessageSquare>
                                     <p>コメント</p>
-                                </Link>
+                                </Link> */}
+                                {/* <CommentButton lessonId={lesson.lessonId} /> */}
                                 <div className="text-sm">{lesson.isCompleted ? 'クリア済み' : '未完了'}</div>
                             </div>
                         </div>

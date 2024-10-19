@@ -34,7 +34,7 @@ export default async function Page() {
     return (
         <div className="h-screen flex flex-col justify-center items-center">
             <p className={style.section_ttl}>レッスン/s/　完了！</p>
-            <ToSrhiBtn />
+            {/* <ToSrhiBtn /> */}
             <ToTopBtn />
         </div>
     )

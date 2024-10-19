@@ -4,6 +4,7 @@ import "../globals.css";
 
 import Container from "@/app/components/Container"
 import Header from "../components/Header";
+import HeaderNashi from "../components/HeaderNashi";
 
 const inter = Inter({ subsets: ["latin"] });
 const noto = Noto_Sans_JP({ subsets: ["latin"], weight: ["400"] });
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="ja">
         <body className={noto.className}>
           <Container>
-            <Header />
+            <HeaderNashi />
             {children}
           </Container>
         </body>

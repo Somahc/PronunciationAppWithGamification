@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import ToSrhiBtn from './ToSrhiBtn'
 
-export default function Title() {
+export default function TitleNashi() {
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center gap-5">
     
@@ -10,7 +10,7 @@ export default function Title() {
             <p className="text-sm">フィードバックをもらいながら発音練習</p>
           </Link>
 
-          <Link href="/badges" className="flex flex-col w-[80%] items-center gap-2 bg-blue-300 hover:bg-blue-400 p-4 rounded-md">
+          {/* <Link href="/badges" className="flex flex-col w-[80%] items-center gap-2 bg-blue-300 hover:bg-blue-400 p-4 rounded-md">
             <p className="text-xl bg-white w-full py-2 rounded-md text-center">バッジ</p>
             <p className="text-sm">獲得したバッジを確認してみよう</p>
           </Link>
@@ -20,7 +20,7 @@ export default function Title() {
             <p className="text-sm">みんなの活動を確認してみよう</p>
           </Link>
 
-          {/* <ToSrhiBtn /> */}
+          <ToSrhiBtn /> */}
     
         </div>
       )
