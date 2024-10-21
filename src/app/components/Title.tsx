@@ -20,7 +20,7 @@ export default function Title() {
             <p className="text-sm">みんなの活動を確認してみよう</p>
           </Link>
 
-          <ToSrhiBtn />
+          {/* <ToSrhiBtn /> */}
     
         </div>
       )
