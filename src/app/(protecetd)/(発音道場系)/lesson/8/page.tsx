@@ -25,7 +25,7 @@ import { OndokusanCooyright } from "@/app/components/OndokusanCooyright";
 export default function Page() {
   const { data: session } = useSession();
   const [page, setPage] = useState(0);
-  const [targetWord, setTargetWord] = useState<string>("shell");
+  // const [targetWord, setTargetWord] = useState<string>("");
   const [wordARes, setWordARes] = useState<PronunciationFeedback[]>([]);
   const [wordBRes, setWordBRes] = useState<PronunciationFeedback[]>([]);
   const mediaRecorder = useRef<MediaRecorder | null>(null);
@@ -37,10 +37,11 @@ export default function Page() {
   const startRecording = async(word: string): Promise<void> => {
     if (!session) return;
 
+    // setTargetWord(word);
+
     setError(null);
 
     try {
-      setTargetWord(word);
       setIsRecording(true);
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -59,7 +60,7 @@ export default function Page() {
           const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
   
           const base64Audio = await blobToBase(audioBlob);
-          const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
+          const feedback = await getFeedback(base64Audio, word, session.user.id);
   
           console.log("フィードバック", feedback);
   

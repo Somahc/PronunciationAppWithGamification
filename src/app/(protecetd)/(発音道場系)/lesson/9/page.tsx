@@ -59,7 +59,7 @@ export default function Page() {
           const audioBlob = new Blob(audioChunks.current, { type: 'audio/wav' });
   
           const base64Audio = await blobToBase(audioBlob);
-          const feedback = await getFeedback(base64Audio, targetWord, session.user.id);
+          const feedback = await getFeedback(base64Audio, word, session.user.id);
   
           console.log("フィードバック", feedback);
   
