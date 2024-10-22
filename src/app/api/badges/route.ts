@@ -51,6 +51,36 @@ export const POST = async ( req: NextRequest ) => {
                         }
                     })
 
+                    const currentPoint = await prisma.point.findFirst({
+                        where: {
+                            userId: userId
+                        },
+                        select: {
+                            basicPoint: true,
+                            activityPoint: true
+                        }
+                    })
+            
+                    // DBにpoint情報がない場合は新規作成
+                    if(!currentPoint) {
+                        await prisma.point.create({
+                            data: {
+                                userId,
+                            }
+                        })
+                    }
+
+                    await prisma.point.update({
+                        where: {
+                            userId
+                        },
+                        data: {
+                            activityPoint: {
+                                increment: 5
+                            }
+                        }
+                    })
+
                     console.log('バッジを付与しました:', badge.name);
                     awardedBadges.push(newUserBadge);
 
@@ -79,6 +109,36 @@ export const POST = async ( req: NextRequest ) => {
                                 userId,
                                 badgeId: badge.badgeId,
                                 obtainedAt: new Date(),
+                            }
+                        })
+
+                        const currentPoint = await prisma.point.findFirst({
+                            where: {
+                                userId: userId
+                            },
+                            select: {
+                                basicPoint: true,
+                                activityPoint: true
+                            }
+                        })
+                
+                        // DBにpoint情報がない場合は新規作成
+                        if(!currentPoint) {
+                            await prisma.point.create({
+                                data: {
+                                    userId,
+                                }
+                            })
+                        }
+
+                        await prisma.point.update({
+                            where: {
+                                userId
+                            },
+                            data: {
+                                activityPoint: {
+                                    increment: 10
+                                }
                             }
                         })
 
