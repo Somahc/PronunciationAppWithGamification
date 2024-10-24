@@ -54,10 +54,10 @@ export default async function Page() {
                                     <BookOpen size={19} className=""></BookOpen>
                                     <p>{lesson.title}</p>
                                 </Link>
-                                <Link href={`comments/${lesson.lessonId}`} className="flex justify-center items-center gap-1 p-4 bg-white hover:bg-slate-200 w-full rounded-md">
+                                {/* <Link href={`comments/${lesson.lessonId}`} className="flex justify-center items-center gap-1 p-4 bg-white hover:bg-slate-200 w-full rounded-md">
                                     <MessageSquare size={19} className=""></MessageSquare>
                                     <p>コメント</p>
-                                </Link>
+                                </Link> */}
                                 <div className="text-sm">{lesson.isCompleted ? 'クリア済み' : '未完了'}</div>
                             </div>
                         </div>

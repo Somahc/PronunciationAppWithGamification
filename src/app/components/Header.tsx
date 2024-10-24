@@ -28,14 +28,14 @@ export default async function Header() {
                 <section>
                     {session ? (
                         <div className="flex items-center gap-[0.1rem]">
-                            <GraduationCap size={24} />
+                            {/* <GraduationCap size={24} />
                             <div>
                                 {basicPoint}P
                             </div>
                             <Flame size={24} />
                             <div className="">
                                 {activityPoint}P
-                            </div>
+                            </div> */}
                             <Avatar className="size-9 border">
                                 <AvatarImage src={session.user.image as string} alt="@user" className="size-9" />
                                 <AvatarFallback>{session.user.name?.charAt(0)}</AvatarFallback>
