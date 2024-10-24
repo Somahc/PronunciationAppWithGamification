@@ -20,6 +20,8 @@ export default async function Title() {
             <p className="text-sm">フィードバックをもらいながら発音練習</p>
           </Link>
 
+          {/* REDEPLOY発火用 */}
+
           {/* <Link href="/badges" className="flex flex-col w-[80%] items-center gap-2 bg-blue-300 hover:bg-blue-400 p-4 rounded-md">
             <p className="text-xl bg-white w-full py-2 rounded-md text-center">バッジ</p>
             <p className="text-sm">獲得したバッジを確認してみよう</p>
