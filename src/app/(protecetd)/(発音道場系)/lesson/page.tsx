@@ -58,6 +58,7 @@ export default async function Page() {
                                     <MessageSquare size={19} className=""></MessageSquare>
                                     <p>コメント</p>
                                 </Link> */}
+                                {/* デプロイ発火用 */}
                                 <div className="text-sm">{lesson.isCompleted ? 'クリア済み' : '未完了'}</div>
                             </div>
                         </div>
