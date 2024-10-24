@@ -21,7 +21,7 @@ export default async function Header() {
             <div className="flex items-center justify-between w-[95%]">
                 <div className="text-sm">
                     <Link href="/">
-                        発音矯正アプリ（仮）
+                        発音矯正アプリ
                     </Link>
                 </div>
                 

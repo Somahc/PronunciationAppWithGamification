@@ -1,9 +1,19 @@
 import Link from 'next/link'
 import ToSrhiBtn from './ToSrhiBtn'
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from '@/app/lib/next-auth/options'
+import { signOut } from 'next-auth/react'
+import SignoutBtn from './SignoutBtn';
 
-export default function Title() {
+export default async function Title() {
+
+  const session = await getServerSession(nextAuthOptions);
+
     return (
         <div className="w-full h-screen flex flex-col justify-center items-center gap-5">
+
+          <p className="text-xl mb-2"><span className="font-bold">{session!.user?.name}</span> としてログインしています </p>
+          <small>メールアドレス: {session!.user?.email}</small>
     
           <Link href="/lesson" className="flex flex-col w-[80%] items-center gap-2 bg-green-300 hover:bg-green-400 p-4 rounded-md">
             <p className="text-xl bg-white w-full py-2 rounded-md text-center">発音道場</p>
@@ -20,6 +30,7 @@ export default function Title() {
             <p className="text-sm">みんなの活動を確認してみよう</p>
           </Link>
 
+          <SignoutBtn />
           {/* <ToSrhiBtn /> */}
     
         </div>
