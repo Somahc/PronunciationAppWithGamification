@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/lib/next-auth/options";
 import Image from "next/image";
 import Title from "@/app/components/Title";
+import TitleNashi from "../components/TitleNashi";
 
 export default async function Page() {
 
@@ -27,7 +28,7 @@ export default async function Page() {
 
   return (
     <>
-      <Title />
+      <TitleNashi />
     </>
   )
 }
