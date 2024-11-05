@@ -1,0 +1,17 @@
+NEXTAUTH_SECRET=LPDdxQUYvu4ajThlSwk6c9z6fPAdxeciewEasq16p40=
+NEXTAUTH_URL=http://localhost:3000/
+# NEXTAUTH_URL=http://192.168.82.83:3000/
+
+GITHUB_ID=Iv23liMZfn7nUHJVg6bK
+GITHUB_SECRET=b21e035e3d034330bf030e76d1cdab9cff667b7f
+
+GOOGLE_ID=265135512502-gs1fduub7tt6b5ig7vs13m6430aagb3v.apps.googleusercontent.com
+GOOGLE_SECRET=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
+
+DATABASE_URL="postgresql://root:password@localhost:5432/mydb"
+
+SEEPHONY_APIKEY=cy38uwQzzZ
+SEEPHONY_ENDPOINT=https://api.seephony.com/v1/recognize.php
+
+BASE_URL="http://localhost:3000"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
